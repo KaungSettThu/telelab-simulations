@@ -1,0 +1,104 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% HEADER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pdfminorversion=7
+\pdfcompresslevel=1 % schnellste Kompression
+%\pdfcompresslevel=9 % beste Kompression
+\pdfimageresolution=600
+
+\documentclass[12pt,bibliography=totoc]{scrreprt}
+
+\usepackage{i17report}
+
+\usepackage{scrhack} % used since scrreprt produces a warning when using totoc
+
+%% Language %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[USenglish]{babel}     %%%% english
+%\usepackage[ngerman]{babel}      %%%% german
+\usepackage[T1]{fontenc}
+\usepackage[ansinew]{inputenc}
+
+\usepackage{lmodern} %Type1-font for non-english texts and characters
+
+%% Hyperrefs and URLs %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[pdftex,                %%% hyper-references for pdftex
+bookmarks=true,%                   %%% generate bookmarks \ldots
+bookmarksnumbered=true,%           %%% \ldots with numbers
+hypertexnames=false,%              %%% needed for correct links to figures !!!
+hyperfootnotes=false,
+breaklinks=true,%                  %%% breaks lines, but links are very small
+linkcolor=red,%
+linkbordercolor={1 0 1}%
+]{hyperref}  %%% blue frames around links
+
+%% Packages for Graphics & Figures %%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+\usepackage[most]{tcolorbox}
+
+%% Packages for Tables %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{multirow}
+\usepackage{ltablex}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
+%% Packages for Coloring %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{color, xcolor}
+\definecolor{material_blue}{HTML}{027BE3}
+\definecolor{material_red}{HTML}{F44336}
+\definecolor{material_green}{HTML}{4CAF50}
+\definecolor{material_orange}{HTML}{FF9800}
+
+%% Packages for Math %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{units}
+\usepackage{relsize,exscale}
+
+%% Defined commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\bigint} [3] {\mathop{\mathlarger{\int\limits_{#1}^{#2}}} {#3}}  % a big integral
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% DOCUMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\pagestyle{empty} %No headings for the first pages.
+
+%% Title Page %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Report}
+\subject{Experiment Title}
+
+\author{Author}
+\matrnr{12345}
+\submission{\today}
+
+\maketitle
+
+%% Inhaltsverzeichnis %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tableofcontents
+\cleardoublepage %The first chapter should start on an odd page.
+
+\pagestyle{plain}
+
+%% Chapters %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\input{Chapter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% BIBLIOGRAPHY AND OTHER LISTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{plain}
+%\bibliography{Literature}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Appendix
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{appendix}
+
+%\input{Appendix}
+
+\end{appendix}
+
+\end{document}
+
