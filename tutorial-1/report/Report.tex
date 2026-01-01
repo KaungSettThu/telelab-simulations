@@ -35,6 +35,7 @@ linkbordercolor={1 0 1}%
 \usepackage{graphicx}
 \usepackage[export]{adjustbox}
 \usepackage[most]{tcolorbox}
+\usepackage{float}  % for [H]
 
 %% Packages for Tables %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{multirow}
@@ -50,11 +51,13 @@ linkbordercolor={1 0 1}%
 
 %% Packages for Math %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{amsfonts}
 \usepackage{mathtools}
 \usepackage{units}
 \usepackage{relsize,exscale}
+\usepackage{parskip}
 
 %% Defined commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\bigint} [3] {\mathop{\mathlarger{\int\limits_{#1}^{#2}}} {#3}}  % a big integral
@@ -67,11 +70,11 @@ linkbordercolor={1 0 1}%
 \pagestyle{empty} %No headings for the first pages.
 
 %% Title Page %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\title{Report}
-\subject{Experiment Title}
+\title{Tele-Experiment}
+\subject{Kinematics of Mobile Robots}
 
-\author{Author}
-\matrnr{12345}
+\author{Kaung Sett Thu}
+\matrnr{}
 \submission{\today}
 
 \maketitle
@@ -84,6 +87,207 @@ linkbordercolor={1 0 1}%
 
 %% Chapters %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\input{Chapter}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 3.1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Task 3.1 Simplified Car-Like Robot Model}
+%
+Proving the relationship between the steering angle of the virtual wheel $\varphi$ and the steering angles of the two front wheels $\varphi_{l}$ and $\varphi_{r}$.
+%
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../diagrams/ackarmann_robot.png}
+    \caption{Simplified Car-Like Robot Model.}
+    \label{fig:sample}
+\end{figure}
+%
+Since the track width $d$, the wheel base $l$ and the radius $r$ from the Instaneous Ceter of Curvature $ICC$ forms a right angle triangle, the steering angles can be written as:
+%
+\begin{align*}
+    \tan \varphi &= \dfrac{l}{r} \\[1em]
+    \tan \varphi_{r} &= \dfrac{l}{(r + \dfrac{d}{2} )} \\[1em]
+    \tan \varphi_{l} &= \dfrac{l}{(r - \dfrac{d}{2} )}
+\end{align*}
+%
+The equation for right steering angle can be rearranged by isolating for radius $r$.
+%
+\begin{align*}
+    \tan \varphi_{r} &= \dfrac{l}{(r + \dfrac{d}{2} )} \\[1em]
+    r + \dfrac{d}{2} &= \dfrac{l}{\tan \varphi_{r}} \\[1em]
+    r &= \dfrac{l}{\tan \varphi_{r}} - \dfrac{d}{2}
+\end{align*}
+%
+Substituding the radius into equation for steering angle of the virtual wheel,
+%
+\begin{align*}
+    \tan \varphi &= \dfrac{l}{\dfrac{l}{\tan \varphi_{r}} - \dfrac{d}{2}}
+\end{align*}
+%
+Dividing numerator and denominator of right hand side by $l$,
+%
+\begin{align*}
+    \tan \varphi &= \dfrac{1}{\dfrac{1}{\tan \varphi_{r}} - \dfrac{d}{2l}} \\[1em]
+    \tan \varphi &= \dfrac{1}{\left( \dfrac{2l - d \cdot \tan \varphi_{r}}{2l \cdot \tan \varphi_{r}}\right)} \\[1em]
+    \tan \varphi &= \dfrac{2l \cdot \tan \varphi_{r}}{2l - d \cdot \tan \varphi_{r}}
+\end{align*}
+%
+Dividing numerator and denominator of right hand side by $2l$,
+%
+\begin{align*}
+    \tan \varphi &= \dfrac{\tan \varphi_{r}}{1 - \dfrac{d}{2l} \cdot \tan \varphi_{r}} \\[1em]
+    \therefore \varphi &= \arctan \left( \dfrac{\tan \varphi_{r}}{1 - \dfrac{d}{2l} \cdot \tan \varphi_{r}} \right)
+\end{align*}
+%
+%
+The equation for left steering angle can be rearranged by isolating for radius $r$.
+%
+\begin{align*}
+    \tan \varphi_{l} &= \dfrac{l}{(r - \dfrac{d}{2} )} \\[1em]
+    r - \dfrac{d}{2} &= \dfrac{l}{\tan \varphi_{l}} \\[1em]
+    r &= \dfrac{l}{\tan \varphi_{l}} + \dfrac{d}{2}
+\end{align*}
+%
+Substituding the radius into equation for steering angle of the virtual wheel,
+%
+\begin{align*}
+    \tan \varphi &= \dfrac{l}{\dfrac{l}{\tan \varphi_{l}} + \dfrac{d}{2}}
+\end{align*}
+%
+Dividing numerator and denominator of right hand side by $l$,
+%
+\begin{align*}
+    \tan \varphi &= \dfrac{1}{\dfrac{1}{\tan \varphi_{l}} + \dfrac{d}{2l}} \\[1em]
+    \tan \varphi &= \dfrac{1}{\left( \dfrac{2l + d \cdot \tan \varphi_{l}}{2l \cdot \tan \varphi_{l}}\right)} \\[1em]
+    \tan \varphi &= \dfrac{2l \cdot \tan \varphi_{l}}{2l + d \cdot \tan \varphi_{l}}
+\end{align*}
+%
+Dividing numerator and denominator of right hand side by $2l$,
+%
+\begin{align*}
+    \tan \varphi &= \dfrac{\tan \varphi_{l}}{1 + \dfrac{d}{2l} \cdot \tan \varphi_{l}} \\[1em]
+    \therefore \varphi &= \arctan \left( \dfrac{\tan \varphi_{l}}{1 + \dfrac{d}{2l} \cdot \tan \varphi_{l}} \right)
+\end{align*}
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 3.2
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Task 3.2 Pose Determination from Kinematics Model}
+\section{Differential Drive Robot}
+\subsection*{Case 1: Non-Straight-Line Motion}
+%
+Since linear velocity $v_l$ and $v_r$ are constant, the angular velocity $\omega$ is also assumed to be constnat. Therefore, instead of notating them as a function of time, they will be notated as constants $v$ and $\omega$.
+
+Finding $\Delta \theta$ with respect to time $t_1$ and $t_2$.
+%
+\begin{align*}
+    \Delta \theta &= \int_{t_1}^{t_2} \omega \, dt \\[1em]
+    &= \omega [t]_{t_1}^{t_2} \\[1em]
+    &= \omega (t_2 - t_1)
+\end{align*}
+%
+%% Calculation for \delta_x
+%
+Finding $\Delta x$ with respect to time $t_1$ and $t_2$.
+%
+\begin{align*}
+    \Delta x &= \int_{t_1}^{t_2} v \cdot \cos \theta(t) \, dt \\[1em]
+    &= v \int_{t_1}^{t_2} \cos(\theta(t_1) + \omega(t - t_1))\, dt
+\end{align*}
+%
+Let $u = \theta(t_1) + \omega(t - t_1)$.
+%
+\begin{align*}
+    du &= \omega \, dt \\[1em]
+    dt &= \dfrac{du}{\omega}
+\end{align*}
+%
+Using $\theta(t_1)$ and $\theta(t_2)$ as lower and upper bounds and substituding $u$ and $du$, 
+\begin{align*}
+    \Delta x &= v \int_{\theta(t_1)}^{\theta(t_2)} \cos (u) \, \dfrac{du}{\omega} \\[1em]
+    &= \dfrac{v}{\omega} \int_{\theta(t_1)}^{\theta(t_2)} \cos (u) \, du \\[1em]
+    &= \dfrac{v}{\omega} [\sin(u)]_{\theta(t_1)}^{\theta(t_2)} \\[1em]
+    &= \dfrac{v}{\omega} [\sin(\theta(t_2)) - \sin(\theta(t_1))]
+\end{align*}
+%
+%% Calculation for \delta_y
+%
+Finding $\Delta y$ with respect to time $t_1$ and $t_2$.
+%
+\begin{align*}
+    \Delta y &= \int_{t_1}^{t_2} v \cdot \sin \theta(t) \, dt \\[1em]
+    &= v \int_{t_1}^{t_2} \sin(\theta(t_1) + \omega(t - t_1))\, dt
+\end{align*}
+%
+Let $u = \theta(t_1) + \omega(t - t_1)$.
+%
+\begin{align*}
+    du &= \omega \, dt \\[1em]
+    dt &= \dfrac{du}{\omega}
+\end{align*}
+%
+Using $\theta(t_1)$ and $\theta(t_2)$ as lower and upper bounds and substituding $u$ and $du$, 
+\begin{align*}
+    \Delta y &= v \int_{\theta(t_1)}^{\theta(t_2)} \sin (u) \, \dfrac{du}{\omega} \\[1em]
+    &= \dfrac{v}{\omega} \int_{\theta(t_1)}^{\theta(t_2)} \sin (u) \, du \\[1em]
+    &= \dfrac{v}{\omega} [-\cos(u)]_{\theta(t_1)}^{\theta(t_2)} \\[1em]
+    &= \dfrac{v}{\omega} [\cos(\theta(t_1)) - \cos(\theta(t_2))]
+\end{align*}
+%
+Therefore, for a differential-drive robot that is not moving in a straight line motion, 
+%
+\begin{align*}
+    \Delta \theta &= \omega(t_2 - t_1) \\[1em]
+    \Delta x &= \dfrac{v}{\omega} [\sin(\theta(t_2)) - \sin(\theta(t_1))] \\[1em]
+    \Delta y &= \dfrac{v}{\omega} [\cos(\theta(t_1)) - \cos(\theta(t_2))]
+\end{align*}
+%
+\subsection*{Case 2. Straight Line Motion}
+In case of a straight line motion, the equations would not be the same. For the robot to move in a straight line motion, linear velocity $v_l$ and $v_r$ must be equal and angular velocity $\omega$ must be 0.
+%
+
+Finding $\Delta \theta$ with respect to time $t_1$ and $t_2$.
+%
+\begin{align*}
+    \Delta \theta &= \int_{t_1}^{t_2} \omega \, dt \\[1em]
+    &= 0 [t]_{t_1}^{t_2} \\[1em]
+    &= 0
+\end{align*}
+%
+Since $\Delta \theta$ is 0, $\theta(t)$ remains constant.
+
+Finding $\Delta x$ with respect to time $t_1$ and $t_2$.
+%
+\begin{align*}
+    \Delta x &= \int_{t_1}^{t_2} v \cdot \cos \theta(t_1) \, dt \\[1em]
+    &= v \cdot \cos \theta(t_1) \int_{t_1}^{t_2} \, dt \\[1em]
+    &= v \cdot \cos \theta(t_1) [t]_{t_1}^{t_2} \\[1em]
+    &= v \cdot \cos \theta(t_1) \cdot (t_2 - t_1)
+\end{align*}
+%
+Finding $\Delta y$ with respect to time $t_1$ and $t_2$.
+%
+\begin{align*}
+    \Delta y &= \int_{t_1}^{t_2} v \cdot \sin \theta(t_1) \, dt \\[1em]
+    &= v \cdot \sin \theta(t_1) \int_{t_1}^{t_2} \, dt \\[1em]
+    &= v \cdot \sin \theta(t_1) [t]_{t_1}^{t_2} \\[1em]
+    &= v \cdot \sin \theta(t_1) \cdot (t_2 - t_1)
+\end{align*}
+%
+Therefore, for a differential-drive robot that is moving in a straight line motion, 
+%
+\begin{align*}
+    \Delta \theta &= 0 \\[1em]
+    \Delta x &= v \cdot \cos \theta(t_1) \cdot (t_2 - t_1) \\[1em]
+    \Delta y &= v \cdot \sin \theta(t_1) \cdot (t_2 - t_1)
+\end{align*}
+%
+%
+\section{Car-Like Robot}
+\subsection*{Case 1: Non-Straight-Line Motion}
+Steering angle $\varphi$ and linear velocity $v$ are constant.
+
+Finding $\Delta \theta$ with respect to time $t_1$ and $t_2$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% BIBLIOGRAPHY AND OTHER LISTS
