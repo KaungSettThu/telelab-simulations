@@ -178,7 +178,7 @@ Dividing numerator and denominator of right hand side by $2l$,
 %
 Since linear velocity $v_l$ and $v_r$ are constant, the angular velocity $\omega$ is also assumed to be constnat. Therefore, instead of notating them as a function of time, they will be notated as constants $v$ and $\omega$.
 
-Finding $\Delta \theta$ with respect to time $t_1$ and $t_2$.
+\emph{Finding $\Delta \theta$ with respect to time $t_1$ and $t_2$.}
 %
 \begin{align*}
     \Delta \theta &= \int_{t_1}^{t_2} \omega \, dt \\[1em]
@@ -188,7 +188,7 @@ Finding $\Delta \theta$ with respect to time $t_1$ and $t_2$.
 %
 %% Calculation for \delta_x
 %
-Finding $\Delta x$ with respect to time $t_1$ and $t_2$.
+\emph{Finding $\Delta x$ with respect to time $t_1$ and $t_2$.}
 %
 \begin{align*}
     \Delta x &= \int_{t_1}^{t_2} v \cdot \cos \theta(t) \, dt \\[1em]
@@ -202,7 +202,7 @@ Let $u = \theta(t_1) + \omega(t - t_1)$.
     dt &= \dfrac{du}{\omega}
 \end{align*}
 %
-Using $\theta(t_1)$ and $\theta(t_2)$ as lower and upper bounds and substituding $u$ and $du$, 
+Using $\theta(t_1)$ and $\theta(t_2)$ as lower and upper bounds and substituting $u$ and $du$, 
 \begin{align*}
     \Delta x &= v \int_{\theta(t_1)}^{\theta(t_2)} \cos (u) \, \dfrac{du}{\omega} \\[1em]
     &= \dfrac{v}{\omega} \int_{\theta(t_1)}^{\theta(t_2)} \cos (u) \, du \\[1em]
@@ -212,7 +212,7 @@ Using $\theta(t_1)$ and $\theta(t_2)$ as lower and upper bounds and substituding
 %
 %% Calculation for \delta_y
 %
-Finding $\Delta y$ with respect to time $t_1$ and $t_2$.
+\emph{Finding $\Delta y$ with respect to time $t_1$ and $t_2$.}.
 %
 \begin{align*}
     \Delta y &= \int_{t_1}^{t_2} v \cdot \sin \theta(t) \, dt \\[1em]
@@ -226,7 +226,7 @@ Let $u = \theta(t_1) + \omega(t - t_1)$.
     dt &= \dfrac{du}{\omega}
 \end{align*}
 %
-Using $\theta(t_1)$ and $\theta(t_2)$ as lower and upper bounds and substituding $u$ and $du$, 
+Using $\theta(t_1)$ and $\theta(t_2)$ as lower and upper bounds and substituting $u$ and $du$, 
 \begin{align*}
     \Delta y &= v \int_{\theta(t_1)}^{\theta(t_2)} \sin (u) \, \dfrac{du}{\omega} \\[1em]
     &= \dfrac{v}{\omega} \int_{\theta(t_1)}^{\theta(t_2)} \sin (u) \, du \\[1em]
@@ -246,7 +246,7 @@ Therefore, for a differential-drive robot that is not moving in a straight line 
 In case of a straight line motion, the equations would not be the same. For the robot to move in a straight line motion, linear velocity $v_l$ and $v_r$ must be equal and angular velocity $\omega$ must be 0.
 %
 
-Finding $\Delta \theta$ with respect to time $t_1$ and $t_2$.
+\emph{Finding $\Delta \theta$ with respect to time $t_1$ and $t_2$.}
 %
 \begin{align*}
     \Delta \theta &= \int_{t_1}^{t_2} \omega \, dt \\[1em]
@@ -256,7 +256,7 @@ Finding $\Delta \theta$ with respect to time $t_1$ and $t_2$.
 %
 Since $\Delta \theta$ is 0, $\theta(t)$ remains constant.
 
-Finding $\Delta x$ with respect to time $t_1$ and $t_2$.
+\emph{Finding $\Delta x$ with respect to time $t_1$ and $t_2$.}
 %
 \begin{align*}
     \Delta x &= \int_{t_1}^{t_2} v \cdot \cos \theta(t_1) \, dt \\[1em]
@@ -265,7 +265,7 @@ Finding $\Delta x$ with respect to time $t_1$ and $t_2$.
     &= v \cdot \cos \theta(t_1) \cdot (t_2 - t_1)
 \end{align*}
 %
-Finding $\Delta y$ with respect to time $t_1$ and $t_2$.
+\emph{Finding $\Delta y$ with respect to time $t_1$ and $t_2$.}
 %
 \begin{align*}
     \Delta y &= \int_{t_1}^{t_2} v \cdot \sin \theta(t_1) \, dt \\[1em]
@@ -287,7 +287,64 @@ Therefore, for a differential-drive robot that is moving in a straight line moti
 \subsection*{Case 1: Non-Straight-Line Motion}
 Steering angle $\varphi$ and linear velocity $v$ are constant.
 
-Finding $\Delta \theta$ with respect to time $t_1$ and $t_2$.
+\emph{Finding $\Delta \theta$ with respect to time $t_1$ and $t_2$.}
+%
+\begin{align*}
+    \Delta \theta &= \int_{t_1}^{t_2} v \cdot \dfrac{\tan \varphi}{l} \, dt \\[1em]
+    &= v \cdot \dfrac{\tan \varphi}{l} \int_{t_1}^{t_2} \, dt \\[1em]
+    &= v \cdot \dfrac{\tan \varphi}{l} [t]_{t_1}^{t_2} \\[1em]
+    &= v \cdot \dfrac{\tan \varphi}{l} \, (t_2 - t_1)
+\end{align*}
+%
+%% Calculating \delta_x
+%
+\emph{Finding $\Delta x$ with respect to time $t_1$ and $t_2$.}
+%
+\begin{align*}
+    \Delta x &= \int_{t_1}^{t_2} v \cdot \cos \theta(t) \, dt \\[1em]
+    &= v \int_{t_1}^{t_2} \cos \left(\theta(t_1) + v \cdot \dfrac{\tan \varphi}{l} \, (t - t_1)\right) \, dt
+\end{align*}
+%
+Let $u = \theta(t_1) + v \cdot \dfrac{\tan \varphi}{l} \, (t - t_1)$.
+%
+\begin{align*}
+    du &= \dfrac{v \cdot \tan \varphi}{l} \, dt \\[1em]
+    dt &= \dfrac{l}{v \cdot \tan \varphi} \, du
+\end{align*}
+%
+Using $\theta(t_1)$ and $\theta(t_2)$ as lower and upper bounds and substituting $u$ and $du$, 
+\begin{align*}
+    \Delta x &= v \int_{\theta(t_1)}^{\theta(t_2)} \cos (u) \cdot \dfrac{l}{v \cdot \tan \varphi} \, du \\[1em]
+    &= \dfrac{l}{\tan \varphi} \int_{\theta(t_1)}^{\theta(t_2)} \cos (u) \, du \\[1em]
+    &= \dfrac{l}{\tan \varphi} [\sin(u)]_{\theta(t_1)}^{\theta(t_2)} \\[1em]
+    &= \dfrac{l}{\tan \varphi} [\sin(\theta(t_2)) - \sin(\theta(t_1))]
+\end{align*}
+%
+%
+%% Calculating \delta_y
+%
+\emph{Finding $\Delta y$ with respect to time $t_1$ and $t_2$.}
+%
+\begin{align*}
+    \Delta y &= \int_{t_1}^{t_2} v \cdot \sin \theta(t) \, dt \\[1em]
+    &= v \int_{t_1}^{t_2} \sin \left(\theta(t_1) + v \cdot \dfrac{\tan \varphi}{l} \, (t - t_1)\right) \, dt
+\end{align*}
+%
+Let $u = \theta(t_1) + v \cdot \dfrac{\tan \varphi}{l} \, (t - t_1)$.
+%
+\begin{align*}
+    du &= \dfrac{v \cdot \tan \varphi}{l} \, dt \\[1em]
+    dt &= \dfrac{l}{v \cdot \tan \varphi} \, du
+\end{align*}
+%
+Using $\theta(t_1)$ and $\theta(t_2)$ as lower and upper bounds and substituting $u$ and $du$, 
+\begin{align*}
+    \Delta x &= v \int_{\theta(t_1)}^{\theta(t_2)} \sin (u) \cdot \dfrac{l}{v \cdot \tan \varphi} \, du \\[1em]
+    &= \dfrac{l}{\tan \varphi} \int_{\theta(t_1)}^{\theta(t_2)} \sin (u) \, du \\[1em]
+    &= \dfrac{l}{\tan \varphi} [-\cos(u)]_{\theta(t_1)}^{\theta(t_2)} \\[1em]
+    &= \dfrac{l}{\tan \varphi} [\cos(\theta(t_1)) - \cos(\theta(t_2))]
+\end{align*}
+%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% BIBLIOGRAPHY AND OTHER LISTS

@@ -1,8 +1,8 @@
 # Fdb version 3
-["pdflatex"] 1767304112 "/home/kast/m-eng-robotics/telelab/simulations/tutorial-1/report/Report.tex" "Report.pdf" "Report" 1767304113
+["pdflatex"] 1767306784 "/home/kast/m-eng-robotics/telelab/simulations/tutorial-1/report/Report.tex" "Report.pdf" "Report" 1767306784
   "../diagrams/ackarmann_robot.png" 1767285676 112245 33f01b3a0a09083ffb072076c4def4d6 ""
   "/etc/texmf/web2c/texmf.cnf" 1767277857 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/kast/m-eng-robotics/telelab/simulations/tutorial-1/report/Report.tex" 1767304111 10858 36bdd3798061f1435e4e0c21ca348b2d ""
+  "/home/kast/m-eng-robotics/telelab/simulations/tutorial-1/report/Report.tex" 1767306783 13174 90f2d2f21e1c808756639d6b70223373 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm1200.tfm" 1136768653 3584 f80ddd985bd00e29e9a6047ebd9d4781 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -219,6 +219,7 @@
   "/usr/share/texmf/fonts/tfm/public/lm/ec-lmbx12.tfm" 1254938640 12088 d750ac78274fa7c9f73ba09914c04f8a ""
   "/usr/share/texmf/fonts/tfm/public/lm/ec-lmr12.tfm" 1254938640 12092 7b1546e2d096cfd5dcbd4049b0b1ec2e ""
   "/usr/share/texmf/fonts/tfm/public/lm/ec-lmr17.tfm" 1254938640 12156 ca1ae6a3c8564e89597f1f993fba1608 ""
+  "/usr/share/texmf/fonts/tfm/public/lm/ec-lmri12.tfm" 1254938640 17144 271aaf9ebb339934b04110dc5211fba4 ""
   "/usr/share/texmf/fonts/tfm/public/lm/ec-lmss12.tfm" 1254938640 11232 955a7245396175d9219648eadc654ac9 ""
   "/usr/share/texmf/fonts/tfm/public/lm/ec-lmssbx10.tfm" 1254938640 11168 06d87f5698fd1b642d96449b7c8d90b0 ""
   "/usr/share/texmf/fonts/tfm/public/lm/lmmi12.tfm" 1254938640 1524 753b192b18f2991794f9d41a8228510b ""
@@ -235,6 +236,7 @@
   "/usr/share/texmf/fonts/type1/public/lm/lmr12.pfb" 1254938640 113634 f99c44d58bae0863375faf0e1d74d612 ""
   "/usr/share/texmf/fonts/type1/public/lm/lmr6.pfb" 1254938640 123394 d390152bb30feeb496aaaa93299ee9ba ""
   "/usr/share/texmf/fonts/type1/public/lm/lmr8.pfb" 1254938640 122174 a7a08406857c9530a0320a2517f60370 ""
+  "/usr/share/texmf/fonts/type1/public/lm/lmri12.pfb" 1254938640 109265 32320cb6133d4d76bf83e27b5eb4009b ""
   "/usr/share/texmf/fonts/type1/public/lm/lmss12.pfb" 1254938640 96107 daf52840b555e3b38f9679b629b5e2df ""
   "/usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb" 1254938640 119663 e82fa1a58f98ccd89bdbd77311ac9cf1 ""
   "/usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb" 1254938640 27863 09ce3735688ffde955e72da27c95b61a ""
@@ -247,10 +249,10 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1767278444 128028 f533b797fba58d231669ea19e894e23e ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1767278450 1405650 aac0902341dcdf639672e1738eb898f3 ""
-  "Report.aux" 1767304112 3858 32fb09f870c340295a38bfd7114086dd "pdflatex"
-  "Report.out" 1767304112 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "Report.tex" 1767304111 10858 36bdd3798061f1435e4e0c21ca348b2d ""
-  "Report.toc" 1767304112 452 6f94eb25e8c2c0bb6cacfdaeb05bc3fb "pdflatex"
+  "Report.aux" 1767306784 3859 0f3a8bb71e08f9fb8fbf38ffc8de2c1a "pdflatex"
+  "Report.out" 1767306784 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "Report.tex" 1767306783 13174 90f2d2f21e1c808756639d6b70223373 ""
+  "Report.toc" 1767306784 452 6f94eb25e8c2c0bb6cacfdaeb05bc3fb "pdflatex"
   "banner.png" 1681798990 133007 2561e2a766c2d763d4ad5e8af899cfcc ""
   "i17report.sty" 1767279433 1677 38f4a80032dda850c892fee4010ea3b0 ""
   (generated)
