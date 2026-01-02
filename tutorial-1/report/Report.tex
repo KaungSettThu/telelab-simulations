@@ -254,7 +254,7 @@ In case of a straight line motion, the equations would not be the same. For the 
     &= 0
 \end{align*}
 %
-Since $\Delta \theta$ is 0, $\theta(t)$ remains constant.
+Since $\Delta \theta$ is 0, $\theta(t_1)$ remains constant.
 
 \emph{Finding $\Delta x$ with respect to time $t_1$ and $t_2$.}
 %
@@ -343,6 +343,55 @@ Using $\theta(t_1)$ and $\theta(t_2)$ as lower and upper bounds and substituting
     &= \dfrac{l}{\tan \varphi} \int_{\theta(t_1)}^{\theta(t_2)} \sin (u) \, du \\[1em]
     &= \dfrac{l}{\tan \varphi} [-\cos(u)]_{\theta(t_1)}^{\theta(t_2)} \\[1em]
     &= \dfrac{l}{\tan \varphi} [\cos(\theta(t_1)) - \cos(\theta(t_2))]
+\end{align*}
+%
+Therefore, for a differential-drive robot that is moving in a straight line motion, 
+%
+\begin{align*}
+    \Delta \theta &= v \cdot \dfrac{\tan \varphi}{l} \, (t_2 - t_1) \\[1em]
+    \Delta x &= \dfrac{l}{\tan \varphi} [\sin(\theta(t_2)) - \sin(\theta(t_1))] \\[1em]
+    \Delta y &= \dfrac{l}{\tan \varphi} [\cos(\theta(t_1)) - \cos(\theta(t_2))]
+\end{align*}
+%
+%
+\subsection*{Case 2. Straight Line Motion}
+The equations for Straight line motion for the car-like robot will also be different from the non-straight-line motion. For the robot moving in straight line motion, the steering angle $\varphi$ is 0.
+
+\emph{Finding $\Delta \theta$ with respect to time $t_1$ and $t_2$.}
+%
+\begin{align*}
+    \Delta \theta &= \int_{t_1}^{t_2} v \cdot \dfrac{\tan \varphi}{l} \, dt \\[1em]
+    &= v \cdot \dfrac{\tan \varphi}{l} \int_{t_1}^{t_2} \, dt \\[1em]
+    &= 0 [t]_{t_1}^{t_2} \\[1em]
+    &= 0
+\end{align*}
+%
+Since $\Delta \theta$ is 0, $\theta(t_1)$ remains constant.
+
+\emph{Finding $\Delta x$ with respect to time $t_1$ and $t_2$.}
+%
+\begin{align*}
+    \Delta x &= \int_{t_1}^{t_2} v \cdot \cos \theta(t_1) \, dt \\[1em]
+    &= v \cdot \cos \theta(t_1) \int_{t_1}^{t_2} \, dt \\[1em]
+    &= v \cdot \cos \theta(t_1) [t]_{t_1}^{t_2} \\[1em]
+    &= v \cdot \cos \theta(t_1) \cdot (t_2 - t_1)
+\end{align*}
+%
+\emph{Finding $\Delta y$ with respect to time $t_1$ and $t_2$.}
+%
+\begin{align*}
+    \Delta y &= \int_{t_1}^{t_2} v \cdot \sin \theta(t_1) \, dt \\[1em]
+    &= v \cdot \sin \theta(t_1) \int_{t_1}^{t_2} \, dt \\[1em]
+    &= v \cdot \sin \theta(t_1) [t]_{t_1}^{t_2} \\[1em]
+    &= v \cdot \sin \theta(t_1) \cdot (t_2 - t_1)
+\end{align*}
+%
+Therefore, for a car-like robot that is moving in a straight line motion, 
+%
+\begin{align*}
+    \Delta \theta &= 0 \\[1em]
+    \Delta x &= v \cdot \cos \theta(t_1) \cdot (t_2 - t_1) \\[1em]
+    \Delta y &= v \cdot \sin \theta(t_1) \cdot (t_2 - t_1)
 \end{align*}
 %
 
