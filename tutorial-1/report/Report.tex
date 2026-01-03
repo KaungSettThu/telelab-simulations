@@ -40,6 +40,7 @@ linkbordercolor={1 0 1}%
 %% Packages for Tables %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{multirow}
 \usepackage{ltablex}
+\usepackage{booktabs}
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
 
 %% Packages for Coloring %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -90,7 +91,7 @@ linkbordercolor={1 0 1}%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Task 3.1
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Task 3.1 Simplified Car-Like Robot Model}
+\chapter{Simplified Car-Like Robot Model}
 %
 Proving the relationship between the steering angle of the virtual wheel $\varphi$ and the steering angles of the two front wheels $\varphi_{l}$ and $\varphi_{r}$.
 %
@@ -172,7 +173,7 @@ Dividing numerator and denominator of right hand side by $2l$,
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Task 3.2
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Task 3.2 Pose Determination from Kinematics Model}
+\chapter{Pose Determination from Kinematics Model}
 \section{Differential Drive Robot}
 \subsection*{Case 1: Non-Straight-Line Motion}
 %
@@ -394,6 +395,34 @@ Therefore, for a car-like robot that is moving in a straight line motion,
     \Delta y &= v \cdot \sin \theta(t_1) \cdot (t_2 - t_1)
 \end{align*}
 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 3.3
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Kinematics of Bicycles and Tricycles}
+
+The kinematic differences between the Ackermann steering robot and the standard bicycle or tricycle model can be seen the in the following table.
+%
+\begin{table}[htbp]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{X X}
+    \toprule
+    \textbf{Ackermann Steering} & \textbf{Bicycles and Tricycles} \\
+    \midrule
+    two forward steering wheels & only one single steering front wheel \\
+    two independent steering angles $\varphi_{l}$ and $\varphi_{r}$ and a virtual steering angle $\varphi$ & only one steering angle $\varphi$ \\
+    the orientation of both front wheels must be perpendicular to ICC & the orientation of front wheel must be perpendicular to ICC $\varphi$ \\
+    \bottomrule
+\end{tabularx}
+\caption{Differences between Ackermann steering and standard bicycles or tricycles}
+\end{table}
+
+When the ICC falls between the rear wheels in a rear wheel driven tricycle, assuming that the steering angle is not zero ($\varphi \neq 0$) the robot will move in circles around the ICC.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 3.4
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Inverse Kinematics}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% BIBLIOGRAPHY AND OTHER LISTS
