@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.1)  2 JAN 2026 13:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.1)  3 JAN 2026 12:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1018,7 +1018,7 @@ File: t1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 
 ]
 chapter 1.
-<../diagrams/ackarmann_robot.png, id=69, 639.89063pt x 484.05844pt>
+<../diagrams/ackarmann_robot.png, id=73, 639.89063pt x 484.05844pt>
 File: ../diagrams/ackarmann_robot.png Graphic file (type png)
 <use ../diagrams/ackarmann_robot.png>
 Package pdftex.def Info: ../diagrams/ackarmann_robot.png  used on input line 100.
@@ -1037,6 +1037,10 @@ chapter 3.
 
 ]
 chapter 4.
+[14
+
+] [15]
+chapter 5.
 
 Class scrreprt Warning: You are using `\begin{appendix}...\end{appendix}'.
 (scrreprt)              You should note, that `\appendix' is a mostly globally
@@ -1049,27 +1053,27 @@ Class scrreprt Warning: You are using `\begin{appendix}...\end{appendix}'.
 (scrreprt)              inconsistent.
 (scrreprt)              Because of this, you should remove `\end{appendix}'
 (scrreprt)              and replace `\begin{appendix}' by command
-(scrreprt)              `\appendix' on input line 436.
+(scrreprt)              `\appendix' on input line 519.
 
-[14
+[16
 
 ] (./Report.aux)
 Package rerunfilecheck Info: File `Report.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 33831 strings out of 480247
- 686576 string characters out of 5896152
+ 33837 strings out of 480247
+ 686620 string characters out of 5896152
  1117822 words of memory out of 5000000
- 51124 multiletter control sequences out of 15000+600000
+ 51126 multiletter control sequences out of 15000+600000
  515927 words of font info for 59 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  108i,13n,106p,10665b,369s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on Report.pdf (14 pages, 450552 bytes).
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on Report.pdf (16 pages, 462027 bytes).
 PDF statistics:
- 224 PDF objects out of 1000 (max. 8388607)
- 155 compressed objects within 2 object streams
- 31 named destinations out of 1000 (max. 500000)
- 215 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 247 PDF objects out of 1000 (max. 8388607)
+ 174 compressed objects within 2 object streams
+ 35 named destinations out of 1000 (max. 500000)
+ 231 words of extra memory for PDF output out of 10000 (max. 10000000)
 

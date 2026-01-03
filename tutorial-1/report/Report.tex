@@ -118,7 +118,7 @@ The equation for right steering angle can be rearranged by isolating for radius 
     r &= \dfrac{l}{\tan \varphi_{r}} - \dfrac{d}{2}
 \end{align*}
 %
-Substituding the radius into equation for steering angle of the virtual wheel,
+Substituting the radius into equation for steering angle of the virtual wheel,
 %
 \begin{align*}
     \tan \varphi &= \dfrac{l}{\dfrac{l}{\tan \varphi_{r}} - \dfrac{d}{2}}
@@ -148,7 +148,7 @@ The equation for left steering angle can be rearranged by isolating for radius $
     r &= \dfrac{l}{\tan \varphi_{l}} + \dfrac{d}{2}
 \end{align*}
 %
-Substituding the radius into equation for steering angle of the virtual wheel,
+Substituting the radius into equation for steering angle of the virtual wheel,
 %
 \begin{align*}
     \tan \varphi &= \dfrac{l}{\dfrac{l}{\tan \varphi_{l}} + \dfrac{d}{2}}
@@ -423,6 +423,89 @@ When the ICC falls between the rear wheels in a rear wheel driven tricycle, assu
 %% Task 3.4
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Inverse Kinematics}
+%
+The angular velocity $\omega$ is the change in the orientation $\Delta \theta$ over the period between times $t_1$ and $t_2$. Therefore it can be described as
+\begin{align*}
+    \omega = \dfrac{\Delta \theta}{\Delta t}
+\end{align*}
+%
+The linear velocity is the distance the robot has travelled over the arc length $s$ over the period between times $t_1$ and $t_2$ and therefore can be described as
+\begin{align*}
+    v = \dfrac{s}{\Delta t}
+\end{align*}
+The arc length can be calculate by the use of the radius and the angle difference using the forumla $s = r \cdot \theta$. Therefore, the linear velocity $v$ can be rewritten as
+%
+\begin{align*}
+    v &= \dfrac{r \cdot \Delta \theta}{\Delta t} \\[1em]
+    &= r \cdot \omega
+\end{align*}
+%
+%
+%
+The angular velocity $w$ and the linear velocity $v$ of a differential drive robot can also be calculated from the linear velocity of the left and the right wheels of the robot, $v_l$ and $v_r$ using the formulas
+\begin{align*}
+    \omega &= \dfrac{1}{d} (v_r - v_l) \\[1em]
+    v &= \dfrac{1}{2} (v_r + v_l)
+\end{align*}
+where $d$ is the track width of the robot.
+
+The equation for linear velocity $v$ can be rearranged to isolate $v_l$.
+%
+\begin{align*}
+    2v &= v_r + v_l \\[1em]
+    v_l &= 2v - v_r
+\end{align*}
+%
+Substituting the equation into the equation for angular velocity $w$.
+%
+\begin{align*}
+    \omega &= \dfrac{1}{d} (v_r - (2v - v_r)) \\[1em]
+    d \cdot \omega &= v_r - (2v - v_r) \\[1em]
+    d \cdot \omega &= 2v_r - 2v \\[1em]
+    2v_r &= 2v +  d \cdot \omega \\[1em]
+    v_r &= v + \dfrac{d \cdot \omega}{2}
+\end{align*}
+%
+Substituting it back to the equation for $v_l$.
+%
+\begin{align*}
+    v_l &= 2v - \left(v + \dfrac{d \cdot \omega}{2}\right) \\[1em]
+    v_r &= v - \dfrac{d \cdot \omega}{2}
+\end{align*}
+%
+%
+\section{Car-Like Robot}
+%
+The linear velocity $v$ of the imaginary wheel of the car-like robot is the distance it travelled over the period between times $t_1$ and $t_2$ and therefore can also be described as
+\begin{align*}
+    v = r \cdot \omega
+\end{align*}
+%
+The relationship between the virtual steering angle $\varphi$, wheel base $l$ and track width $d$ can be described as
+%
+\begin{align*}
+    \tan \varphi = \dfrac{l}{r}
+\end{align*}
+%
+Therefore the value of the virtual steering angle can be calculated by simply rearranging the formula.
+%
+\begin{align*}
+    \varphi = \arctan \left(\dfrac{l}{r}\right)
+\end{align*}
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 3.5
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Simulation of Kinematics}
+Before determing a set of maneuvers for the Ackermann steered robot, the minimum radius that is physically possible from the ICC needs to be calculated to ensure that the maneuver follows the kinematic constants. Since the maximum steering angle is $25^\circ$, the minimum radius can be calculated assumed
+%
+\begin{align*}
+    r_{min} &= \dfrac{l}{\tan \varphi} \\[1em]
+    &= \dfrac{2}{\tan 25^\circ} \\[1em]
+    &= 4.29
+\end{align*}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% BIBLIOGRAPHY AND OTHER LISTS
