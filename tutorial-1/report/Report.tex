@@ -99,7 +99,7 @@ Proving the relationship between the steering angle of the virtual wheel $\varph
     \centering
     \includegraphics[width=0.6\textwidth]{../diagrams/ackarmann_robot.png}
     \caption{Simplified Car-Like Robot Model.}
-    \label{fig:sample}
+    \label{fig}
 \end{figure}
 %
 Since the track width $d$, the wheel base $l$ and the radius $r$ from the Instaneous Ceter of Curvature $ICC$ forms a right angle triangle, the steering angles can be written as:
@@ -505,7 +505,201 @@ Before determing a set of maneuvers for the Ackermann steered robot, the minimum
     &= \dfrac{2}{\tan 25^\circ} \\[1em]
     &= 4.29
 \end{align*}
+%
+\section{Ackermann steering robot}
+\subsection{Scence 1}
+%
+Initial pose: $p_i = \begin{bmatrix} 5 & 5 & \dfrac{\pi}{2} \end{bmatrix}^{\mathsf T}$ 
 
+Final pose: $p_g = \begin{bmatrix} 17 & 5 & -\dfrac{\pi}{2} \end{bmatrix}^{\mathsf T}$
+%
+\subsubsection{Set of maneuvers}
+\begin{enumerate}
+    \item Turn right along a circular arc of radius 6 sq through $\pi$ rad for 2 s.
+\end{enumerate}
+%
+\subsubsection{Commands}
+\emph{For maneuver 1,}
+\begin{align*}
+    \omega &= \dfrac{\Delta \theta}{\Delta t} = \dfrac{\pi}{2} \\[1em]
+    v &= r \cdot \omega = 6 \cdot \dfrac{\pi}{2} = 9.4248\, sq/s \\[1em]
+    \varphi &= \arctan \left(\dfrac{l}{r}\right) = \arctan \left(\dfrac{2}{6}\right) = 18.43^\circ
+\end{align*}
+%
+Since the robot is turning right, the steering angle $\varphi$ is $-18.43^\circ$.
+%
+\subsubsection{Simulation}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/ackerman-scene1.png}
+\end{figure}
+%
+%
+\subsection{Scence 2}
+%
+Initial pose: $p_i = \begin{bmatrix} 5 & 5 & \dfrac{\pi}{2} \end{bmatrix}^{\mathsf T}$ 
+
+Final pose: $p_g = \begin{bmatrix} 17 & 3 & \dfrac{\pi}{2} \end{bmatrix}^{\mathsf T}$
+%
+\subsubsection{Set of maneuvers}
+\begin{enumerate}
+    \item Turn right along a circular arc of radius 5 sq through $\dfrac{\pi}{2}$ rad for 1 s.
+    \item Travel in a straight line of 10 sq for 2 s.
+    \item Turn right along a circular arc of radius 7 sq through $\dfrac{\pi}{2}$ rad for 2 s.
+    \item Turn left backwards along a circular arc of radius 5 sq through $\pi$ rad for 2 s.
+\end{enumerate}
+%
+\subsubsection{Commands}
+\emph{For maneuver 1,}
+\begin{align*}
+    \omega &= \dfrac{\Delta \theta}{\Delta t} = \dfrac{\pi / 2}{1}  = \dfrac{\pi}{2}\, rad/s\\[1em]
+    v &= r \cdot \omega = 5 \cdot \dfrac{\pi}{2} = 7.854\, sq/s \\[1em]
+    \varphi &= \arctan \left(\dfrac{l}{r}\right) = \arctan \left(\dfrac{2}{5}\right) = 21.8^\circ
+\end{align*}
+%
+Since the robot is turning right, the steering angle $\varphi$ is $-21.8^\circ$.
+
+\emph{For maneuver 2,}
+\begin{align*}
+    v &= \dfrac{s}{\Delta t} = \dfrac{10}{2} = 5\, sq/s \\[1em]
+    \varphi &= 0^\circ
+\end{align*}
+
+\emph{For maneuver 3,}
+\begin{align*}
+    \omega &= \dfrac{\Delta \theta}{\Delta t} = \dfrac{\pi / 2}{2}  = \dfrac{\pi}{4}\, rad/s\\[1em]
+    v &= r \cdot \omega = 7 \cdot \dfrac{\pi}{4} = 5.4978\, sq/s \\[1em]
+    \varphi &= \arctan \left(\dfrac{l}{r}\right) = \arctan \left(\dfrac{2}{5}\right) = 15.95^\circ
+\end{align*}
+%
+Since the robot is turning right, the steering angle $\varphi$ is $-15.95^\circ$.
+
+\emph{For maneuver 4,}
+\begin{align*}
+    \omega &= \dfrac{\Delta \theta}{\Delta t} = \dfrac{\pi}{2}\, rad/s\\[1em]
+    v &= r \cdot \omega = 5 \cdot \dfrac{\pi}{2} = 7.854\, sq/s \\[1em]
+    \varphi &= \arctan \left(\dfrac{l}{r}\right) = \arctan \left(\dfrac{2}{5}\right) = 21.8^\circ
+\end{align*}
+%
+Since the robot is turning left backwards, the linear velocity $v$ is -7.854 sq/s and the steering angle $\varphi$ is $-21.8^\circ$.
+
+\subsubsection{Simulation}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/ackerman-scene2.png}
+\end{figure}
+%
+%
+\subsection{Scence 3}
+%
+Initial pose: $p_i = \begin{bmatrix} 5 & 5 & \dfrac{\pi}{2} \end{bmatrix}^{\mathsf T}$ 
+
+Final pose: $p_g = \begin{bmatrix} 17 & 3 & \dfrac{\pi}{2} \end{bmatrix}^{\mathsf T}$
+%
+\subsubsection{Set of maneuvers}
+\begin{enumerate}
+    \item Turn right along a circular arc of radius 5 sq through $\dfrac{\pi}{4}$ rad for 1 s.
+    \item Travel in a straight line of 5.5 sq for 1 s.
+    \item Turn right along a circular arc of radius 5 sq through $\dfrac{\pi}{2}$ rad for 1 s.
+    \item Travel in a straight line of 4.5 sq for 1 s.
+\end{enumerate}
+%
+\subsubsection{Commands}
+\emph{For maneuver 1,}
+\begin{align*}
+    \omega &= \dfrac{\Delta \theta}{\Delta t} = \dfrac{\pi / 4}{1}  = \dfrac{\pi}{4}\, rad/s\\[1em]
+    v &= r \cdot \omega = 5 \cdot \dfrac{\pi}{4} = 3.927\, sq/s \\[1em]
+    \varphi &= \arctan \left(\dfrac{l}{r}\right) = \arctan \left(\dfrac{2}{5}\right) = 21.8^\circ
+\end{align*}
+%
+Since the robot is turning right, the steering angle $\varphi$ is $-21.8^\circ$.
+
+\emph{For maneuver 2,}
+\begin{align*}
+    v &= \dfrac{s}{\Delta t} = \dfrac{5.5}{1} = 5.5\, sq/s \\[1em]
+    \varphi &= 0^\circ
+\end{align*}
+
+\emph{For maneuver 3,}
+\begin{align*}
+    \omega &= \dfrac{\Delta \theta}{\Delta t} = \dfrac{\pi/2}{1} = \dfrac{\pi}{2}\, rad/s\\[1em]
+    v &= r \cdot \omega = 5 \cdot \dfrac{\pi}{2} = 7.854\, sq/s \\[1em]
+    \varphi &= \arctan \left(\dfrac{l}{r}\right) = \arctan \left(\dfrac{2}{5}\right) = 21.8^\circ
+\end{align*}
+
+\emph{For maneuver 4,}
+\begin{align*}
+    v &= \dfrac{s}{\Delta t} = \dfrac{5.5}{1} = 4.5\, sq/s \\[1em]
+    \varphi &= 0^\circ
+\end{align*}
+
+\subsubsection{Simulation}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/ackerman-scene3.png}
+\end{figure}
+%
+%
+\subsection{Scence 4}
+%
+Initial pose: $p_i = \begin{bmatrix} 7 & 14 & \dfrac{\pi}{2} \end{bmatrix}^{\mathsf T}$ 
+
+Final pose: $p_g = \begin{bmatrix} 11 & 8 & \dfrac{\pi}{2} \end{bmatrix}^{\mathsf T}$
+%
+\subsubsection{Set of maneuvers}
+\begin{enumerate}
+    \item Travel backwards in a straight line of 7.5 sq for 1 s.
+    \item Turn left along a circular arc of radius 4.5 sq through $\dfrac{\pi}{2}$ rad for 1 s.
+    \item Travel backwards in a straight line of 4 sq for 0.5 s.
+    \item Turn right backwards along a circular arc of radius 4.5 sq through $\dfrac{\pi}{2}$ rad for 1 s.
+    \item Travel in a straight line of 1.5 sq for 0.5 s.
+\end{enumerate}
+%
+\subsubsection{Commands}
+
+\emph{For maneuver 1,}
+\begin{align*}
+    v &= \dfrac{s}{\Delta t} = \dfrac{7.5}{1} = 7.5\, sq/s \\[1em]
+    \varphi &= 0^\circ
+\end{align*}
+%
+Since the robot is moving backwards, the linear velocity $v$ is -7.5 sq/s.
+
+\emph{For maneuver 2,}
+\begin{align*}
+    \omega &= \dfrac{\Delta \theta}{\Delta t} = \dfrac{\pi / 2}{1}  = \dfrac{\pi}{2}\, rad/s\\[1em]
+    v &= r \cdot \omega = 4.5 \cdot \dfrac{\pi}{4} = 7.0686\, sq/s \\[1em]
+    \varphi &= \arctan \left(\dfrac{l}{r}\right) = \arctan \left(\dfrac{2}{4.5}\right) = 23.96^\circ
+\end{align*}
+
+\emph{For maneuver 3,}
+\begin{align*}
+    v &= \dfrac{s}{\Delta t} = \dfrac{4}{0.5} = 8.0\, sq/s \\[1em]
+    \varphi &= 0^\circ
+\end{align*}
+%
+Since the robot is moving backwards, the linear velocity $v$ is -8.0 sq/s.
+
+\emph{For maneuver 4,}
+\begin{align*}
+    \omega &= \dfrac{\Delta \theta}{\Delta t} = \dfrac{\pi / 2}{1}  = \dfrac{\pi}{2}\, rad/s\\[1em]
+    v &= r \cdot \omega = 4.5 \cdot \dfrac{\pi}{4} = 7.0686\, sq/s \\[1em]
+    \varphi &= \arctan \left(\dfrac{l}{r}\right) = \arctan \left(\dfrac{2}{4.5}\right) = 23.96^\circ
+\end{align*}
+Since the robot is moving backwards, the linear velocity $v$ is -7.0686 sq/s.
+
+\emph{For maneuver 5,}
+\begin{align*}
+    v &= \dfrac{s}{\Delta t} = \dfrac{1.5}{0.5} = 3.0\, sq/s \\[1em]
+    \varphi &= 0^\circ
+\end{align*}
+%
+\subsubsection{Simulation}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/ackerman-scene4.png}
+\end{figure}
+%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% BIBLIOGRAPHY AND OTHER LISTS
