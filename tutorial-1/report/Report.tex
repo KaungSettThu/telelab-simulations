@@ -470,7 +470,7 @@ Substituting it back to the equation for $v_l$.
 %
 \begin{align*}
     v_l &= 2v - \left(v + \dfrac{d \cdot \omega}{2}\right) \\[1em]
-    v_r &= v - \dfrac{d \cdot \omega}{2}
+    v_l &= v - \dfrac{d \cdot \omega}{2}
 \end{align*}
 %
 %
@@ -498,6 +498,8 @@ Therefore the value of the virtual steering angle can be calculated by simply re
 %% Task 3.5
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Simulation of Kinematics}
+%
+\section{Ackermann steering robot}
 Before determing a set of maneuvers for the Ackermann steered robot, the minimum radius that is physically possible from the ICC needs to be calculated to ensure that the maneuver follows the kinematic constants. Since the maximum steering angle is $25^\circ$, the minimum radius can be calculated assumed
 %
 \begin{align*}
@@ -505,8 +507,7 @@ Before determing a set of maneuvers for the Ackermann steered robot, the minimum
     &= \dfrac{2}{\tan 25^\circ} \\[1em]
     &= 4.29
 \end{align*}
-%
-\section{Ackermann steering robot}
+
 \subsection{Scence 1}
 %
 Initial pose: $p_i = \begin{bmatrix} 5 & 5 & \dfrac{\pi}{2} \end{bmatrix}^{\mathsf T}$ 
@@ -569,7 +570,7 @@ Since the robot is turning right, the steering angle $\varphi$ is $-21.8^\circ$.
 \begin{align*}
     \omega &= \dfrac{\Delta \theta}{\Delta t} = \dfrac{\pi / 2}{2}  = \dfrac{\pi}{4}\, rad/s\\[1em]
     v &= r \cdot \omega = 7 \cdot \dfrac{\pi}{4} = 5.4978\, sq/s \\[1em]
-    \varphi &= \arctan \left(\dfrac{l}{r}\right) = \arctan \left(\dfrac{2}{5}\right) = 15.95^\circ
+    \varphi &= \arctan \left(\dfrac{l}{r}\right) = \arctan \left(\dfrac{2}{7}\right) = 15.95^\circ
 \end{align*}
 %
 Since the robot is turning right, the steering angle $\varphi$ is $-15.95^\circ$.
@@ -592,7 +593,7 @@ Since the robot is turning left backwards, the linear velocity $v$ is -7.854 sq/
 %
 \subsection{Scence 3}
 %
-Initial pose: $p_i = \begin{bmatrix} 5 & 5 & \dfrac{\pi}{2} \end{bmatrix}^{\mathsf T}$ 
+Initial pose: $p_i = \begin{bmatrix} 5 & 5 & \dfrac{\pi}{4} \end{bmatrix}^{\mathsf T}$ 
 
 Final pose: $p_g = \begin{bmatrix} 17 & 3 & \dfrac{\pi}{2} \end{bmatrix}^{\mathsf T}$
 %
@@ -600,7 +601,7 @@ Final pose: $p_g = \begin{bmatrix} 17 & 3 & \dfrac{\pi}{2} \end{bmatrix}^{\maths
 \begin{enumerate}
     \item Turn right along a circular arc of radius 5 sq through $\dfrac{\pi}{4}$ rad for 1 s.
     \item Travel in a straight line of 5.5 sq for 1 s.
-    \item Turn right along a circular arc of radius 5 sq through $\dfrac{\pi}{2}$ rad for 1 s.
+    \item Turn left along a circular arc of radius 5 sq through $\dfrac{\pi}{2}$ rad for 1 s.
     \item Travel in a straight line of 4.5 sq for 1 s.
 \end{enumerate}
 %
@@ -700,6 +701,126 @@ Since the robot is moving backwards, the linear velocity $v$ is -7.0686 sq/s.
     \includegraphics[width=1.0\textwidth]{../screenshots/ackerman-scene4.png}
 \end{figure}
 %
+
+\section{Differential-drive robot}
+\subsection{Scence 3}
+%
+Initial pose: $p_i = \begin{bmatrix} 5 & 5 & \dfrac{\pi}{4} \end{bmatrix}^{\mathsf T}$ 
+
+Final pose: $p_g = \begin{bmatrix} 17 & 3 & \dfrac{\pi}{2} \end{bmatrix}^{\mathsf T}$
+%
+\subsubsection{Set of maneuvers}
+\begin{enumerate}
+    \item Rotate right through $\dfrac{\pi}{4}$ rad for 0.5 s.
+    \item Travel in a straight line of 14 sq for 2 s.
+    \item Rotate left through $\dfrac{\pi}{2}$ rad for 1 s.
+    \item Travel in a straight line of 11 sq for 2 s.
+\end{enumerate}
+%
+\subsubsection{Commands}
+
+\emph{For maneuver 1,}
+\begin{align*}
+    \omega &= \dfrac{\Delta \theta}{\Delta t} = \dfrac{- \pi / 4}{0.5}  = - \dfrac{\pi}{2}\, rad/s \\[1em]
+    v &= 0\, sq/s\\[1em]
+    v_r &= v + \dfrac{d \cdot \omega}{2} = 0 + \dfrac{1 \cdot ( - \pi / 2)}{2} = - 1.5708\, sq/s \\[1em]
+    v_l &= v - \dfrac{d \cdot \omega}{2} = 0 - \dfrac{1 \cdot ( - \pi / 2)}{2} = 1.5708\, sq/s
+\end{align*}
+
+\emph{For maneuver 2,}
+\begin{align*}
+    \omega &= 0\, rad/s \\[1em]
+    v &= \dfrac{s}{\Delta t} = \dfrac{14}{2} = 7\, sq/s \\[1em]
+    v_r &= v + \dfrac{d \cdot \omega}{2} = 7 + \dfrac{1 \cdot 0}{2} = 7\, sq/s \\[1em]
+    v_l &= v - \dfrac{d \cdot \omega}{2} = 7 - \dfrac{1 \cdot 0}{2} = 7\, sq/s
+\end{align*}
+
+\emph{For maneuver 3,}
+\begin{align*}
+    \omega &= \dfrac{\Delta \theta}{\Delta t} = \dfrac{\pi / 2}{1}  = \dfrac{\pi}{2}\, rad/s \\[1em]
+    v &= 0\, sq/s\\[1em]
+    v_r &= v + \dfrac{d \cdot \omega}{2} = 0 + \dfrac{1 \cdot \pi / 2}{2} = 1.5708\, sq/s \\[1em]
+    v_l &= v - \dfrac{d \cdot \omega}{2} = 0 - \dfrac{1 \cdot \pi / 2}{2} = -1.5708\, sq/s
+\end{align*}
+
+\emph{For maneuver 4,}
+\begin{align*}
+    \omega &= 0\, rad/s \\[1em]
+    v &= \dfrac{s}{\Delta t} = \dfrac{11}{2} = 5.5\, sq/s \\[1em]
+    v_r &= v + \dfrac{d \cdot \omega}{2} = 5.5 + \dfrac{1 \cdot 0}{2} = 5.5\, sq/s \\[1em]
+    v_l &= v - \dfrac{d \cdot \omega}{2} = 5.5 - \dfrac{1 \cdot 0}{2} = 5.5\, sq/s
+\end{align*}
+%
+\subsubsection{Simulation}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/differential-scene3.png}
+\end{figure}
+%
+%
+\subsection{Scence 4}
+%
+Initial pose: $p_i = \begin{bmatrix} 7 & 14 & \dfrac{\pi}{2} \end{bmatrix}^{\mathsf T}$ 
+
+Final pose: $p_g = \begin{bmatrix} 11 & 8 & \dfrac{\pi}{2} \end{bmatrix}^{\mathsf T}$
+%
+\subsubsection{Set of maneuvers}
+\begin{enumerate}
+    \item Travel backwards in a straight line of 2 sq for 0.5 s.
+    \item Rotate left through $\dfrac{\pi}{4}$ rad for 0.5 s.
+    \item Travel backwards in a straight line of $\left(\sqrt{{\Delta x}^2 + {\Delta y}^2} = \sqrt{{4}^2 + {4}^2}\right)$ 5.66 sq for 1 s.
+    \item Rotate left through $\dfrac{\pi}{2}$ rad for 1 s.
+\end{enumerate}
+%
+\subsubsection{Commands}
+
+\emph{For maneuver 1,}
+\begin{align*}
+    \omega &= 0\, rad/s \\[1em]
+    v &= \dfrac{s}{\Delta t} = \dfrac{-2}{0.5} = -4\, sq/s \\[1em]
+    v_r &= v + \dfrac{d \cdot \omega}{2} = -4 + \dfrac{1 \cdot 0}{2} = -4\, sq/s \\[1em]
+    v_l &= v - \dfrac{d \cdot \omega}{2} = -4 - \dfrac{1 \cdot 0}{2} = -4\, sq/s
+\end{align*}
+
+\emph{For maneuver 2,}
+\begin{align*}
+    \omega &= \dfrac{\Delta \theta}{\Delta t} = \dfrac{\pi / 4}{0.5}  = \dfrac{\pi}{2}\, rad/s \\[1em]
+    v &= 0\, sq/s\\[1em]
+    v_r &= v + \dfrac{d \cdot \omega}{2} = 0 + \dfrac{1 \cdot \pi / 2}{2} = 1.5708\, sq/s \\[1em]
+    v_l &= v - \dfrac{d \cdot \omega}{2} = 0 - \dfrac{1 \cdot \pi / 2}{2} = -1.5708\, sq/s
+\end{align*}
+
+\emph{For maneuver 3,}
+\begin{align*}
+    \omega &= 0\, rad/s \\[1em]
+    v &= \dfrac{s}{\Delta t} = \dfrac{-6.4}{1} = -6.4\, sq/s \\[1em]
+    v_r &= v + \dfrac{d \cdot \omega}{2} = 8 + \dfrac{1 \cdot 0}{2} = 8\, sq/s \\[1em]
+    v_l &= v - \dfrac{d \cdot \omega}{2} = 8 - \dfrac{1 \cdot 0}{2} = 8\, sq/s
+\end{align*}
+
+\emph{For maneuver 4,}
+\begin{align*}
+    \omega &= \dfrac{\Delta \theta}{\Delta t} = \dfrac{\pi / 2}{1}  = \dfrac{\pi}{2}\, rad/s \\[1em]
+    v &= 0\, sq/s\\[1em]
+    v_r &= v + \dfrac{d \cdot \omega}{2} = 0 + \dfrac{1 \cdot \pi / 2}{2} = 1.5708\, sq/s \\[1em]
+    v_l &= v - \dfrac{d \cdot \omega}{2} = 0 - \dfrac{1 \cdot \pi / 2}{2} = -1.5708\, sq/s
+\end{align*}
+
+\emph{For maneuver 4,}
+\begin{align*}
+    \omega &= \dfrac{\Delta \theta}{\Delta t} = \dfrac{- \pi / 4}{0.5}  = -\dfrac{\pi}{2}\, rad/s \\[1em]
+    v &= 0\, sq/s\\[1em]
+    v_r &= v + \dfrac{d \cdot \omega}{2} = 0 + \dfrac{1 \cdot (- \pi / 2)}{2} = -1.5708\, sq/s \\[1em]
+    v_l &= v - \dfrac{d \cdot \omega}{2} = 0 - \dfrac{1 \cdot (- \pi / 2)}{2} = 1.5708\, sq/s
+\end{align*}
+
+%
+\subsubsection{Simulation}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/differential-scene4.png}
+\end{figure}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% BIBLIOGRAPHY AND OTHER LISTS
