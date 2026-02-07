@@ -1,0 +1,63 @@
+%%
+%% LS Info XVII report style.
+%%
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{i17report}[2023/07/02 UniWue Info XVII report style]
+\typeout{Package: i17report, 2023/07/02 UniWue Info XVII report style}
+
+\RequirePackage{ifthen}
+\RequirePackage{graphicx}
+
+\ProcessOptions
+
+%% title & subject
+\renewcommand{\@title}{Report}
+\renewcommand{\@subject}{Experiment Title}
+
+%% author
+\renewcommand{\@author}{Kaung Sett Thu}
+\newcommand{\@matrnr}{12345}
+\newcommand{\@institute}{Technische Hochschule Deggendorf}
+
+\newcommand{\institute}[1]{\renewcommand\@institute{#1}}
+\newcommand{\matrnr}[1]{\renewcommand\@matrnr{#1}}
+
+%% submission
+\newcommand{\@submission}{\@date}
+
+\newcommand{\submission}[1]{\renewcommand\@submission{#1}}
+
+%% header / banner
+\newcommand{\uwlogo}{\includegraphics[width=\textwidth]{banner}}
+
+%% title page
+\renewcommand\maketitle{%
+  \thispagestyle{empty}
+  \begin{center}
+    \parbox{\textwidth}{\uwlogo} 
+    \vfill\vfill
+    \parbox{\textwidth}{\begin{center}\LARGE\textbf{\textsf{\@title}}\end{center}}
+    
+    \hfill
+    
+    \parbox{\textwidth}{\begin{center}\LARGE\textbf{\textsf{\@subject}}\end{center}}
+    \vfill\vfill
+    \parbox{\textwidth}{
+        \makebox[4.5cm]{\textsf{Name:}\hfill} \textsf{\@author} \\
+        \makebox[4.5cm]{\textsf{Matriculation Number:}\hfill} \textsf{\@matrnr} \\
+        \makebox[4.5cm]{\textsf{Insitute:}\hfill} \textsf{\@institute} \\
+        \makebox[4.5cm]{\textsf{Submission Date:}\hfill} \textsf{\@submission}
+    }
+  \end{center}  
+  \newpage
+  }
+
+\AtBeginDocument{%
+  \InputIfFileExists{macros.tex}{\typeout{Lade eigene Makros.}}
+  {\typeout{Keine eigenen Makros gefunden.}}
+  }
+
+\AtEndDocument{%
+  }
+
+\endinput

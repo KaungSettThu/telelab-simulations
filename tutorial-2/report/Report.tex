@@ -1,0 +1,278 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% HEADER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pdfminorversion=7
+\pdfcompresslevel=1 % schnellste Kompression
+%\pdfcompresslevel=9 % beste Kompression
+\pdfimageresolution=600
+
+\documentclass[12pt,bibliography=totoc]{scrreprt}
+
+\usepackage{i17report}
+
+\usepackage{scrhack} % used since scrreprt produces a warning when using totoc
+
+%% Language %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[USenglish]{babel}     %%%% english
+%\usepackage[ngerman]{babel}      %%%% german
+\usepackage[T1]{fontenc}
+\usepackage[ansinew]{inputenc}
+
+\usepackage{lmodern} %Type1-font for non-english texts and characters
+
+%% Hyperrefs and URLs %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[pdftex,                %%% hyper-references for pdftex
+bookmarks=true,%                   %%% generate bookmarks \ldots
+bookmarksnumbered=true,%           %%% \ldots with numbers
+hypertexnames=false,%              %%% needed for correct links to figures !!!
+hyperfootnotes=false,
+breaklinks=true,%                  %%% breaks lines, but links are very small
+linkcolor=red,%
+linkbordercolor={1 0 1}%
+]{hyperref}  %%% blue frames around links
+
+%% Packages for Graphics & Figures %%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+\usepackage[most]{tcolorbox}
+\usepackage{float}  % for [H]
+
+%% Packages for Tables %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{multirow}
+\usepackage{ltablex}
+\usepackage{booktabs}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\usepackage{tabularx}
+
+%% Packages for Coloring %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{color, xcolor}
+\definecolor{material_blue}{HTML}{027BE3}
+\definecolor{material_red}{HTML}{F44336}
+\definecolor{material_green}{HTML}{4CAF50}
+\definecolor{material_orange}{HTML}{FF9800}
+
+%% Packages for Math %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{units}
+\usepackage{relsize,exscale}
+\usepackage{parskip}
+
+%% Defined commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\bigint} [3] {\mathop{\mathlarger{\int\limits_{#1}^{#2}}} {#3}}  % a big integral
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% DOCUMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\pagestyle{empty} %No headings for the first pages.
+
+%% Title Page %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Tele-Experiment}
+\subject{Path Planning Algorithms for Mobile Robots}
+
+\author{Kaung Sett Thu}
+\matrnr{}
+\submission{\today}
+
+\maketitle
+
+%% Inhaltsverzeichnis %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tableofcontents
+\cleardoublepage %The first chapter should start on an odd page.
+
+\pagestyle{plain}
+
+%% Chapters %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Investigation of the Roadmap Method}
+
+\section{Simulations}
+
+Evidence screenshots will be provided in Appendix A.
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.6}
+
+\begin{tabularx}{\textwidth}{|X|X|X|X|X|}
+\hline
+ & \textbf{Start} & \textbf{Goal} & \textbf{Path found?} & \textbf{Path optimal?} \\
+\hline
+
+\multirow{3}{*}{Map 1}
+ & 5, 5 & 495, 495 & Yes & Yes \\ \cline{2-5}
+ & 252, 127 & 275, 267 & Yes & Yes \\ \cline{2-5}
+ & 90, 458 & 275, 113 & Yes & Yes \\ \hline
+
+\multirow{3}{*}{Map 2}
+ & 5, 5 & 495, 495 & Yes & Yes \\ \cline{2-5}
+ & 84, 310 & 201, 294 & Yes & Yes \\ \cline{2-5}
+ & 70, 110 & 437, 31 & Yes & Yes \\ \hline
+
+\multirow{3}{*}{Map 3}
+ & 5, 5 & 495, 495 & Yes & Yes \\ \cline{2-5}
+ & 311, 388 & 366, 346 & Yes & Yes \\ \cline{2-5}
+ & 106, 399 & 298, 59 & Yes & Yes \\ \hline
+
+\multirow{3}{*}{Map 4}
+ & 5, 5 & 495, 495 & Yes & Yes \\ \cline{2-5}
+ & 369, 109 & 49, 321 & Yes & Yes \\ \cline{2-5}
+ & 441, 22 & 142, 462 & Yes & Yes \\ \hline
+
+\multirow{3}{*}{Map 5}
+ & 5, 5 & 495, 495 & Yes & Yes \\ \cline{2-5}
+ & 135, 256 & 206, 173 & Yes & Yes \\ \cline{2-5}
+ & 94, 481 & 233, 68 & Yes & Yes \\ \hline
+
+\end{tabularx}
+
+\caption{Roadmap Method Simulations}
+\end{table}
+
+\section{Discussion of Observations}
+
+\begin{enumerate}
+    \item The algorithm always finds a path.
+    \item The algotithm always finds the shortest path.
+    \item The alogirthm is suitable for all types of maps, provided the fact that the map is known and static.
+    \item Since the algorithm finds semi-free paths connecting the vertices of the obstacles, the algorithm risks colliding to the obstacles if there are control noise and minor inaccuracies in the robot's movement. To avoid this the obstacles should be grown to give some distace between the robot and the obstacles on the planned path. 
+\end{enumerate}
+
+\chapter{Investigation of the Potential Field Method}
+
+\section{Effects of Parameters}
+\begin{enumerate}
+    \item When the attractig potential gain is increased, the robot is attracted stronger to the goal position, sometimes even on the risk of colliding into the obstacles. When the attracting potential is reduced, the risk of robot getting trapped in local minima is increased and the robot may risk not reaching the goal.
+    \item When the repulsing potential gain is increased the robot will try harder to avoid the obstacles; there are observed to be sharper and stronger turns around the obstacles. When the repulsing potential is reduced, the robot tend to move closer to the obstacles.
+    \item When the minimal distance value is increased, the robot will move away from the obstacles from a further distace. However, when the available path between the obstacles is too narrow, the robot may consider the path as blocked and will not consider the path. When the minimal distance value is decreased, the robot will move too close to the obstacles before being effected by the repulsing potential.
+    \item The parameters need to be adjusted for different maps. Each of the map have different arrangement of obstacles and the robot requie different parameters to navigate them.
+\end{enumerate}
+
+\section{Simulations}
+
+Evidence screenshots will be provided in Appendix B.
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.6}
+
+\begin{tabularx}{\textwidth}{|X|X|X|X|X|}
+\hline
+ & \textbf{Start} & \textbf{Goal} & \textbf{Path found?} & \textbf{Path optimal?} \\
+\hline
+
+\multirow{3}{*}{Map 1}
+ & 5, 5 & 495, 495 & Yes & No \\ \cline{2-5}
+ & 252, 127 & 275, 267 & Yes & No \\ \cline{2-5}
+ & 90, 458 & 275, 113 & Yes & No \\ \hline
+
+\multirow{3}{*}{Map 2}
+ & 5, 5 & 495, 495 & Yes & No \\ \cline{2-5}
+ & 84, 310 & 201, 294 & No & No \\ \cline{2-5}
+ & 70, 110 & 437, 31 & No & No \\ \hline
+
+\multirow{3}{*}{Map 3}
+ & 5, 5 & 495, 495 & No & No \\ \cline{2-5}
+ & 311, 388 & 366, 346 & No & No \\ \cline{2-5}
+ & 106, 399 & 298, 59 & No & No \\ \hline
+
+\multirow{3}{*}{Map 4}
+ & 5, 5 & 495, 495 & Yes & No \\ \cline{2-5}
+ & 369, 109 & 49, 321 & Yes & No \\ \cline{2-5}
+ & 441, 22 & 142, 462 & No & No \\ \hline
+
+\multirow{3}{*}{Map 5}
+ & 5, 5 & 495, 495 & No & No \\ \cline{2-5}
+ & 135, 256 & 206, 173 & No & No \\ \cline{2-5}
+ & 94, 481 & 233, 68 & No & No \\ \hline
+\end{tabularx}
+
+\caption{Potential Field Method Simulations}
+\end{table}
+
+\section{Discussion of Observations}
+
+\begin{enumerate}
+    \setcounter{enumi}{4}
+    \item The algorithm does not always find a path. The algorithm does not find the path in 
+        \begin{itemize}
+            \item Map 2 from (84, 310) to (201, 294), and from (70, 100) to (437, 31)
+            \item Map 3 from (5, 5) to (495, 495), from (311, 388) to (366, 346), and from (106, 399) to (298, 59)
+            \item Map 4 from (441, 22) to (142, 462)
+            \item Map 5 ffrom (5, 5) to (495, 495), from (135, 256) to (206, 173), and from (94, 481) to (233, 68)
+        \end{itemize}
+        The problem that the Potential Field method suffer from is the local minima. Since the Potential Field method method relies on the attracting potential and repulsing potential, the robot can get trapped in positions where the potentials cancel each other out and the robot does not know where to move anymore.
+    \item Compared to the Roadmap Method, the algorithm does not find the shortest path in any of the simulations. This is due to the fact that the Potential Field method is a local planner and is prioritized on avoiding the obstacles and not in finding the optimal path.
+    \item The algorithm is not suitable for all types of maps. The alogirthm does not work well in maps where \begin{itemize}
+        \item there are concave obstacles with pocket in which the robots can get trapped inaccuracies
+        \item there are very long obstacles where the robot cannot find a path around if the goal is behind the obstacle
+        \item there are a lot of obstacles with their overlapping repulsive potentials preventing the robot from finding the path
+    \end{itemize}
+    \item The Potential Field Method is a local planner and will face problems with reliability when used as a global planner. It cannot realiably find the path to the goal everytime. The solution to it would be to use it in combination with a global planner, to avoid dynamic obstacles on the path. The planner is also prone to getting trapped in  the local minima which can be avoided by employing the random walk method.
+\end{enumerate}
+
+\chapter{Investigation of Distance Transform Method}
+\section{Simulations}
+
+Evidence screenshots will be provided in Appendix C.
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.6}
+
+\begin{tabularx}{\textwidth}{|X|X|X|X|X|}
+\hline
+ & \textbf{Start} & \textbf{Goal} & \textbf{Path found?} & \textbf{Path optimal?} \\
+\hline
+
+\multirow{3}{*}{Map 1}
+ & 5, 5 & 495, 495 & Yes & No \\ \cline{2-5}
+ & 252, 127 & 275, 267 & Yes & No \\ \cline{2-5}
+ & 90, 458 & 275, 113 & Yes & No \\ \hline
+
+\multirow{3}{*}{Map 2}
+ & 5, 5 & 495, 495 & Yes & No \\ \cline{2-5}
+ & 84, 310 & 201, 294 & Yes & No \\ \cline{2-5}
+ & 70, 110 & 437, 31 & Yes & No \\ \hline
+
+\multirow{3}{*}{Map 3}
+ & 5, 5 & 495, 495 & Yes & No \\ \cline{2-5}
+ & 311, 388 & 366, 346 & Yes & No \\ \cline{2-5}
+ & 106, 399 & 298, 59 & Yes & No \\ \hline
+
+\multirow{3}{*}{Map 4}
+ & 5, 5 & 495, 495 & Yes & No \\ \cline{2-5}
+ & 369, 109 & 49, 321 & Yes & No \\ \cline{2-5}
+ & 441, 22 & 142, 462 & Yes & Yes \\ \hline
+
+\multirow{3}{*}{Map 5}
+ & 5, 5 & 495, 495 & Yes & No \\ \cline{2-5}
+ & 135, 256 & 206, 173 & Yes & No \\ \cline{2-5}
+ & 94, 481 & 233, 68 & Yes & No \\ \hline
+\end{tabularx}
+
+\caption{Distance Transform Method Simulations}
+\end{table}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% BIBLIOGRAPHY AND OTHER LISTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{plain}
+%\bibliography{Literature}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Appendix
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{appendix}
+
+%\input{Appendix}
+
+\end{appendix}
+
+\end{document}
+
