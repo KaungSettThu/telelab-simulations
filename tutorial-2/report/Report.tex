@@ -76,7 +76,7 @@ linkbordercolor={1 0 1}%
 \subject{Path Planning Algorithms for Mobile Robots}
 
 \author{Kaung Sett Thu}
-\matrnr{}
+\matrnr{12503548}
 \submission{\today}
 
 \maketitle
@@ -149,7 +149,7 @@ Evidence screenshots will be provided in Appendix A.
     \item When the attractig potential gain is increased, the robot is attracted stronger to the goal position, sometimes even on the risk of colliding into the obstacles. When the attracting potential is reduced, the risk of robot getting trapped in local minima is increased and the robot may risk not reaching the goal.
     \item When the repulsing potential gain is increased the robot will try harder to avoid the obstacles; there are observed to be sharper and stronger turns around the obstacles. When the repulsing potential is reduced, the robot tend to move closer to the obstacles.
     \item When the minimal distance value is increased, the robot will move away from the obstacles from a further distace. However, when the available path between the obstacles is too narrow, the robot may consider the path as blocked and will not consider the path. When the minimal distance value is decreased, the robot will move too close to the obstacles before being effected by the repulsing potential.
-    \item The parameters need to be adjusted for different maps. Each of the map have different arrangement of obstacles and the robot requie different parameters to navigate them.
+    \item The parameters need to be adjusted for different maps. Each of the map have different arrangement of obstacles and the robot require different parameters to navigate them.
 \end{enumerate}
 
 \section{Simulations}
@@ -258,6 +258,134 @@ Evidence screenshots will be provided in Appendix C.
 \caption{Distance Transform Method Simulations}
 \end{table}
 
+\section{Discussion of Observations}
+\begin{enumerate}
+    \item The algorithm always finds a path.
+    \item Even tough the algorithm always find the shortest path in term of the grid, relative to Roadmap Method, the Distance Transform method is observed to find a slightly longer path in all of the maps. Due to that it can be concluded that the algorithm does not find the shortest path. This is because the Distance Transform method works by finding a path from one grid to another. This prevents the robot from taking the globally shortest path.
+    \item The alogirthm is suitable for all types of maps, provided the fact that the map is known and static.
+    \item The primary problem that the Distance Transform suffer is it's requirement for a high computational power. The computational power required increases with the resolution  of the grid. To solve this, a scanning algorithm could be used where only four neighbours in considered in the first scan and four other in the reverse scan.
+\end{enumerate}
+
+\chapter{Comparing of the Path Planning Methods}
+\section{Map 1}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/map1-potential.png}
+    \caption{Potential Field}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/map1-roadmap.png}
+    \caption{Roadmap}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/map1-dtransform.png}
+    \caption{Distance Transform}
+\end{figure}
+
+The potential field method results in a path that goes under the obstacle. This is due to the attracting potential of the goal pulling the robot towards it. The roadmap method plans the path towards the vertex of the obstacle between the start and the goal and then straight to the goal. The distance transform method goes diagonal across the map then straight down to the obstacle the grid does not allow direct straight line path towards the goal.
+
+For this type of map with large, static and polygonal obstacles, roadmap method will be a best fit since it can easily find a shortest path without consuming a lot of computational power.
+
+\section{Map 2}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/map2-potential.png}
+    \caption{Potential Field}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/map2-roadmap.png}
+    \caption{Roadmap}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/map2-dtransform.png}
+    \caption{Distance Transform}
+\end{figure}
+
+In the potential field method the robot avoids the small obstacle and move straight to the goal. It is slightly affected by an obstacle in the mid way due to the high repulsive potential and high repulsion range. The roadmap and the distace transform work in similar ways with the only difference being that thhe distace transform utilizes the empty space between the obstacles.
+
+For this type of map with polygonal obstacles that has concave pockets and a lot of free spaces between obstacles, distace transform method will be a best fit since it make use of available free space between the obstacles. The roadmap method finds the path that is unnecessarily close to the obstacles risking the getting trapped in the pocket of the obstacle in a real world implementation.
+
+\section{Map 3}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/map3-potential.png}
+    \caption{Potential Field}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/map3-roadmap.png}
+    \caption{Roadmap}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/map3-dtransform.png}
+    \caption{Distance Transform}
+\end{figure}
+
+Even after tuning of the parameters the potential field method cannot find a path from the start to the goal. The planner reaches local minima and is blocked by a long side of the obstacle. Roadmap finds a smoother and shorter path compared to distance transform as distace transform follows the grid.
+
+For this type of map with long edges and simple polygonal obstacles, roadmap method would be a best fit as the long edges of the obstacles can be utilized.
+
+\section{Map 4}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/map4-potential.png}
+    \caption{Potential Field}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/map4-roadmap.png}
+    \caption{Roadmap}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/map4-dtransform.png}
+    \caption{Distance Transform}
+\end{figure}
+
+All three of the methods follow a very similar path from a start to goal position. However, if the start and end positions were different, the map has a lot of pockets in which the robot can be trapped if the potential filed method were to be used.
+
+For this type of map with a lot of concave obstacles, distance transform method could be used as it is the planner that is the least affected by the complexity of the obstacles, ensuring the path to be found.
+
+\section{Map 5}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/map5-potential.png}
+    \caption{Potential Field}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/map5-roadmap.png}
+    \caption{Roadmap}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/map5-dtransform.png}
+    \caption{Distance Transform}
+\end{figure}
+
+The potential field method is observed to have failed to find a path from start to goal position. The robot does not escape from local minima even after adjusting the parameters. 
+
+Even though the roadmap method seems to give a smoother and more direct path, in the environment with a lot of scattered obstacles, it can get very computationally expensive due to a large number of vertices. Therefore, distance transform method would be a best method for environment with many scattered obstacles.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% BIBLIOGRAPHY AND OTHER LISTS

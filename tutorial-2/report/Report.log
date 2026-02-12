@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.29)  8 FEB 2026 00:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.29)  8 FEB 2026 05:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1032,6 +1032,97 @@ LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 20
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ) [6] [7]
 chapter 3.
+[8
+
+] [9]
+chapter 4.
+<../screenshots/map1-potential.png, id=145, 300.1614pt x 173.80936pt>
+File: ../screenshots/map1-potential.png Graphic file (type png)
+<use ../screenshots/map1-potential.png>
+Package pdftex.def Info: ../screenshots/map1-potential.png  used on input line 274.
+(pdftex.def)             Requested size: 448.13095pt x 259.4934pt.
+<../screenshots/map1-roadmap.png, id=147, 300.1614pt x 173.80936pt>
+File: ../screenshots/map1-roadmap.png Graphic file (type png)
+<use ../screenshots/map1-roadmap.png>
+Package pdftex.def Info: ../screenshots/map1-roadmap.png  used on input line 280.
+(pdftex.def)             Requested size: 448.13095pt x 259.4934pt.
+[10
+
+ <../screenshots/map1-potential.png>]
+<../screenshots/map1-dtransform.png, id=156, 300.1614pt x 173.80936pt>
+File: ../screenshots/map1-dtransform.png Graphic file (type png)
+<use ../screenshots/map1-dtransform.png>
+Package pdftex.def Info: ../screenshots/map1-dtransform.png  used on input line 286.
+(pdftex.def)             Requested size: 448.13095pt x 259.4934pt.
+ [11 <../screenshots/map1-roadmap.png> <../screenshots/map1-dtransform.png>]
+<../screenshots/map2-potential.png, id=167, 300.1614pt x 173.80936pt>
+File: ../screenshots/map2-potential.png Graphic file (type png)
+<use ../screenshots/map2-potential.png>
+Package pdftex.def Info: ../screenshots/map2-potential.png  used on input line 298.
+(pdftex.def)             Requested size: 448.13095pt x 259.4934pt.
+<../screenshots/map2-roadmap.png, id=168, 300.1614pt x 173.80936pt>
+File: ../screenshots/map2-roadmap.png Graphic file (type png)
+<use ../screenshots/map2-roadmap.png>
+Package pdftex.def Info: ../screenshots/map2-roadmap.png  used on input line 304.
+(pdftex.def)             Requested size: 448.13095pt x 259.4934pt.
+ [12 <../screenshots/map2-potential.png>]
+<../screenshots/map2-dtransform.png, id=176, 300.1614pt x 173.80936pt>
+File: ../screenshots/map2-dtransform.png Graphic file (type png)
+<use ../screenshots/map2-dtransform.png>
+Package pdftex.def Info: ../screenshots/map2-dtransform.png  used on input line 310.
+(pdftex.def)             Requested size: 448.13095pt x 259.4934pt.
+ [13 <../screenshots/map2-roadmap.png> <../screenshots/map2-dtransform.png>]
+<../screenshots/map3-potential.png, id=188, 300.1614pt x 173.80936pt>
+File: ../screenshots/map3-potential.png Graphic file (type png)
+<use ../screenshots/map3-potential.png>
+Package pdftex.def Info: ../screenshots/map3-potential.png  used on input line 322.
+(pdftex.def)             Requested size: 448.13095pt x 259.4934pt.
+<../screenshots/map3-roadmap.png, id=189, 300.1614pt x 173.80936pt>
+File: ../screenshots/map3-roadmap.png Graphic file (type png)
+<use ../screenshots/map3-roadmap.png>
+Package pdftex.def Info: ../screenshots/map3-roadmap.png  used on input line 328.
+(pdftex.def)             Requested size: 448.13095pt x 259.4934pt.
+ [14 <../screenshots/map3-potential.png>]
+<../screenshots/map3-dtransform.png, id=197, 300.1614pt x 173.80936pt>
+File: ../screenshots/map3-dtransform.png Graphic file (type png)
+<use ../screenshots/map3-dtransform.png>
+Package pdftex.def Info: ../screenshots/map3-dtransform.png  used on input line 334.
+(pdftex.def)             Requested size: 448.13095pt x 259.4934pt.
+ [15 <../screenshots/map3-roadmap.png> <../screenshots/map3-dtransform.png>]
+<../screenshots/map4-potential.png, id=208, 300.1614pt x 173.80936pt>
+File: ../screenshots/map4-potential.png Graphic file (type png)
+<use ../screenshots/map4-potential.png>
+Package pdftex.def Info: ../screenshots/map4-potential.png  used on input line 346.
+(pdftex.def)             Requested size: 448.13095pt x 259.4934pt.
+<../screenshots/map4-roadmap.png, id=209, 300.1614pt x 173.80936pt>
+File: ../screenshots/map4-roadmap.png Graphic file (type png)
+<use ../screenshots/map4-roadmap.png>
+Package pdftex.def Info: ../screenshots/map4-roadmap.png  used on input line 352.
+(pdftex.def)             Requested size: 448.13095pt x 259.4934pt.
+ [16 <../screenshots/map4-potential.png>]
+<../screenshots/map4-dtransform.png, id=217, 300.1614pt x 173.80936pt>
+File: ../screenshots/map4-dtransform.png Graphic file (type png)
+<use ../screenshots/map4-dtransform.png>
+Package pdftex.def Info: ../screenshots/map4-dtransform.png  used on input line 358.
+(pdftex.def)             Requested size: 448.13095pt x 259.4934pt.
+ [17 <../screenshots/map4-roadmap.png> <../screenshots/map4-dtransform.png>]
+<../screenshots/map5-potential.png, id=228, 300.1614pt x 173.80936pt>
+File: ../screenshots/map5-potential.png Graphic file (type png)
+<use ../screenshots/map5-potential.png>
+Package pdftex.def Info: ../screenshots/map5-potential.png  used on input line 370.
+(pdftex.def)             Requested size: 448.13095pt x 259.4934pt.
+<../screenshots/map5-roadmap.png, id=229, 300.1614pt x 173.80936pt>
+File: ../screenshots/map5-roadmap.png Graphic file (type png)
+<use ../screenshots/map5-roadmap.png>
+Package pdftex.def Info: ../screenshots/map5-roadmap.png  used on input line 376.
+(pdftex.def)             Requested size: 448.13095pt x 259.4934pt.
+ [18 <../screenshots/map5-potential.png>]
+<../screenshots/map5-dtransform.png, id=237, 300.1614pt x 173.80936pt>
+File: ../screenshots/map5-dtransform.png Graphic file (type png)
+<use ../screenshots/map5-dtransform.png>
+Package pdftex.def Info: ../screenshots/map5-dtransform.png  used on input line 382.
+(pdftex.def)             Requested size: 448.13095pt x 259.4934pt.
+ [19 <../screenshots/map5-roadmap.png> <../screenshots/map5-dtransform.png>]
 
 Class scrreprt Warning: You are using `\begin{appendix}...\end{appendix}'.
 (scrreprt)              You should note, that `\appendix' is a mostly globally
@@ -1044,27 +1135,25 @@ Class scrreprt Warning: You are using `\begin{appendix}...\end{appendix}'.
 (scrreprt)              inconsistent.
 (scrreprt)              Because of this, you should remove `\end{appendix}'
 (scrreprt)              and replace `\begin{appendix}' by command
-(scrreprt)              `\appendix' on input line 271.
+(scrreprt)              `\appendix' on input line 399.
 
-[8
-
-] (./Report.aux)
+[20] (./Report.aux)
 Package rerunfilecheck Info: File `Report.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 33855 strings out of 480247
- 686773 string characters out of 5896151
- 1126819 words of memory out of 5000000
- 51138 multiletter control sequences out of 15000+600000
+ 34023 strings out of 480247
+ 690976 string characters out of 5896151
+ 1126821 words of memory out of 5000000
+ 51237 multiletter control sequences out of 15000+600000
  509272 words of font info for 58 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  108i,10n,106p,10665b,426s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb>
-Output written on Report.pdf (8 pages, 242640 bytes).
+Output written on Report.pdf (20 pages, 3163170 bytes).
 PDF statistics:
- 186 PDF objects out of 1000 (max. 8388607)
- 140 compressed objects within 2 object streams
- 40 named destinations out of 1000 (max. 500000)
- 234 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 347 PDF objects out of 1000 (max. 8388607)
+ 258 compressed objects within 3 object streams
+ 93 named destinations out of 1000 (max. 500000)
+ 365 words of extra memory for PDF output out of 10000 (max. 10000000)
 
