@@ -1,0 +1,37 @@
+\babel@toc {USenglish}{}\relax 
+\contentsline {chapter}{\numberline {1}Encoder Measurement and Error Analysis}{3}{chapter.2}%
+\contentsline {section}{\numberline {1.1}Encoder Recordings 1 to 10}{3}{section.3}%
+\contentsline {subsection}{\numberline {1.1.1}Mean}{3}{subsection.6}%
+\contentsline {subsection}{\numberline {1.1.2}Standard Deviation}{4}{subsection.7}%
+\contentsline {section}{\numberline {1.2}Encoder Recordings 11 to 20}{5}{section.8}%
+\contentsline {subsection}{\numberline {1.2.1}Mean}{5}{subsection.11}%
+\contentsline {subsection}{\numberline {1.2.2}Standard Deviation}{6}{subsection.12}%
+\contentsline {section}{\numberline {1.3}Error Analysis}{6}{section.13}%
+\contentsline {subsection}{\numberline {1.3.1}Systematic Errors}{6}{subsection.14}%
+\contentsline {subsection}{\numberline {1.3.2}Non-systematic Errors}{7}{subsection.15}%
+\contentsline {section}{\numberline {1.4}Fixing Systematic Errors}{7}{section.16}%
+\contentsline {chapter}{\numberline {2}Positioning and Error Propagation}{8}{chapter.17}%
+\contentsline {section}{\numberline {2.1}Deriving $x$, $y$, and $\theta $ as functions from $N_L$ and $N_R$}{8}{section.18}%
+\contentsline {section}{\numberline {2.2}Calculating mean value of $x$, $y$, and $\theta $}{9}{section.19}%
+\contentsline {subsection}{\numberline {2.2.1}Runs 1 to 10}{9}{subsection.20}%
+\contentsline {subsection}{\numberline {2.2.2}Runs 11 to 20}{10}{subsection.21}%
+\contentsline {section}{\numberline {2.3}Deriving standard deviation of $x$, $y$, and $\theta $}{11}{section.22}%
+\contentsline {subsection}{\numberline {2.3.1}Standard deviation of $x$}{12}{subsection.23}%
+\contentsline {subsubsection}{\nonumberline Calculating $\genfrac {}{}{}0{\partial x}{\partial N_R}$}{12}{subsubsection*.25}%
+\contentsline {subsubsection}{\nonumberline Calculating $\genfrac {}{}{}0{\partial x}{\partial N_L}$}{13}{subsubsection*.27}%
+\contentsline {subsection}{\numberline {2.3.2}Standard deviation of $y$}{14}{subsection.28}%
+\contentsline {subsubsection}{\nonumberline Calculating $\genfrac {}{}{}0{\partial y}{\partial N_R}$}{14}{subsubsection*.30}%
+\contentsline {subsubsection}{\nonumberline Calculating $\genfrac {}{}{}0{\partial y}{\partial N_L}$}{15}{subsubsection*.32}%
+\contentsline {subsection}{\numberline {2.3.3}Standard deviation of $\theta $}{16}{subsection.33}%
+\contentsline {section}{\numberline {2.4}Calculating standard deviation of $x$, $y$, and $theta$}{17}{section.34}%
+\contentsline {subsection}{\numberline {2.4.1}Runs 1 to 10}{17}{subsection.35}%
+\contentsline {subsubsection}{\nonumberline Calculating $s_{\bar {x}}$}{17}{subsubsection*.37}%
+\contentsline {subsubsection}{\nonumberline Calculating $s_{\bar {y}}$}{18}{subsubsection*.39}%
+\contentsline {subsubsection}{\nonumberline Calculating $s_{\bar {\theta }}$}{19}{subsubsection*.41}%
+\contentsline {subsection}{\numberline {2.4.2}Runs 11 to 20}{19}{subsection.42}%
+\contentsline {subsubsection}{\nonumberline Calculating $s_{\bar {x}}$}{20}{subsubsection*.44}%
+\contentsline {subsubsection}{\nonumberline Calculating $s_{\bar {y}}$}{20}{subsubsection*.46}%
+\contentsline {subsubsection}{\nonumberline Calculating $s_{\bar {\theta }}$}{21}{subsubsection*.48}%
+\contentsline {section}{\numberline {2.5}Discussions of finding}{21}{section.49}%
+\contentsline {chapter}{\numberline {3}Odometry Implementation}{22}{chapter.50}%
+\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

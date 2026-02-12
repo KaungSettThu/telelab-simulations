@@ -1,0 +1,829 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% HEADER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pdfminorversion=7
+\pdfcompresslevel=1 % schnellste Kompression
+%\pdfcompresslevel=9 % beste Kompression
+\pdfimageresolution=600
+
+\documentclass[12pt,bibliography=totoc]{scrreprt}
+
+\usepackage{i17report}
+
+\usepackage{scrhack} % used since scrreprt produces a warning when using totoc
+
+%% Language %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[USenglish]{babel}     %%%% english
+%\usepackage[ngerman]{babel}      %%%% german
+\usepackage[T1]{fontenc}
+\usepackage[ansinew]{inputenc}
+
+\usepackage{lmodern} %Type1-font for non-english texts and characters
+
+%% Hyperrefs and URLs %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[pdftex,                %%% hyper-references for pdftex
+bookmarks=true,%                   %%% generate bookmarks \ldots
+bookmarksnumbered=true,%           %%% \ldots with numbers
+hypertexnames=false,%              %%% needed for correct links to figures !!!
+hyperfootnotes=false,
+breaklinks=true,%                  %%% breaks lines, but links are very small
+linkcolor=red,%
+linkbordercolor={1 0 1}%
+]{hyperref}  %%% blue frames around links
+
+%% Packages for Graphics & Figures %%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+\usepackage[most]{tcolorbox}
+\usepackage{float}  % for [H]
+
+%% Packages for Tables %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{multirow}
+\usepackage{ltablex}
+\usepackage{booktabs}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\usepackage{tabularx}
+
+%% Packages for Coloring %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{color, xcolor}
+\definecolor{material_blue}{HTML}{027BE3}
+\definecolor{material_red}{HTML}{F44336}
+\definecolor{material_green}{HTML}{4CAF50}
+\definecolor{material_orange}{HTML}{FF9800}
+
+%% Packages for Math %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{units}
+\usepackage{relsize,exscale}
+\usepackage{parskip}
+
+%% Configuration for JavaScript %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\lstset{
+    language=[LaTeX]TeX,  % generic, no syntax highlighting errors
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    frame=single
+}
+
+%% Defined commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\bigint} [3] {\mathop{\mathlarger{\int\limits_{#1}^{#2}}} {#3}}  % a big integral
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% DOCUMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\pagestyle{empty} %No headings for the first pages.
+
+%% Title Page %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Tele-Experiment}
+\subject{Path Planning Algorithms for Mobile Robots}
+
+\author{Kaung Sett Thu}
+\matrnr{12503548}
+\submission{\today}
+
+\maketitle
+
+%% Inhaltsverzeichnis %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tableofcontents
+\cleardoublepage %The first chapter should start on an odd page.
+
+\pagestyle{plain}
+
+%% Chapters %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Encoder Measurement and Error Analysis}
+
+\section{Encoder Recordings 1 to 10}
+
+The following table states the sums of all the encoder information from the recordings 1 - 10 provided in \texttt{{encoder\_recordings.zip}} of a straight line motion.
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{c c c}
+\hline
+Run no. & $\sum {ecr\_l}$ & $\sum {ecr\_r}$ \\
+
+\hline
+1  & 8329 & 8382 \\
+2  & 8007 & 8078 \\
+3  & 7918 & 8000 \\
+4  & 7962 & 8023 \\
+5  & 8313 & 8378 \\
+6  & 8002 & 8096 \\
+7  & 8028 & 8111 \\
+8  & 8073 & 8121 \\
+9  & 8234 & 8300 \\
+10 & 8205 & 8281 \\
+\hline
+
+\end{tabular}
+\caption{Cumulative encoder counts for left and right wheels (Runs 1-10).}
+\end{table}
+
+\subsection{Mean}
+
+The mean value for encoder of the left wheel is calculated as
+%
+\begin{align*}
+    \bar{N_L} &= \frac{1}{n} \sum_{i=1}^{n} N_{L,i} \\[1em]
+    &= \frac{1}{10} \Big( 8329 + 8007 + 7918 + 7962 + 8313 + 8002 + 8028 + 8073 + 8234 + 8205 \Big) \\[1em]
+    &= 8107.1
+\end{align*}
+%
+The mean value for encoder of the right wheel is calculated as
+%
+\begin{align*}
+    \bar{N_R} &= \frac{1}{n} \sum_{i=1}^{n} N_{R,i} \\[1em]
+    &= \frac{1}{10} \Big( 8382 + 8078 + 8000 + 8023 + 8378 + 8096 + 8111 + 8121 + 8300 + 8281 \Big) \\[1em]
+    &= 8177.0
+\end{align*}
+
+\subsection{Standard Deviation}
+
+The standard deviation for encoder of the left wheel is calculated as
+%
+\begin{align*}
+    s_{N_L} &= \sqrt{\dfrac{1}{n - 1} \sum_{i=1}^{n} (s_{N_{L,i}} - \bar{s_{N_L}})^2} \\[1em]
+    &= \begin{aligned}[t]
+        \Big( \frac{1}{10-1} \big( &(8329 - 8107.1)^2 + (8007 - 8107.1)^2 + (7918 - 8107.1)^2 + \\[0.5em]
+        &(7962 - 8107.1)^2 + (8313 - 8107.1)^2 + (8002 - 8107.1)^2 + \\[0.5em]
+        &(8028 - 8107.1)^2 + (8073 - 8107.1)^2 + (8234 - 8107.1)^2 + \\[0.5em]
+        &(8205 - 8107.1)^2 \big) \Big)^{1/2} 
+    \end{aligned} \\[1em]
+    &= 150.04
+\end{align*}
+%
+The standard deviation for encoder of the right wheel is calculated as
+%
+\begin{align*}
+    s_{N_R} &= \sqrt{\dfrac{1}{n - 1} \sum_{i=1}^{n} (N_{R,i} - \bar{N}_R)^2} \\[1em]
+    &= \begin{aligned}[t]
+        \Big( \frac{1}{10-1} \big( &(8382 - 8177.0)^2 + (8078 - 8177.0)^2 + (8000 - 8177.0)^2 + \\[0.5em]
+        &(8023 - 8177.0)^2 + (8378 - 8177.0)^2 + (8096 - 8177.0)^2 + \\[0.5em]
+        &(8111 - 8177.0)^2 + (8121 - 8177.0)^2 + (8300 - 8177.0)^2 + \\[0.5em]
+        &(8281 - 8177.0)^2 \big) \Big)^{1/2} 
+    \end{aligned} \\[1em]
+    &= 144.25
+\end{align*}
+
+\section{Encoder Recordings 11 to 20}
+
+The following table states the sums of all the encoder information from the recordings 1 - 10 provided in \texttt{{encoder\_recordings.zip}} of a straight line motion.
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{c c c}
+\hline
+Run no. & $\sum {ecr\_l}$ & $\sum {ecr\_r}$ \\
+
+\hline
+11 & 8156 & 8230 \\
+12 & 8120 & 8201 \\
+13 & 8015 & 8094 \\
+14 & 8255 & 8285 \\
+15 & 8093 & 8161 \\
+16 & 8166 & 8257 \\
+17 & 8013 & 8096 \\
+18 & 7988 & 8049 \\
+19 & 8080 & 8167 \\
+20 & 8052 & 8120 \\
+\hline
+
+\end{tabular}
+\caption{Cumulative encoder counts for left and right wheels (Runs 11-20).}
+\end{table}
+\subsection{Mean}
+
+The mean value for the encoder of the left wheel is calculated as
+%
+\begin{align*}
+    \bar{N_L} &= \frac{1}{n} \sum_{i=11}^{20} N_{L,i} \\[0.5em]
+    &= \frac{1}{10} \Big( 8156 + 8120 + 8015 + 8255 + 8093 + 8166 + 8013 + 7988 + 8080 + 8052 \Big) \\[0.5em]
+    &= 8093.8
+\end{align*}
+%
+The mean value for the encoder of the right wheel is calculated as
+%
+\begin{align*}
+    \bar{N_R} &= \frac{1}{n} \sum_{i=11}^{20} N_{R,i} \\[0.5em]
+    &= \frac{1}{10} \Big( 8230 + 8201 + 8094 + 8285 + 8161 + 8257 + 8096 + 8049 + 8167 + 8120 \Big) \\[0.5em]
+    &= 8166.0
+\end{align*}
+%
+\subsection{Standard Deviation}
+
+The standard deviation for the encoder of the left wheel is calculated as
+%
+\begin{align*}
+    s_{N_L} &= \sqrt{\dfrac{1}{n - 1} \sum_{i=11}^{20} (N_{L,i} - \bar{N_L})^2} \\[1em]
+    &= \begin{aligned}[t]
+        \Big( \frac{1}{10-1} \big( &(8156 - 8093.8)^2 + (8120 - 8093.8)^2 + (8015 - 8093.8)^2 + \\[0.5em]
+        &(8255 - 8093.8)^2 + (8093 - 8093.8)^2 + (8166 - 8093.8)^2 + \\[0.5em]
+        &(8013 - 8093.8)^2 + (7988 - 8093.8)^2 + (8080 - 8093.8)^2 + \\[0.5em]
+        &(8052 - 8093.8)^2 \big) \Big)^{1/2}
+    \end{aligned} \\[1em]
+    &= 82.75
+\end{align*}
+%
+The standard deviation for the encoder of the right wheel is calculated as
+%
+\begin{align*}
+    s_{N_R} &= \sqrt{\dfrac{1}{n - 1} \sum_{i=11}^{20} (N_{R,i} - \bar{N_R})^2} \\[1em]
+    &= \begin{aligned}[t]
+        \Big( \frac{1}{10-1} \big( &(8230 - 8166.0)^2 + (8201 - 8166.0)^2 + (8094 - 8166.0)^2 + \\[0.5em]
+        &(8285 - 8166.0)^2 + (8161 - 8166.0)^2 + (8257 - 8166.0)^2 + \\[0.5em]
+        &(8096 - 8166.0)^2 + (8049 - 8166.0)^2 + (8167 - 8166.0)^2 + \\[0.5em]
+        &(8120 - 8166.0)^2 \big) \Big)^{1/2}
+        \end{aligned} \\[1em]
+    &= 77.23
+\end{align*}
+
+\section{Error Analysis}
+
+From the calculate of mean and standard deviation of 20 encoder records, both systematic errors and non-systematic errors can be observed.
+
+\subsection{Systematic Errors}
+
+The mean encoder values for right wheel is observed to be greater than left wheel for runs 1 to 10 and runs 11 to 20. From the runs, the encoder values of the right wheel is also consistently greater than then encoder of the left wheel. This indicates the existance of the systematic errors. The potential causes of this error can be due to the following.
+
+\begin{itemize}
+    \item the right wheel has bigger diameter compared to the left wheel
+    \item the right moter is spinning faster than the left motor or
+    \item the wheels could be misaligned
+\end{itemize}
+
+\subsection{Non-systematic Errors}
+
+The calculated standard deviation indicates that the there could also be in non-systematic errors present. The potential causes for standard deviation in our case can be due to the following.
+
+\begin{itemize}
+    \item the wheel slipage
+    \item the surface of experiment could be uneven or
+    \item the encoder noise
+\end{itemize}
+
+\section{Fixing Systematic Errors}
+
+The robot is observed to have a systematic error by consistently drifting slightly to the left. Optimally, measurements could be made to identify the root cause of the systematic error and adjustments can be made. The systematic error can also be compensated during the simulation by having a small positive steering angle to the right to force the robot to drive a straight line.
+
+\chapter{Positioning and Error Propagation}
+
+\section{Deriving $x$, $y$, and $\theta$ as functions from $N_L$ and $N_R$}
+
+The derivation will start by substituting $\Delta U_L$ and $\Delta U_R$ into equations for $\Delta U_i$ and $\Delta \theta_i$.
+%
+\begin{align*}
+    \Delta U_i &= \dfrac{\Delta U_R + \Delta U_L}{2} \\[1em]
+    &= \dfrac{\left(\dfrac{\pi \cdot d_{wheel}}{c_R} \cdot N_R\right) 
+    + \left(\dfrac{\pi \cdot d_{wheel}}{c_L} \cdot N_L\right)}{2} \\[1em]
+    &= \dfrac{\pi \cdot d_{wheel}}{2} 
+    \left(\dfrac{N_R}{c_R} + \dfrac{N_L}{c_L}\right)
+\end{align*}
+
+\begin{align*}
+    \Delta \theta_i &=  \dfrac{\Delta U_R - \Delta U_L}{D} \\[1em]
+    &= \dfrac{\left(\dfrac{\pi \cdot d_{wheel}}{c_R} \cdot N_R\right) 
+    - \left(\dfrac{\pi \cdot d_{wheel}}{c_L} \cdot N_L\right)}{D} \\[1em]
+    &= \dfrac{\pi \cdot d_{wheel}}{D} 
+    \left(\dfrac{N_R}{c_R} - \dfrac{N_L}{c_L}\right)
+\end{align*}
+
+Since the encoder resolutions of both wheels are identical, i.e.
+%
+\begin{align*}
+    c_L = c_R = c = 1024,
+\end{align*}
+%
+the expressions simplifies to
+%
+\begin{align*}
+    \Delta U_i &= \dfrac{\pi \cdot d_{wheel}}{2c} \big(N_R + N_L \big) \\[1em]
+    \Delta \theta_i &= \dfrac{\pi \cdot d_{wheel}}{cD} \big(N_R - N_L \big)
+\end{align*}
+
+Substituting the values into $x_i$, $y_i$, and $\theta_i$.
+%
+\begin{align*}
+    x_i &= x_{i-1} + \dfrac{\pi \cdot d_{wheel}}{2c} \big(N_R + N_L \big) \cdot \cos \theta_i \\[1em]
+    y_i &= y_{i-1} + \dfrac{\pi \cdot d_{wheel}}{2c} \big(N_R + N_L \big) \cdot \sin \theta_i \\[1em]
+    \theta_i &= \theta_{i-1} + \dfrac{\pi \cdot d_{wheel}}{cD} \big(N_R - N_L \big)
+\end{align*}
+
+Since the $x_{i-1} = 0$, $y_{i-1} = 0$, and $\theta_{i-1} = 0$, and substituting $\theta_i$ in $x_i$ and $y_i$, the functions for $x_i$, $y_i$, and $\theta_i$ can be re-expressed as
+%
+\begin{align*}
+    x_i &= \dfrac{\pi \cdot d_{wheel}}{2c} \big(N_R + N_L \big) \cdot \cos \left(\dfrac{\pi \cdot d_{wheel}}{cD} \big(N_R - N_L \big)\right) \\[1em]
+    y_i &= \dfrac{\pi \cdot d_{wheel}}{2c} \big(N_R + N_L \big) \cdot \sin \left(\dfrac{\pi \cdot d_{wheel}}{cD} \big(N_R - N_L \big)\right) \\[1em]
+    \theta_i &= \dfrac{\pi \cdot d_{wheel}}{cD} \big(N_R - N_L \big)
+\end{align*}
+
+\section{Calculating mean value of $x$, $y$, and $\theta$}
+\subsection{Runs 1 to 10}
+
+\begin{align*}
+    \bar{N_R} = 8177.0, \, \bar{N_L} = 8107.1
+\end{align*}
+
+\begin{align*}
+    \bar{\theta} &= \dfrac{\pi \cdot d_{wheel}}{cD} \big(\bar{N_R} - \bar{N_L} \big) \\[1em]
+    &= \dfrac{100 \, mm \cdot \pi}{1024 \cdot 230 \, mm} \big(8177.0 - 8107.1\big) \\[1em]
+    &= 0.0932 \, rad \\[1em] 
+    &= 5.34^\circ
+\end{align*}
+
+\begin{align*}
+    \bar{x} &= \dfrac{\pi \cdot d_{wheel}}{2c} \big(\bar{N_R} + \bar{N_L} \big) \cdot \cos \bar{\theta} \\[1em]
+    &= \dfrac{100 \, mm \cdot \pi}{2 \cdot 1024} \big(8177.0 + 8107.1\big) \cos (0.0932) \\[1em]
+    &= 2492.3 \, mm \\[1em]
+    &= 2.49 \, m
+\end{align*}
+
+\begin{align*}
+    \bar{y} &= \dfrac{\pi \cdot d_{wheel}}{2c} \big(\bar{N_R} + \bar{N_L} \big) \cdot \sin \bar{\theta} \\[1em]
+    &= \dfrac{100 \, mm \cdot \pi}{2 \cdot 1024} \big(8177.0 + 8107.1\big) \sin (0.0932) \\[1em]
+    &= 232 \, mm \\[1em]
+    &= 0.24 \, m
+\end{align*}
+
+\subsection{Runs 11 to 20}
+
+\begin{align*}
+    \bar{N_R} = 8166.0, \, \bar{N_L} = 8093.8
+\end{align*}
+
+\begin{align*}
+    \bar{\theta} &= \dfrac{\pi \cdot d_{wheel}}{cD} \big(\bar{N_R} - \bar{N_L} \big) \\[1em]
+    &= \dfrac{100 \, mm \cdot \pi}{1024 \cdot 230 \, mm} \big(8166.0 - 8093.8\big) \\[1em]
+    &= 0.0963 \, rad \\[1em] 
+    &= 5.51^\circ
+\end{align*}
+
+\begin{align*}
+    \bar{x} &= \dfrac{\pi \cdot d_{wheel}}{2c} \big(\bar{N_R} + \bar{N_L} \big) \cdot \cos \bar{\theta} \\[1em]
+    &= \dfrac{100 \, mm \cdot \pi}{2 \cdot 1024} \big(8166.0 + 8093.8\big) \cos (0.0963) \\[1em]
+    &= 2489.7\, mm \\[1em]
+    &= 2.49 \, m
+\end{align*}
+
+\begin{align*}
+    \bar{y} &= \dfrac{\pi \cdot d_{wheel}}{2c} \big(\bar{N_R} + \bar{N_L} \big) \cdot \sin \bar{\theta} \\[1em]
+    &= \dfrac{100 \, mm \cdot \pi}{2 \cdot 1024} \big(8166.0 + 8093.8\big) \sin (0.0963) \\[1em]
+    &= 239 \, mm \\[1em]
+    &= 0.24 \, m
+\end{align*}
+
+\section{Deriving standard deviation of $x$, $y$, and $\theta$}
+
+The Gaussian law of error propagation will be used to determine the standard deviation of $x$, $y$, and $theta$. The generic Gaussian law of error propagation states that
+%
+\begin{align*}
+    s_{\bar{z}} &= \sqrt{\big(f_x(\bar{x}, \bar{y}) \cdot s_{\bar{x}}\big)^2 + \big(f_y(\bar{x}, \bar{y}) \cdot s_{\bar{y}}\big)^2} 
+\end{align*}
+
+where $f_x$ and $f_y$ are partial derivatives with respect to $x$ and $y$,
+%
+\begin{align*}
+    f_x = \dfrac{\partial f}{\partial x}, \,  f_y = \dfrac{\partial f}{\partial y}
+\end{align*}
+
+given that $\bar{z}$ is a function of $\bar{x}$ and $\bar{y}$
+%
+\begin{align*}
+    \bar{z} = f(\bar{x}, \bar{y})
+\end{align*}
+
+Since the robot coordinates $x$, $y$, and $\theta$ depends on encoders on the right and left wheels $N_R$ and $N_L$, the Gaussian law of error propagation can be rewritten as
+%
+\begin{align*}
+    s_{\bar{z}} &= \sqrt{\big(f_{N_R}(\bar{N_R}, \bar{N_L}) \cdot s_{\bar{N_R}}\big)^2 + \big(f_{N_L}(\bar{N_R}, \bar{N_L}) \cdot s_{\bar{N_L}}\big)^2} 
+\end{align*}
+
+with $f_{N_R}$ and $f_{N_L}$ being partial derivatives with respect to $N_R$ and $N_L$,
+%
+\begin{align*}
+    f_{N_R} = \dfrac{\partial f}{\partial N_R}, \,  f_{N_L} = \dfrac{\partial f}{\partial N_L}
+\end{align*}
+
+and $z$ being the robot's coordinates $x$, $y$, or $\theta$.
+
+\subsection{Standard deviation of $x$}
+
+From section 2.1, $x$ can be expressed in term of $N_R$ and $N_L$ as
+%
+\begin{align*}
+    x = f(N_R, N_L) = \dfrac{\pi \cdot d_{wheel}}{2c} \big(N_R + N_L \big) \cdot \cos \left(\dfrac{\pi \cdot d_{wheel}}{cD} \big(N_R - N_L \big)\right)
+\end{align*}
+
+The standard deviation for $x$ can be expressed as
+%
+\begin{align*}
+    s_{\bar{x}} &= \sqrt{\big(f_{N_R}(\bar{N_R}, \bar{N_L}) \cdot s_{\bar{N_R}}\big)^2 + \big(f_{N_L}(\bar{N_R}, \bar{N_L}) \cdot s_{\bar{N_L}}\big)^2}  \\[1em]
+    s_{\bar{x}} &= \sqrt{\left(\dfrac{\partial x}{\partial N_R} \cdot s_{\bar{N_R}}\right)^2 + \left(\dfrac{\partial x}{\partial N_L} \cdot s_{\bar{N_L}}\right)^2}
+\end{align*}
+
+\subsubsection{Calculating $\dfrac{\partial x}{\partial N_R}$}
+
+Let
+%
+\begin{align*}
+    u &= N_R + N_L \\[1em]
+    v &= \cos \left(\dfrac{\pi \cdot d_{wheel}}{cD} \big(N_R - N_L \big)\right)
+\end{align*}
+
+The derivative can therefore be calculated by the use of the product rule
+%
+\begin{align*}
+    \dfrac{\partial x}{\partial N_R} &= \dfrac{\pi \cdot d_{wheel}}{2c} \left(\dfrac{\partial u}{\partial N_R} \cdot v + u \cdot \dfrac{\partial v}{\partial N_R}\right)
+\end{align*}
+
+\begin{align*}
+    \dfrac{\partial u}{\partial N_R} = 1
+\end{align*}
+
+To calculate $\dfrac{\partial v}{\partial N_R}$, we let
+%
+\begin{align*}
+    a &= \cos(b) \\[1em]
+    b &= \dfrac{\pi \cdot d_{wheel}}{cD} \big(N_R - N_L \big)
+\end{align*}
+    
+The derivative can be calculated by the use of the chain rule
+%
+\begin{align*}
+    \dfrac{\partial v}{\partial N_R} &= \dfrac{\partial a}{\partial b} \cdot \dfrac{\partial b}{\partial N_R} \\[1em]
+    &= -\sin(b) \cdot \dfrac{\pi \cdot d_{wheel}}{cD} \\[1em]
+    &= -\sin\left(\dfrac{\pi \cdot d_{wheel}}{cD} \big(N_R - N_L \big)\right) \cdot \dfrac{\pi \cdot d_{wheel}}{cD}
+\end{align*}
+
+Substituting $\dfrac{\partial u}{\partial N_R}$ and $\dfrac{\partial v}{\partial N_R}$ back into $\dfrac{\partial x}{\partial N_R}$, we get
+%
+\begin{align*}
+    \dfrac{\partial x}{\partial N_R}
+    &= \begin{aligned}[t]
+        \dfrac{\pi \cdot d_{wheel}}{2c} \Bigg[\cos \left(\dfrac{\pi \cdot d_{wheel}}{cD} \left(N_R - N_L \right)\right) - (N_R + N_L) \cdot \\[0.5em] 
+        \sin \left(\dfrac{\pi \cdot d_{wheel}}{cD} \left(N_R - N_L \right)\right) \cdot \dfrac{\pi \cdot d_{wheel}}{cD} \Bigg]
+    \end{aligned}
+\end{align*}
+
+Using the expressions for $\theta$ and $\Delta U$ from section 2.1, the expression can be simplified to
+%
+\begin{align*}
+    \dfrac{\partial x}{\partial N_R} &= \dfrac{\pi \cdot d_{wheel}}{2c} \cos(\theta) - \Delta U \sin(\theta) \cdot \dfrac{\pi \cdot d_{wheel}}{cD}
+\end{align*}
+
+\subsubsection{Calculating $\dfrac{\partial x}{\partial N_L}$}
+
+The derivation for $\dfrac{\partial x}{\partial N_L}$ is similar to derivation for $\dfrac{\partial x}{\partial N_R}$. 
+
+However, since $N_L$ is negative for $\cos$, $\dfrac{\partial v}{\partial N_L}$ is
+%
+\begin{align*}
+    \dfrac{\partial v}{\partial N_L} &= \dfrac{\partial a}{\partial b} \cdot \dfrac{\partial b}{\partial N_L} \\[1em]
+    &= -\sin(b) \cdot -\left(\dfrac{\pi \cdot d_{wheel}}{cD}\right) \\[1em]
+    &= \sin\left(\dfrac{\pi \cdot d_{wheel}}{cD} \big(N_R - N_L \big)\right) \cdot \dfrac{\pi \cdot d_{wheel}}{cD}
+\end{align*}
+
+Therefore
+%
+\begin{align*}
+    \dfrac{\partial x}{\partial N_L}
+    &= \begin{aligned}[t]
+        \dfrac{\pi \cdot d_{wheel}}{2c} \Bigg[\cos \left(\dfrac{\pi \cdot d_{wheel}}{cD} \left(N_R - N_L \right)\right) + (N_R + N_L) \cdot \\[0.5em] 
+        \sin \left(\dfrac{\pi \cdot d_{wheel}}{cD} \left(N_R - N_L \right)\right) \cdot \dfrac{\pi \cdot d_{wheel}}{cD} \Bigg]
+    \end{aligned} \\[1em]
+    &= \dfrac{\pi \cdot d_{wheel}}{2c} \cos(\theta) + \Delta U \sin(\theta) \cdot \dfrac{\pi \cdot d_{wheel}}{cD}
+\end{align*}
+
+
+\subsection{Standard deviation of $y$}
+
+From section 2.1, $y$ can be expressed in term of $N_R$ and $N_L$ as
+%
+\begin{align*}
+    y = f(N_R, N_L) = \dfrac{\pi \cdot d_{wheel}}{2c} \big(N_R + N_L \big) \cdot \sin \left(\dfrac{\pi \cdot d_{wheel}}{cD} \big(N_R - N_L \big)\right)
+\end{align*}
+
+The standard deviation for $y$ can be expressed as
+%
+\begin{align*}
+    s_{\bar{y}} &= \sqrt{\big(f_{N_R}(\bar{N_R}, \bar{N_L}) \cdot s_{\bar{N_R}}\big)^2 + \big(f_{N_L}(\bar{N_R}, \bar{N_L}) \cdot s_{\bar{N_L}}\big)^2}  \\[1em]
+    s_{\bar{y}} &= \sqrt{\left(\dfrac{\partial y}{\partial N_R} \cdot s_{\bar{N_R}}\right)^2 + \left(\dfrac{\partial y}{\partial N_L} \cdot s_{\bar{N_L}}\right)^2}
+\end{align*}
+
+\subsubsection{Calculating $\dfrac{\partial y}{\partial N_R}$}
+
+Let
+%
+\begin{align*}
+    u &= N_R + N_L \\[1em]
+    v &= \sin \left(\dfrac{\pi \cdot d_{wheel}}{cD} \big(N_R - N_L \big)\right)
+\end{align*}
+
+The derivative can therefore be calculated by the use of the product rule
+%
+\begin{align*}
+    \dfrac{\partial y}{\partial N_R} &= \dfrac{\pi \cdot d_{wheel}}{2c} \left(\dfrac{\partial u}{\partial N_R} \cdot v + u \cdot \dfrac{\partial v}{\partial N_R}\right)
+\end{align*}
+
+\begin{align*}
+    \dfrac{\partial u}{\partial N_R} = 1
+\end{align*}
+
+To calculate $\dfrac{\partial v}{\partial N_R}$, we let
+%
+\begin{align*}
+    a &= \sin(b) \\[1em]
+    b &= \dfrac{\pi \cdot d_{wheel}}{cD} \big(N_R - N_L \big)
+\end{align*}
+    
+The derivative can be calculated by the use of the chain rule
+%
+\begin{align*}
+    \dfrac{\partial v}{\partial N_R} &= \dfrac{\partial a}{\partial b} \cdot \dfrac{\partial b}{\partial N_R} \\[1em]
+    &= \cos(b) \cdot \dfrac{\pi \cdot d_{wheel}}{cD} \\[1em]
+    &= \cos\left(\dfrac{\pi \cdot d_{wheel}}{cD} \big(N_R - N_L \big)\right) \cdot \dfrac{\pi \cdot d_{wheel}}{cD}
+\end{align*}
+
+Substituting $\dfrac{\partial u}{\partial N_R}$ and $\dfrac{\partial v}{\partial N_R}$ back into $\dfrac{\partial y}{\partial N_R}$, we get
+%
+\begin{align*}
+    \dfrac{\partial y}{\partial N_R}
+    &= \begin{aligned}[t]
+        \dfrac{\pi \cdot d_{wheel}}{2c} \Bigg[\sin \left(\dfrac{\pi \cdot d_{wheel}}{cD} \left(N_R - N_L \right)\right) + (N_R + N_L) \cdot \\[0.5em] 
+        \cos \left(\dfrac{\pi \cdot d_{wheel}}{cD} \left(N_R - N_L \right)\right) \cdot \dfrac{\pi \cdot d_{wheel}}{cD} \Bigg]
+    \end{aligned}
+\end{align*}
+
+Using the expressions for $\theta$ and $\Delta U$ from section 2.1, the expression can be simplified to
+%
+\begin{align*}
+    \dfrac{\partial y}{\partial N_R} &= \dfrac{\pi \cdot d_{wheel}}{2c} \sin(\theta) + \Delta U \cos(\theta) \cdot \dfrac{\pi \cdot d_{wheel}}{cD}
+\end{align*}
+
+\subsubsection{Calculating $\dfrac{\partial y}{\partial N_L}$}
+
+The derivation for $\dfrac{\partial y}{\partial N_L}$ is similar to derivation for $\dfrac{\partial y}{\partial N_R}$. 
+
+However, since $N_L$ is negative for $\sin$, $\dfrac{\partial v}{\partial N_L}$ is
+%
+\begin{align*}
+    \dfrac{\partial v}{\partial N_L} &= \dfrac{\partial a}{\partial b} \cdot \dfrac{\partial b}{\partial N_L} \\[1em]
+    &= \cos(b) \cdot -\left(\dfrac{\pi \cdot d_{wheel}}{cD}\right) \\[1em]
+    &= -\cos\left(\dfrac{\pi \cdot d_{wheel}}{cD} \big(N_R - N_L \big)\right) \cdot \dfrac{\pi \cdot d_{wheel}}{cD}
+\end{align*}
+
+Therefore,
+%
+\begin{align*}
+    \dfrac{\partial y}{\partial N_L}
+    &= \begin{aligned}[t]
+        \dfrac{\pi \cdot d_{wheel}}{2c} \Bigg[\sin \left(\dfrac{\pi \cdot d_{wheel}}{cD} \left(N_R - N_L \right)\right) - (N_R + N_L) \cdot \\[0.5em] 
+        \cos \left(\dfrac{\pi \cdot d_{wheel}}{cD} \left(N_R - N_L \right)\right) \cdot \dfrac{\pi \cdot d_{wheel}}{cD} \Bigg]
+    \end{aligned} \\[1em]
+    &= \dfrac{\pi \cdot d_{wheel}}{2c} \sin(\theta) - \Delta U \cos(\theta) \cdot \dfrac{\pi \cdot d_{wheel}}{cD}
+\end{align*}
+
+\subsection{Standard deviation of $\theta$}
+
+From section 2.1, $\theta$ can be expressed in term of $N_R$ and $N_L$ as
+%
+\begin{align*}
+    \theta = f(N_R, N_L) = \dfrac{\pi \cdot d_{wheel}}{cD} \big(N_R - N_L \big)
+\end{align*}
+
+The standard deviation for $\theta$ can be expressed as
+%
+\begin{align*}
+    s_{\bar{\theta}} &= \sqrt{\big(f_{N_R}(\bar{N_R}, \bar{N_L}) \cdot s_{\bar{N_R}}\big)^2 + \big(f_{N_L}(\bar{N_R}, \bar{N_L}) \cdot s_{\bar{N_L}}\big)^2}  \\[1em]
+    s_{\bar{\theta}} &= \sqrt{\left(\dfrac{\partial \theta}{\partial N_R} \cdot s_{\bar{N_R}}\right)^2 + \left(\dfrac{\partial \theta}{\partial N_L} \cdot s_{\bar{N_L}}\right)^2}
+\end{align*}
+
+\begin{align*}
+    \dfrac{\partial \theta}{\partial N_R} &= \dfrac{\pi \cdot d_{wheel}}{cD} \\[1em]
+    \dfrac{\partial \theta}{\partial N_L} &= -\dfrac{\pi \cdot d_{wheel}}{cD}
+\end{align*}
+
+Therefore,
+%
+\begin{align*}
+    s_{\bar{\theta}} &= \sqrt{\left(\dfrac{\pi \cdot d_{wheel}}{cD} \cdot s_{\bar{N_R}}\right)^2 + \left(-\dfrac{\pi \cdot d_{wheel}}{cD} \cdot s_{\bar{N_L}}\right)^2}
+\end{align*}
+
+Since the magnitude of the coefficients of both $s_{\bar{N_R}}$ and $s_{\bar{N_L}}$ are the same and since the negative sign is made invalid by squaring, the expression can be simplified as
+%
+\begin{align*}
+    s_{\bar{\theta}} &= \dfrac{\pi \cdot d_{wheel}}{cD} \sqrt{s_{\bar{N_R}}^2 + s_{\bar{N_L}}^2}
+\end{align*}
+
+\section{Calculating standard deviation of $x$, $y$, and $theta$}
+\subsection{Runs 1 to 10}
+
+\begin{align*}
+    \bar{N_R} = 8177.0, \, \bar{N_L} = 8107.1, \, \bar{s_{N_R}} = 144.25, \, \bar{s_{N_L}} = 150.04
+\end{align*}
+
+\begin{align*}
+    \Delta U &= \dfrac{\pi \cdot d_{wheel}}{2c} \big(N_R + N_L \big) \\[1em]
+    &= \dfrac{\pi \cdot 100 \, mm}{2 \cdot 1024} \big(8177.0 + 8107.1 \big) \\[1em]
+    &= 2495 mm = 2.495 \, m
+\end{align*}
+
+\begin{align*}
+    \bar{\theta} &= \dfrac{\pi \cdot d_{wheel}}{cD} \big(\bar{N_R} - \bar{N_L} \big) \\[1em]
+    &= \dfrac{100 \, mm \cdot \pi}{1024 \cdot 230 \, mm} \big(8177.0 - 8107.1\big) \\[1em]
+    &= 0.0932 \, rad
+\end{align*}
+
+\subsubsection{Calculating $s_{\bar{x}}$}
+
+\begin{align*}
+    \dfrac{\partial x}{\partial N_R} &= \dfrac{\pi \cdot d_{wheel}}{2c} \cos(\theta) - \Delta U \sin(\theta) \cdot \dfrac{\pi \cdot d_{wheel}}{cD} \\[1em]
+    &= \dfrac{\pi \cdot 100 \, mm}{2 \cdot 1024} \cos(0.0932) - 2495 \, mm \cdot \sin(0.0932) \cdot \dfrac{\pi \cdot 100 \, mm}{1024 \cdot 230 \, mm} \\[1em]
+    &= -0.1569
+\end{align*}
+
+\begin{align*}
+    \dfrac{\partial x}{\partial N_L} &= \dfrac{\pi \cdot d_{wheel}}{2c} \cos(\theta) + \Delta U \sin(\theta) \cdot \dfrac{\pi \cdot d_{wheel}}{cD} \\[1em]
+    &= \dfrac{\pi \cdot 100 \, mm}{2 \cdot 1024} \cos(0.0932) + 2495 \, mm \cdot \sin(0.0932) \cdot \dfrac{\pi \cdot 100 \, mm}{1024 \cdot 230 \, mm} \\[1em]
+    &= 0.4621
+\end{align*}
+
+\begin{align*}
+    s_{\bar{x}} &= \sqrt{\left(\dfrac{\partial x}{\partial N_R} \cdot s_{\bar{N_R}}\right)^2 + \left(\dfrac{\partial x}{\partial N_L} \cdot s_{\bar{N_L}}\right)^2} \\[1em]
+    &= \sqrt{\left(-0.1569 \cdot 144.25\right)^2 + \left(0.4621 \cdot 150.04\right)^2} \\[1em]
+    &= 72.95 \, mm = 0.073 \, m
+\end{align*}
+
+\subsubsection{Calculating $s_{\bar{y}}$}
+
+\begin{align*}
+    \dfrac{\partial y}{\partial N_R} &= \dfrac{\pi \cdot d_{wheel}}{2c} \sin(\theta) + \Delta U \cos(\theta) \cdot \dfrac{\pi \cdot d_{wheel}}{cD} \\[1em]
+    &= \dfrac{\pi \cdot 100 \, mm}{2 \cdot 1024} \sin(0.0932) + 2495 \, mm \cdot \cos(0.0932) \cdot \dfrac{\pi \cdot 100 \, mm}{1024 \cdot 230 \, mm} \\[1em]
+    &= 3.331
+\end{align*}
+
+\begin{align*}
+    \dfrac{\partial y}{\partial N_L} &= \dfrac{\pi \cdot d_{wheel}}{2c} \sin(\theta) - \Delta U \cos(\theta) \cdot \dfrac{\pi \cdot d_{wheel}}{cD} \\[1em]
+    &= \dfrac{\pi \cdot 100 \, mm}{2 \cdot 1024} \sin(0.0932) - 2495 \, mm \cdot \cos(0.0932) \cdot \dfrac{\pi \cdot 100 \, mm}{1024 \cdot 230 \, mm} \\[1em]
+    &= -3.303
+\end{align*}
+
+\begin{align*}
+    s_{\bar{y}} &= \sqrt{\left(\dfrac{\partial y}{\partial N_R} \cdot s_{\bar{N_R}}\right)^2 + \left(\dfrac{\partial y}{\partial N_L} \cdot s_{\bar{N_L}}\right)^2} \\[1em]
+    &= \sqrt{\left(3.331 \cdot 144.25\right)^2 + \left(-3.303 \cdot 150.04\right)^2} \\[1em]
+    &= 689.6 \, mm = 0.69 \, m
+\end{align*}
+
+\subsubsection{Calculating $s_{\bar{\theta}}$}
+
+\begin{align*}
+    s_{\bar{\theta}} &= \dfrac{\pi \cdot d_{wheel}}{cD} \sqrt{s_{\bar{N_R}}^2 + s_{\bar{N_L}}^2} \\[1em]
+    &= \dfrac{\pi \cdot 100 \, mm}{1024 \cdot 230 \, mm} \sqrt{144.25^2 + 150.04^2} \\[1em]
+    &= 0.2775 \, rad = 15.9^\circ
+\end{align*}
+
+Therefore, for run 1 to 10, $s_{\bar{x}} = 0.073 \, m$, $s_{\bar{y}} = 0.69 \, m$, and $s_{\bar{\theta}} = 15.9^\circ$.
+
+\subsection{Runs 11 to 20}
+
+\begin{align*}
+    \bar{N_R} = 8166.0, \, \bar{N_L} = 8093.8, \, \bar{s_{N_R}} = 77.23, \, \bar{s_{N_L}} = 82.75
+\end{align*}
+
+\begin{align*}
+    \Delta U &= \dfrac{\pi \cdot d_{wheel}}{2c} \big(N_R + N_L \big) \\[1em]
+    &= \dfrac{\pi \cdot 100 \, mm}{2 \cdot 1024} \big(8166.0 + 8093.8 \big) \\[1em]
+    &= 2494 mm = 2.494 \, m
+\end{align*}
+
+\begin{align*}
+    \bar{\theta} &= \dfrac{\pi \cdot d_{wheel}}{cD} \big(\bar{N_R} - \bar{N_L} \big) \\[1em]
+    &= \dfrac{100 \, mm \cdot \pi}{1024 \cdot 230 \, mm} \big(8166.0 - 8093.8\big) \\[1em]
+    &= 0.0963 \, rad
+\end{align*}
+
+\subsubsection{Calculating $s_{\bar{x}}$}
+
+\begin{align*}
+    \dfrac{\partial x}{\partial N_R} &= \dfrac{\pi \cdot d_{wheel}}{2c} \cos(\theta) - \Delta U \sin(\theta) \cdot \dfrac{\pi \cdot d_{wheel}}{cD} \\[1em]
+    &= \dfrac{\pi \cdot 100 \, mm}{2 \cdot 1024} \cos(0.0963) - 2494 \, mm \cdot \sin(0.0963) \cdot \dfrac{\pi \cdot 100 \, mm}{1024 \cdot 230 \, mm} \\[1em]
+    &= -0.168
+\end{align*}
+
+\begin{align*}
+    \dfrac{\partial x}{\partial N_L} &= \dfrac{\pi \cdot d_{wheel}}{2c} \cos(\theta) + \Delta U \sin(\theta) \cdot \dfrac{\pi \cdot d_{wheel}}{cD} \\[1em]
+    &= \dfrac{\pi \cdot 100 \, mm}{2 \cdot 1024} \cos(0.0963) + 2494 \, mm \cdot \sin(0.0963) \cdot \dfrac{\pi \cdot 100 \, mm}{1024 \cdot 230 \, mm} \\[1em]
+    &= 0.473
+\end{align*}
+
+\begin{align*}
+    s_{\bar{x}} &= \sqrt{\left(\dfrac{\partial x}{\partial N_R} \cdot s_{\bar{N_R}}\right)^2 + \left(\dfrac{\partial x}{\partial N_L} \cdot s_{\bar{N_L}}\right)^2} \\[1em]
+    &= \sqrt{\left(-0.168 \cdot 77.23\right)^2 + \left(0.473 \cdot 82.75\right)^2} \\[1em]
+    &= 41.3 \, mm = 0.041 \, m
+\end{align*}
+
+\subsubsection{Calculating $s_{\bar{y}}$}
+
+\begin{align*}
+    \dfrac{\partial y}{\partial N_R} &= \dfrac{\pi \cdot d_{wheel}}{2c} \sin(\theta) + \Delta U \cos(\theta) \cdot \dfrac{\pi \cdot d_{wheel}}{cD} \\[1em]
+    &= \dfrac{\pi \cdot 100 \, mm}{2 \cdot 1024} \sin(0.0963) + 2494 \, mm \cdot \cos(0.0963) \cdot \dfrac{\pi \cdot 100 \, mm}{1024 \cdot 230 \, mm} \\[1em]
+    &= 3.312
+\end{align*}
+
+\begin{align*}
+    \dfrac{\partial y}{\partial N_L} &= \dfrac{\pi \cdot d_{wheel}}{2c} \sin(\theta) - \Delta U \cos(\theta) \cdot \dfrac{\pi \cdot d_{wheel}}{cD} \\[1em]
+    &= \dfrac{\pi \cdot 100 \, mm}{2 \cdot 1024} \sin(0.0963) - 2494 \, mm \cdot \cos(0.0963) \cdot \dfrac{\pi \cdot 100 \, mm}{1024 \cdot 230 \, mm} \\[1em]
+    &= -3.282
+\end{align*}
+
+\begin{align*}
+    s_{\bar{y}} &= \sqrt{\left(\dfrac{\partial y}{\partial N_R} \cdot s_{\bar{N_R}}\right)^2 + \left(\dfrac{\partial y}{\partial N_L} \cdot s_{\bar{N_L}}\right)^2} \\[1em]
+    &= \sqrt{\left(3.312 \cdot 77.23\right)^2 + \left(-3.282 \cdot 82.75\right)^2} \\[1em]
+    &= 373.2 \, mm = 0.373 \, m
+\end{align*}
+
+\subsubsection{Calculating $s_{\bar{\theta}}$}
+
+\begin{align*}
+    s_{\bar{\theta}} &= \dfrac{\pi \cdot d_{wheel}}{cD} \sqrt{s_{\bar{N_R}}^2 + s_{\bar{N_L}}^2} \\[1em]
+    &= \dfrac{\pi \cdot 100 \, mm}{1024 \cdot 230 \, mm} \sqrt{77.23^2 + 82.75^2} \\[1em]
+    &= 0.1510 \, rad = 8.65^\circ
+\end{align*}
+
+Therefore, for run 11 to 20, $s_{\bar{x}} = 0.041 \, m$, $s_{\bar{y}} = 0.373 \, m$, and $s_{\bar{\theta}} = 8.65^\circ$.
+
+\section{Discussions of finding}
+
+From both of the calculations, the standard deviation for $y$, $s_{\bar{y}}$ is much greater than the standard deviation for $x$, $s_{\bar{x}}$. The standar deviation for $\theta$, $s_{\bar{\theta}}$ is also significant ($15.9^\circ$ and $8.65^\circ$). This indicates that the estimated pose has significant uncertainty in heading, which leads to large uncertainty in lateral position.
+
+\chapter{Odometry Implementation}
+
+Using the MERLIN Odometry equations provided in Section 2.5 of the tutorial, the odometry function can be written as follows.
+
+\begin{lstlisting}
+function odometry(encoder_left, encoder_right, steering_angle, current_pose)
+{
+    // constant parameters for MERLIN robot
+    // WHEEL_DIAMETER and WHEEL_BASE are in mm
+
+    const WHEEL_DIAMETER = 100;
+    const ENCODER_RES = 1024;  
+    const WHEEL_BASE = 230;      
+    
+    let X = current_pose[0];
+    let Y = current_pose[1];
+    let theta = current_pose[2];
+    
+    const wheel_circumference = Math.PI * WHEEL_DIAMETER;
+    
+    // incremental distance for each wheeel [2.9]
+
+    let delta_U_left  = (encoder_left  / ENCODER_RES) * wheel_circumference;
+    let delta_U_right = (encoder_right / ENCODER_RES) * wheel_circumference;
+    
+    // distance traveled [2.10]
+
+    let delta_U = (delta_U_right + delta_U_left) / 2.0;
+
+    // incremental change of robot orientation [2.11]
+
+    let delta_theta = (delta_U_right - delta_U_left) / WHEEL_BASE;
+    
+    // update robot pose [2.12]
+
+    let X_new = X + delta_U * Math.cos(theta);
+    let Y_new = Y + delta_U * Math.sin(theta);
+    let theta_new = theta + delta_theta;
+    
+    // return updated robot pose
+
+    return [X_new, Y_new, theta_new];
+}
+\end{lstlisting}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% BIBLIOGRAPHY AND OTHER LISTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{plain}
+%\bibliography{Literature}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Appendix
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{appendix}
+
+%\input{Appendix}
+
+\end{appendix}
+
+\end{document}
+
