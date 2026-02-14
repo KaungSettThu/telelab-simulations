@@ -1,0 +1,11 @@
+\babel@toc {USenglish}{}\relax 
+\contentsline {chapter}{\numberline {1}The Imaginary Wheel}{3}{chapter.2}%
+\contentsline {section}{\numberline {1.1}Imaginary Wheel $\phi $ in Relation to Outer Wheel $\phi _o$}{3}{section.3}%
+\contentsline {section}{\numberline {1.2}Imaginary Wheel $\phi $ in Relation to Inner Wheel $\phi _i$}{4}{section.4}%
+\contentsline {chapter}{\numberline {2}Calculating the Robot Pose using the Odometry (Dead Reckoning)}{5}{chapter.5}%
+\contentsline {section}{\numberline {2.1}Pose Estimation in relation to the Velocity $v_{CR}$}{5}{section.6}%
+\contentsline {section}{\numberline {2.2}Pose Estimation in relation to Velocity at Imaginary Wheel $v_{IM}$}{8}{section.7}%
+\contentsline {section}{\numberline {2.3}Discrete Form of the Robot's Pose in relation to $v_{CR}$}{10}{section.8}%
+\contentsline {section}{\numberline {2.4}Recurrent Form of Equations}{10}{section.9}%
+\contentsline {chapter}{\numberline {3}Shifting and Rotation}{12}{chapter.16}%
+\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

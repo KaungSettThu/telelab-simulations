@@ -1,0 +1,458 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% HEADER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pdfminorversion=7
+\pdfcompresslevel=1 % schnellste Kompression
+%\pdfcompresslevel=9 % beste Kompression
+\pdfimageresolution=600
+
+\documentclass[12pt,bibliography=totoc]{scrreprt}
+
+\usepackage{i17report}
+
+\usepackage{scrhack} % used since scrreprt produces a warning when using totoc
+
+%% Language %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[USenglish]{babel}     %%%% english
+%\usepackage[ngerman]{babel}      %%%% german
+\usepackage[T1]{fontenc}
+\usepackage[ansinew]{inputenc}
+
+\usepackage{lmodern} %Type1-font for non-english texts and characters
+
+%% Hyperrefs and URLs %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[pdftex,                %%% hyper-references for pdftex
+bookmarks=true,%                   %%% generate bookmarks \ldots
+bookmarksnumbered=true,%           %%% \ldots with numbers
+hypertexnames=false,%              %%% needed for correct links to figures !!!
+hyperfootnotes=false,
+breaklinks=true,%                  %%% breaks lines, but links are very small
+linkcolor=red,%
+linkbordercolor={1 0 1}%
+]{hyperref}  %%% blue frames around links
+
+%% Packages for Graphics & Figures %%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+\usepackage[most]{tcolorbox}
+\usepackage{float}  % for [H]
+
+%% Packages for Tables %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{multirow}
+\usepackage{ltablex}
+\usepackage{booktabs}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\usepackage{tabularx}
+
+%% Packages for Coloring %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{color, xcolor}
+\definecolor{material_blue}{HTML}{027BE3}
+\definecolor{material_red}{HTML}{F44336}
+\definecolor{material_green}{HTML}{4CAF50}
+\definecolor{material_orange}{HTML}{FF9800}
+
+%% Packages for Math %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{units}
+\usepackage{relsize,exscale}
+\usepackage{parskip}
+
+%% Configuration for JavaScript %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\lstset{
+    language=[LaTeX]TeX,  % generic, no syntax highlighting errors
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    frame=single
+}
+
+%% Defined commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\bigint} [3] {\mathop{\mathlarger{\int\limits_{#1}^{#2}}} {#3}}  % a big integral
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% DOCUMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\pagestyle{empty} %No headings for the first pages.
+
+%% Title Page %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Tele-Experiment}
+\subject{Kinematics and Navigation of the MERLIN Robot}
+
+\author{Kaung Sett Thu}
+\matrnr{12503548}
+\submission{\today}
+
+\maketitle
+
+%% Inhaltsverzeichnis %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tableofcontents
+\cleardoublepage %The first chapter should start on an odd page.
+
+\pagestyle{plain}
+
+%% Chapters %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{The Imaginary Wheel}
+
+The relationship between the steering angle of the imaginary wheel $\phi$, the wheelbase $L$, and the radius of the robot $R$ can be described as follow.
+%
+\begin{align*}
+    \tan \phi &= \dfrac{L}{R}
+\end{align*}
+
+\section{Imaginary Wheel $\phi$ in Relation to Outer Wheel $\phi_o$}
+
+The turning radius of the outer wheel from \texttt{ICR} is $R + \frac{D}{2}$. Therefore
+%
+\begin{align*}
+    \tan \phi_o &= \dfrac{L}{R + \dfrac{D}{2}} \\[1em]
+    R + \dfrac{D}{2} &= \dfrac{L}{\tan \phi_o} \\[1em]
+    R &= \dfrac{L}{\tan \phi_o} - \dfrac{D}{2}
+\end{align*}
+%
+\emph{Substituting formula for R in terms of steering angle of the outer wheel to formula for the steering angle of the imaginary wheel}
+%
+\begin{align*}
+    \tan \phi &= \dfrac{L}{\dfrac{L}{\tan \phi_o} - \dfrac{D}{2}} \\[1em]
+    \tan \phi &= \dfrac{1}{\dfrac{1}{\tan \phi_o} - \dfrac{D}{2L}} \\[1em]
+    \tan \phi &= \dfrac{\tan \phi_o}{1 - \dfrac{D}{2L} \cdot \tan \phi_o} \\[1em]
+    \phi &= \arctan\left(\dfrac{\tan \phi_o}{1 - \dfrac{D}{2L} \cdot \tan \phi_o}\right)
+\end{align*}
+
+\section{Imaginary Wheel $\phi$ in Relation to Inner Wheel $\phi_i$}
+
+The turning radius of the inner wheel from \texttt{ICR} is $R - \frac{D}{2}$. Therefore
+%
+\begin{align*}
+    \tan \phi_i &= \dfrac{L}{R - \dfrac{D}{2}} \\[1em]
+    R - \dfrac{D}{2} &= \dfrac{L}{\tan \phi_i} \\[1em]
+    R &= \dfrac{L}{\tan \phi_i} + \dfrac{D}{2}
+\end{align*}
+%
+\emph{Substituting formula for R in terms of steering angle of the inner wheel to formula for the steering angle of the imaginary wheel}
+%
+\begin{align*}
+    \tan \phi &= \dfrac{L}{\dfrac{L}{\tan \phi_i} + \dfrac{D}{2}} \\[1em]
+    \tan \phi &= \dfrac{1}{\dfrac{1}{\tan \phi_i} + \dfrac{D}{2L}} \\[1em]
+    \tan \phi &= \dfrac{\tan \phi_i}{1 + \dfrac{D}{2L} \cdot \tan \phi_i} \\[1em]
+    \phi &= \arctan\left(\dfrac{\tan \phi_i}{1 + \dfrac{D}{2L} \cdot \tan \phi_i}\right)
+\end{align*}
+
+\chapter{Calculating the Robot Pose using the Odometry (Dead Reckoning)}
+\section{Pose Estimation in relation to the Velocity $v_{CR}$}
+
+The angular velocity of the robot $\omega(t)$ in relation to the velocity of the point $CR$ $v_{CR}(t)$ can be expressed as
+%
+\begin{align*}
+    \omega(t) &= \dfrac{v_{CR}(t)}{R_{CR}}
+\end{align*}
+
+Since $v_{CR}$ is constant, angular velocity $\omega$ can be expressed as a constant.
+%
+\begin{align*}
+    \omega &= \dfrac{v_{CR}}{R_{CR}}
+\end{align*}
+
+The relation of the steering angle $\phi$ to the radius from Instantenous Center of Rotation (ICR) $R_{CR}$ can be rearranged to express it in terms of the radius.
+%
+\begin{align*}
+    \tan \phi &= \dfrac{L}{R_{CR}} \\[1em]
+    R_{CR} &= \dfrac{L}{\tan \phi}
+\end{align*}
+
+Replacing the formula for radius $R_{CR}$ into the formula for angular velocity $\omega$,
+%
+\begin{align*}
+    \omega &= \dfrac{v_{CR}}{\dfrac{L}{\tan \phi}} \\[1em]
+    &= \dfrac{v_{CR}}{L} \cdot \tan \phi
+\end{align*}
+
+The pose estimation for the orientation of the robot $\theta$ can be expressed as
+%
+\begin{align*}
+    \theta(t) &= \theta_0 + \int_{0}^{t} \omega \, d\tau \\[1em]
+    &= \theta_0 + \omega \big[\tau\big]_{0}^{t} \\[1em]
+    &= \theta_0 + \omega \cdot t
+\end{align*}
+
+The pose estimation for $x$ coordinate of the robot can be expressed as
+%
+\begin{align*}
+    x(t) &= x_0 + \int_{0}^{t} v_{CR} \cdot \cos(\theta(\tau)) \, d\tau \\[1em]
+    &= x_0 + v_{CR} \int_{0}^{t} \cos(\theta_0 + \omega \cdot \tau) \, d\tau
+\end{align*}
+
+\emph{Integrating $\cos(\theta_0 + \omega \cdot \tau)$ using U-Substitution}
+
+Let
+%
+\begin{align*}
+    u = \theta_0 + \omega \cdot \tau
+\end{align*}
+%
+\begin{align*}
+    \dfrac{du}{d\tau} &= \omega \\[1em]
+    d\tau &= \dfrac{1}{\omega} \cdot du
+\end{align*}
+
+When $\tau = 0$,
+%
+\begin{align*}
+    u = \theta_0
+\end{align*}
+
+When $\tau = t$,
+%
+\begin{align*}
+    u = \theta_0 + \omega \cdot t
+\end{align*}
+%
+\begin{align*}
+    x(t) &= x_0 + v_{CR} \int_{\theta_0}^{\theta_0 + \omega \cdot t} \cos(u) \, \dfrac{1}{\omega} \cdot du \\[1em]
+    &= x_0 + \dfrac{v_{CR}}{\omega} \int_{\theta_0}^{\theta_0 + \omega \cdot t} \cos(u) \, \cdot du \\[1em]
+    &= x_0 + \dfrac{v_{CR}}{\omega} \Big[\sin(u)\Big]_{\theta_0}^{\theta_0 + \omega \cdot t} \\[1em]
+    &= x_0 + \dfrac{v_{CR}}{\omega} \big(\sin(\theta_0 + \omega \cdot t) - \sin(\theta_0) \big)
+\end{align*}
+
+Replacing the formula for the angular velocity $\omega$ into the equation,
+%
+\begin{align*}
+    x(t) &= x_0 + v_{CR} \cdot \dfrac{R_{CR}}{v_{CR}} \big(\sin(\theta_0 + \omega \cdot t) - \sin(\theta_0) \big) \\[1em]
+    &= x_0 + R_{CR} \big(\sin(\theta_0 + \omega \cdot t) - \sin(\theta_0) \big)
+\end{align*}
+
+The pose estimation for $y$ coordinate of the robot can be expressed as
+%
+\begin{align*}
+    y(t) &= y_0 + \int_{0}^{t} v_{CR} \cdot \sin(\theta(\tau)) \, d\tau \\[1em]
+    &= y_0 + v_{CR} \int_{0}^{t} \sin(\theta_0 + \omega \cdot \tau) \, d\tau
+\end{align*}
+
+\emph{Integrating $\sin(\theta_0 + \omega \cdot \tau)$ using U-Substitution}
+
+Let
+%
+\begin{align*}
+    u = \theta_0 + \omega \cdot \tau
+\end{align*}
+%
+\begin{align*}
+    \dfrac{du}{d\tau} &= \omega \\[1em]
+    d\tau &= \dfrac{1}{\omega} \cdot du
+\end{align*}
+
+When $\tau = 0$,
+%
+\begin{align*}
+    u = \theta_0
+\end{align*}
+
+When $\tau = t$,
+%
+\begin{align*}
+    u = \theta_0 + \omega \cdot t
+\end{align*}
+%
+\begin{align*}
+    y(t) &= y_0 + v_{CR} \int_{\theta_0}^{\theta_0 + \omega \cdot t} \sin(u) \, \dfrac{1}{\omega} \cdot du \\[1em]
+    &= y_0 + \dfrac{v_{CR}}{\omega} \int_{\theta_0}^{\theta_0 + \omega \cdot t} \sin(u) \, \cdot du \\[1em]
+    &= y_0 + \dfrac{v_{CR}}{\omega} \Big[-\cos(u)\Big]_{\theta_0}^{\theta_0 + \omega \cdot t} \\[1em]
+    &= y_0 + \dfrac{v_{CR}}{\omega} \big(\cos(\theta_0) - \cos(\theta_0 + \omega \cdot t) \big)
+\end{align*}
+
+Replacing the formula for the angular velocity $\omega$ into the equation,
+%
+\begin{align*}
+    y(t) &= y_0 + v_{CR} \cdot \dfrac{R_{CR}}{v_{CR}} \big(\cos(\theta_0) - \cos(\theta_0 + \omega \cdot t) \big) \\[1em]
+    &= y_0 + R_{CR} \big(\cos(\theta_0) - \cos(\theta_0 + \omega \cdot t) \big)
+\end{align*}
+
+The pose estimation in relation to the velocity $v_{CR}$ can collectively be expressed in a matrix form.
+%
+\begin{align*}
+    p(t) =
+    \begin{bmatrix}
+        x(t) \\
+        y(t) \\
+        \theta(t)
+    \end{bmatrix} =
+    \begin{bmatrix}
+        x_0 \\
+        y_0 \\
+        \theta_0
+    \end{bmatrix}
+    +
+    \begin{bmatrix}
+        R_{CR} \big(\sin(\theta_0 + \omega t) - \sin\theta_0 \big) \\
+        R_{CR} \big(\cos\theta_0 - \cos(\theta_0 + \omega t) \big) \\
+        \omega \cdot t
+    \end{bmatrix}
+\end{align*}
+
+\section{Pose Estimation in relation to Velocity at Imaginary Wheel $v_{IM}$}
+
+In the right-angled triangle formed by the rear axle center, the imaginary front wheel, and the instantaneous center of rotation (ICR), the distance from the ICR to the imaginary wheel, $R_{IM}$ is the hypotenuse of this triangle, while the wheelbase $L$ corresponds to the side opposite the steering angle $\phi$. The steering angle $\phi$ can therefore be expressed by the use of the $sine$ ratio.
+%
+\begin{align*}
+    \sin \phi = \dfrac{L}{R_{IM}} 
+\end{align*}
+
+The equation can be rearranged to express it in terms of the radius $R_{IM}$.
+%
+\begin{align*}
+    R_{IM} = \dfrac{L}{\sin \phi}
+\end{align*}
+
+An angular velocity $\omega$ can be expressed as follows.
+%
+\begin{align*}
+    \omega &= \dfrac{v_{IM}}{R_{IM}} \\[1em]
+    &= \dfrac{v_{IM}}{\dfrac{L}{\sin \phi}} \\[1em]
+    &=  \dfrac{v_{IM} \cdot \sin \phi}{L}
+\end{align*}
+
+Since the angular velocity $\omega$ remains the same for both the rear axle and the front wheel, the relationship between velocity at the rear axis $v_{CR}$ and the imaginary wheel $v_{IM}$ can be calculated.
+%
+\begin{align*}
+    \dfrac{v_{CR}}{R_{CR}} &= \dfrac{v_{IM}}{R_{IM}} \\[1em]
+    v_{CR} &= \dfrac{v_{IM}}{R_{IM}} \cdot R_{CR} \\[1em]
+    v_{CR} &= \dfrac{v_{IM} \cdot \sin \phi}{L} \cdot \dfrac{L}{\tan \phi} \\[1em]
+    v_{CR} &= v_{IM} \cdot \cos \phi
+\end{align*}
+
+Using this relationship between $v_{CR}$ and $v_{IM}$, the pose estimation for $x(t)$ and $y(t)$ can be expressed in terms of $v_{IM}$ as
+%
+\begin{align*}
+    x(t) &= x_0 + \int_{0}^{t} (v_{IM} \cdot \cos \phi) \cdot \cos(\theta(\tau)) \, d\tau \\[1em]
+    y(t) &= y_0 + \int_{0}^{t} (v_{IM} \cdot \cos \phi) \cdot \sin(\theta(\tau)) \, d\tau
+\end{align*}
+
+Since angular velocity $\omega$ is constant the pose estimation for orientation $\theta(t)$ remains the same.
+
+Following the same integration steps as section 2.1 for $x(t)$ and $y(t)$, we get
+%
+\begin{align*}
+    x(t) &= x_0 + \dfrac{v_{IM} \cdot \cos \phi}{\omega} \big(\sin(\theta_0 + \omega \cdot t) - \sin(\theta_0) \big) \\[1em] 
+    &= x_0 + (v_{IM} \cdot \cos \phi) \cdot \dfrac{L}{v_{IM} \cdot \sin \phi} \big(\sin(\theta_0 + \omega \cdot t) - \sin(\theta_0) \big) \\[1em] 
+    &= x_0 + \dfrac{L \cdot \cos \phi}{\sin \phi} \big(\sin(\theta_0 + \omega \cdot t) - \sin(\theta_0) \big) \\[1em] 
+    &= x_0 + \dfrac{L}{\tan \phi} \big(\sin(\theta_0 + \omega \cdot t) - \sin(\theta_0) \big)
+\end{align*}
+
+\begin{align*}
+    y(t) &= y_0 + \dfrac{v_{IM} \cdot \cos \phi}{\omega} \big(\cos(\theta_0) - \cos(\theta_0 + \omega \cdot t) \big) \\[1em]
+    &= y_0 + (v_{IM} \cdot \cos \phi) \cdot \dfrac{L}{v_{IM} \cdot \sin \phi} \big(\cos(\theta_0) - \cos(\theta_0 + \omega \cdot t) \big) \\[1em]
+    &= y_0 + \dfrac{L \cdot \cos \phi}{\sin \phi} \big(\cos(\theta_0) - \cos(\theta_0 + \omega \cdot t) \big) \\[1em]
+    &= y_0 + \dfrac{L}{\tan \phi} \big(\cos(\theta_0) - \cos(\theta_0 + \omega \cdot t) \big)
+\end{align*}
+
+Since $\dfrac{L}{tan \phi}$ is radius from rear axle $R_{CR}$, we can see that pose estimation in relation to velocity at imaginary wheel $v_{IM}$ has a similar matrix to pose estimation in relation to velocity at rear axle $v_{CR}$
+%
+\begin{align*}
+    p(t) =
+    \begin{bmatrix}
+        x(t) \\
+        y(t) \\
+        \theta(t)
+    \end{bmatrix} =
+    \begin{bmatrix}
+        x_0 \\
+        y_0 \\
+        \theta_0
+    \end{bmatrix}
+    +
+    \begin{bmatrix}
+        R_{CR} \big(\sin(\theta_0 + \omega t) - \sin\theta_0 \big) \\
+        R_{CR} \big(\cos\theta_0 - \cos(\theta_0 + \omega t) \big) \\
+        \omega \cdot t
+    \end{bmatrix}
+\end{align*}
+
+with angular velocity $\omega$ being expressed in terms of velocity at imaginary wheel $v_{IM}$ as
+%
+\begin{align*}
+    \omega = \dfrac{v_{IM} \cdot \sin \phi}{L}
+\end{align*}
+
+\section{Discrete Form of the Robot's Pose in relation to $v_{CR}$}
+
+Based on the matrix derived in section 2.1, assuming constant velocity $v_{CR}$ and constant steering angle $\phi$ over the sampling interval $\Delta t$, the exact discrete-time update of the robot pose can be expressed as
+%
+\begin{align*}
+    p(k+1) =
+    \begin{bmatrix}
+        x_{k+1} \\
+        y_{k+1} \\
+        \theta_{k+1}
+    \end{bmatrix} =
+    \begin{bmatrix}
+        x_k \\
+        y_k \\
+        \theta_k
+    \end{bmatrix}
+    +
+    \begin{bmatrix}
+        R_{CR} \big(\sin(\theta_k + \omega \Delta t) - \sin\theta_k \big) \\
+        R_{CR} \big(\cos\theta_k - \cos(\theta_k + \omega \Delta t) \big) \\
+        \omega \cdot \Delta t
+    \end{bmatrix}
+\end{align*}
+
+\section{Recurrent Form of Equations}
+
+For recurrent odometry updates under constant steering angle and velocity over the time $\Delta t$, the pose can be updated recurrently by following pipeline of equations
+
+\begin{enumerate}
+    \item Update the orientation
+        \begin{align*}
+            \theta_{k+1} = \theta_k + \dfrac{v_{CR} \cdot \tan \phi}{L} \cdot \Delta t
+        \end{align*}
+    \item Update the $x$ coordinate
+        \begin{align*}
+            x_{k+1} = x_k + \dfrac{L}{\tan \phi} \big(\sin \theta_{k+1} - \sin \theta_k \big)
+        \end{align*}
+    \item Update the $y$ coordinate
+        \begin{align*}
+            y_{k+1} = y_k + \dfrac{L}{\tan \phi} \big(\cos \theta_k - \cos \theta_{k+1} \big)
+        \end{align*} 
+\end{enumerate}
+
+In case of a straight line motion where $\phi$ is 0, the equations simplify to
+
+\begin{enumerate}
+    \item Update the orientation
+        \begin{align*}
+            \theta_{k+1} = \theta_k
+        \end{align*}
+    \item Update the $x$ coordinate
+        \begin{align*}
+            x_{k+1} = x_k + v_{CR}\cdot \cos \theta_k \cdot \Delta t
+        \end{align*}
+    \item Update the $y$ coordinate
+        \begin{align*}
+            y_{k+1} = y_k + v_{CR}\cdot \sin \theta_k \cdot \Delta t
+        \end{align*} 
+\end{enumerate}
+
+\chapter{Shifting and Rotation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% BIBLIOGRAPHY AND OTHER LISTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{plain}
+%\bibliography{Literature}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Appendix
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{appendix}
+
+%\input{Appendix}
+
+\end{appendix}
+
+\end{document}
+
