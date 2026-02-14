@@ -8,4 +8,7 @@
 \contentsline {section}{\numberline {2.3}Discrete Form of the Robot's Pose in relation to $v_{CR}$}{10}{section.8}%
 \contentsline {section}{\numberline {2.4}Recurrent Form of Equations}{10}{section.9}%
 \contentsline {chapter}{\numberline {3}Shifting and Rotation}{12}{chapter.16}%
+\contentsline {section}{\numberline {3.1}Shifting MERLIN 50 cm to the Right}{12}{section.17}%
+\contentsline {section}{\numberline {3.2}Rotating MERLIN $90^\circ $}{13}{section.20}%
+\contentsline {chapter}{\numberline {4}Analysis of the slipping of MERLIN}{15}{chapter.23}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

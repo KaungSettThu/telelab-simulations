@@ -438,6 +438,152 @@ In case of a straight line motion where $\phi$ is 0, the equations simplify to
 \end{enumerate}
 
 \chapter{Shifting and Rotation}
+\section{Shifting MERLIN 50 cm to the Right}
+
+Wheelbase ($L$): $230 \, mm$
+
+Max steering angle ($\phi_{\max}$): $14^\circ$
+
+\emph{Maximum steering angle is chosen to save as much longitutional distance as possible.}
+
+Turning radius ($R$):
+%
+\begin{align*}
+    R &= \dfrac{L}{\tan \phi_{\max}} \\[1em]
+    &= \dfrac{230 \, mm}{\tan 14^\circ} \\[1em]
+    &= 92.25 \, cm
+\end{align*}
+
+Lateral displacement ($dist$): $50 \, cm$
+
+Since $dist < 2R$, Maneuver A will be used.
+%
+\begin{align*}
+    \theta &= \arccos \left(\dfrac{2R - dist}{2R}\right) \\[1em]
+    &= \arccos \left(\dfrac{2 \cdot 92.25 \, cm - 50 \, cm}{2 \cdot 92.25 \, cm}\right) \\[1em]
+    &= 0.754 \, rad = 43.2^\circ
+\end{align*}
+%
+\begin{align*}
+    d_1 = d_3 &= R \cdot \theta \\[1em]
+    &= 92.25 \, cm \cdot 0.754 \, rad \\[1em]
+    &= 69.56 \, cm
+\end{align*}
+%
+\begin{align*}
+    d_2 = 0
+\end{align*}
+%
+\begin{align*}
+    d_4 &= 2 \cdot \sqrt{R^2 -\left(R - \dfrac{dist}{2}\right)^2} \\[1em]
+    &= 2 \cdot \sqrt{(92.25 \, cm)^2 -\left(92.25 \, cm - \dfrac{50 \, cm}{2}\right)^2} \\[1em]
+    &= 126.3 \, cm
+\end{align*}
+
+The set of maneuvers the robot should take is as follows
+\begin{enumerate}
+    \item $\phi = -14^\circ$ (towards right) for $69.56 \, cm$
+    \item $\phi = 14^\circ$ (towards left) for $69.56 \, cm$ 
+\end{enumerate}
+No straight segment needed.
+The robot needs at least 146.3 cm (126.3 cm + 20 cm for clearance) in front of it to clearly shift 50 cm right.
+
+\section{Rotating MERLIN $90^\circ$}
+
+Wheelbase ($L$): $230 \, mm$
+
+Max steering angle ($\phi_{\max}$): $14^\circ$
+
+\emph{Maximum steering angle is chosen to save as much longitutional distance as possible.}
+
+Turning radius ($R$):
+%
+\begin{align*}
+    R &= \dfrac{L}{\tan \phi_{\max}} \\[1em]
+    &= \dfrac{230 \, mm}{\tan 14^\circ} \\[1em]
+    &= 92.25 \, cm
+\end{align*}
+
+Angle to rotate ($\alpha$): $90^\circ = \dfrac{\pi}{2} \, rad$
+%
+\begin{align*}
+    \theta &= \arccos \left(\dfrac{\alpha}{2}\right) \\[1em]
+    &= \arccos \left(\dfrac{\pi / 2}{2}\right) \\[1em]
+    &= 0.6675 \, rad = 38.24^\circ
+\end{align*}
+%
+\begin{align*}
+    d_1 = d_3 &= R \cdot \theta \\[1em]
+    &= 92.25 \, cm \cdot 0.6675 \, rad \\[1em]
+    &= 61.58 \, cm
+\end{align*}
+%
+\begin{align*}
+    d_2 &= 2R \cdot \tan \theta \\[1em]
+    &= 2 \cdot (92.25 \, cm) \cdot \tan (0.6675 \, rad) \\[1em]
+    &= 145.39 \, cm
+\end{align*}
+
+The set of maneuvers the robot should take is as follows
+\begin{enumerate}
+    \item $\phi = -14^\circ$ (towards right) for $61.58 \, cm$
+    \item $\phi = 14^\circ$ (towards left) for $61.58 \, cm$ 
+\end{enumerate}
+No straight segment needed.
+The robot needs at least 165.39 cm (145.39 cm + 20 cm for clearance) in front of it to clearly rotate $90^\circ$.
+
+\chapter{Analysis of the slipping of MERLIN}
+
+To analyse the slipping of MERLIN on the straight line motion,
+
+\begin{enumerate}
+    \item Initial set- up
+        \begin{itemize}
+            \item The robot is aligned with the X axis i.e $\theta_{init} = 0$
+            \item Robot parameters
+                \begin{itemize}
+                    \item Wheel diameter: $d_{wheel} = 100 \, mm$ 
+                    \item Encoder resolution: $c = 1024$
+                    \item Wheelbase: $D = 230 \, mm$
+                \end{itemize}
+        \end{itemize}
+    \item Experiment produre
+        \begin{itemize}
+            \item Drive 10 times in a straight line for 1 m
+        \end{itemize}
+    \item Data collection methods
+        \begin{itemize}
+            \item Encoder values $N_R$ and $N_L$ to calculate distance and heading
+            \item IMU to integrate heading $\theta_{gyro}$
+            \item Tracking server to record actual $x$, $y$ and $z$ using IR Sensors
+        \end{itemize}
+    \item Identify systematic and non-systematic errors
+        \begin{itemize}
+            \item The mean values of the left and right encoder readings help identify systematic errors
+            \item High deviations in the runs identify random slippage and other non-systematic errors
+        \end{itemize}
+    \item Calculation of control odometry
+        \begin{itemize}
+            \item The control coordinates of the MERLIN robot can be calculated from the encoder values using the formulas
+            \begin{align*}
+                x &= \dfrac{\pi \cdot d_{wheel}}{2c} \big(N_R + N_L \big) \cdot \cos \left(\dfrac{\pi \cdot d_{wheel}}{cD} \big(N_R - N_L \big)\right) \\[1em]
+                y &= \dfrac{\pi \cdot d_{wheel}}{2c} \big(N_R + N_L \big) \cdot \sin \left(\dfrac{\pi \cdot d_{wheel}}{cD} \big(N_R - N_L \big)\right) \\[1em]
+                \theta &= \dfrac{\pi \cdot d_{wheel}}{cD} \big(N_R - N_L \big)
+            \end{align*}
+            \item These values are the control values
+        \end{itemize}
+    \item Measurement of actual values
+        \begin{itemize}
+            \item IMU to measure the final heading of the robot
+            \item Tracking server to get the actual $x$ and $y$ coordinate of the robot
+        \end{itemize}
+    \item Compare control values and actual values
+        \begin{itemize}
+            \item Comparing calculated $x$, $y$, and $theta$ and the measured $x$, $y$, and theta gives the slipping of the MERLIN robot
+            \item Use $\big(x_{ctrl}, y_{ctrl}\big)$ and $\big(x_{act}, y_{act}\big)$ coordinates to calculate the longitutional slippage
+            \item The differece between $\theta_{act}$ and $\theta_{ctrl}$ gives the orientation error
+        \end{itemize}
+\end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% BIBLIOGRAPHY AND OTHER LISTS
