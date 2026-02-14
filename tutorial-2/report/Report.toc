@@ -15,4 +15,7 @@
 \contentsline {section}{\numberline {4.3}Map 3}{14}{section.52}%
 \contentsline {section}{\numberline {4.4}Map 4}{16}{section.59}%
 \contentsline {section}{\numberline {4.5}Map 5}{18}{section.66}%
+\contentsline {chapter}{\numberline {A}Roadmap Method Evidences}{21}{appendix.73}%
+\contentsline {chapter}{\numberline {B}Potential Field Method Evidences}{29}{appendix.104}%
+\contentsline {chapter}{\numberline {C}Distance Transform Method Evidences}{37}{appendix.135}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

@@ -137,18 +137,18 @@ Evidence screenshots will be provided in Appendix A.
 
 \begin{enumerate}
     \item The algorithm always finds a path.
-    \item The algotithm always finds the shortest path.
-    \item The alogirthm is suitable for all types of maps, provided the fact that the map is known and static.
-    \item Since the algorithm finds semi-free paths connecting the vertices of the obstacles, the algorithm risks colliding to the obstacles if there are control noise and minor inaccuracies in the robot's movement. To avoid this the obstacles should be grown to give some distace between the robot and the obstacles on the planned path. 
+    \item The algorithm always finds the shortest path.
+    \item The algorithm is suitable for all types of maps, provided the fact that the map is known and static.
+    \item Since the algorithm finds semi-free paths connecting the vertices of the obstacles, the algorithm risks colliding with the obstacles if there is control noise and minor inaccuracies in the robot's movement. To avoid this the obstacles should be grown to give some distance between the robot and the obstacles on the planned path. 
 \end{enumerate}
 
 \chapter{Investigation of the Potential Field Method}
 
 \section{Effects of Parameters}
 \begin{enumerate}
-    \item When the attractig potential gain is increased, the robot is attracted stronger to the goal position, sometimes even on the risk of colliding into the obstacles. When the attracting potential is reduced, the risk of robot getting trapped in local minima is increased and the robot may risk not reaching the goal.
-    \item When the repulsing potential gain is increased the robot will try harder to avoid the obstacles; there are observed to be sharper and stronger turns around the obstacles. When the repulsing potential is reduced, the robot tend to move closer to the obstacles.
-    \item When the minimal distance value is increased, the robot will move away from the obstacles from a further distace. However, when the available path between the obstacles is too narrow, the robot may consider the path as blocked and will not consider the path. When the minimal distance value is decreased, the robot will move too close to the obstacles before being effected by the repulsing potential.
+    \item When the attracting potential gain is increased, the robot is attracted more strongly to the goal position, sometimes even on the risk of colliding into the obstacles. When the attracting potential is reduced, the risk of robot getting trapped in local minima is increased and the robot may risk not reaching the goal.
+    \item When the repulsing potential gain is increased the robot will try harder to avoid the obstacles; there are observed to be sharper and more strongly turns around the obstacles. When the repulsing potential is reduced, the robot tends to move closer to the obstacles.
+    \item When the minimal distance value is increased, the robot will move away from the obstacles from a further distance. However, when the available path between the obstacles is too narrow, the robot may consider the path as blocked and will not consider the path. When the minimal distance value is decreased, the robot will move too close to the obstacles before being effected by the repulsing potential.
     \item The parameters need to be adjusted for different maps. Each of the map have different arrangement of obstacles and the robot require different parameters to navigate them.
 \end{enumerate}
 
@@ -203,16 +203,16 @@ Evidence screenshots will be provided in Appendix B.
             \item Map 2 from (84, 310) to (201, 294), and from (70, 100) to (437, 31)
             \item Map 3 from (5, 5) to (495, 495), from (311, 388) to (366, 346), and from (106, 399) to (298, 59)
             \item Map 4 from (441, 22) to (142, 462)
-            \item Map 5 ffrom (5, 5) to (495, 495), from (135, 256) to (206, 173), and from (94, 481) to (233, 68)
+            \item Map 5 from (5, 5) to (495, 495), from (135, 256) to (206, 173), and from (94, 481) to (233, 68)
         \end{itemize}
         The problem that the Potential Field method suffer from is the local minima. Since the Potential Field method method relies on the attracting potential and repulsing potential, the robot can get trapped in positions where the potentials cancel each other out and the robot does not know where to move anymore.
-    \item Compared to the Roadmap Method, the algorithm does not find the shortest path in any of the simulations. This is due to the fact that the Potential Field method is a local planner and is prioritized on avoiding the obstacles and not in finding the optimal path.
-    \item The algorithm is not suitable for all types of maps. The alogirthm does not work well in maps where \begin{itemize}
-        \item there are concave obstacles with pocket in which the robots can get trapped inaccuracies
+    \item Compared to the Roadmap Method, the algorithm does not find the shortest path in any of the simulations because it follows the gradient of the potential field rather than performing global optimization.
+    \item The algorithm is not suitable for all types of maps. The algorithm does not work well in maps where \begin{itemize}
+        \item there are concave obstacles with pocket in which the robots can get trapped.
         \item there are very long obstacles where the robot cannot find a path around if the goal is behind the obstacle
         \item there are a lot of obstacles with their overlapping repulsive potentials preventing the robot from finding the path
     \end{itemize}
-    \item The Potential Field Method is a local planner and will face problems with reliability when used as a global planner. It cannot realiably find the path to the goal everytime. The solution to it would be to use it in combination with a global planner, to avoid dynamic obstacles on the path. The planner is also prone to getting trapped in  the local minima which can be avoided by employing the random walk method.
+    \item The Potential Field Method is a local planner and will face problems with reliability when used as a global planner. It cannot reliably find the path to the goal everytime. The solution to it would be to use it in combination with a global planner, to avoid dynamic obstacles on the path. The planner is also prone to getting trapped in  the local minima which can be avoided by employing the random walk method.
 \end{enumerate}
 
 \chapter{Investigation of Distance Transform Method}
@@ -261,9 +261,9 @@ Evidence screenshots will be provided in Appendix C.
 \section{Discussion of Observations}
 \begin{enumerate}
     \item The algorithm always finds a path.
-    \item Even tough the algorithm always find the shortest path in term of the grid, relative to Roadmap Method, the Distance Transform method is observed to find a slightly longer path in all of the maps. Due to that it can be concluded that the algorithm does not find the shortest path. This is because the Distance Transform method works by finding a path from one grid to another. This prevents the robot from taking the globally shortest path.
-    \item The alogirthm is suitable for all types of maps, provided the fact that the map is known and static.
-    \item The primary problem that the Distance Transform suffer is it's requirement for a high computational power. The computational power required increases with the resolution  of the grid. To solve this, a scanning algorithm could be used where only four neighbours in considered in the first scan and four other in the reverse scan.
+    \item Even tough the algorithm always finds the shortest path in terms of the grid, relative to Roadmap Method, the Distance Transform method is observed to find a slightly longer path in all of the maps. Due to that it can be concluded that the algorithm does not find the shortest path. This is because the Distance Transform method works by finding a path from one grid to another. This prevents the robot from taking the globally shortest path.
+    \item The algorithm is suitable for all types of maps, provided the fact that the map is known and static.
+    \item The primary problem that the Distance Transform suffer is its requirement for a high computational power. The computational power required increases with the resolution  of the grid. To solve this, a scanning algorithm could be used where only four neighbours in considered in the first scan and four other in the reverse scan.
 \end{enumerate}
 
 \chapter{Comparing of the Path Planning Methods}
@@ -289,7 +289,7 @@ Evidence screenshots will be provided in Appendix C.
 
 The potential field method results in a path that goes under the obstacle. This is due to the attracting potential of the goal pulling the robot towards it. The roadmap method plans the path towards the vertex of the obstacle between the start and the goal and then straight to the goal. The distance transform method goes diagonal across the map then straight down to the obstacle the grid does not allow direct straight line path towards the goal.
 
-For this type of map with large, static and polygonal obstacles, roadmap method will be a best fit since it can easily find a shortest path without consuming a lot of computational power.
+For this type of map with large, static and polygonal obstacles, roadmap method will be the best fit since it can easily find a shortest path without consuming a lot of computational power.
 
 \section{Map 2}
 
@@ -311,9 +311,9 @@ For this type of map with large, static and polygonal obstacles, roadmap method 
     \caption{Distance Transform}
 \end{figure}
 
-In the potential field method the robot avoids the small obstacle and move straight to the goal. It is slightly affected by an obstacle in the mid way due to the high repulsive potential and high repulsion range. The roadmap and the distace transform work in similar ways with the only difference being that thhe distace transform utilizes the empty space between the obstacles.
+In the potential field method the robot avoids the small obstacle and moves straight to the goal. It is slightly affected by an obstacle in the mid way due to the high repulsive potential and high repulsion range. The roadmap and the distance transform work in similar ways with the only difference being that the distance transform utilizes the empty space between the obstacles.
 
-For this type of map with polygonal obstacles that has concave pockets and a lot of free spaces between obstacles, distace transform method will be a best fit since it make use of available free space between the obstacles. The roadmap method finds the path that is unnecessarily close to the obstacles risking the getting trapped in the pocket of the obstacle in a real world implementation.
+For this type of map with polygonal obstacles that has concave pockets and a lot of free spaces between obstacles, distance transform method will be the best fit since it make use of available free space between the obstacles. The roadmap method finds the path that is unnecessarily close to the obstacles risking getting trapped in the pocket of the obstacle in a real world implementation.
 
 \section{Map 3}
 
@@ -335,9 +335,9 @@ For this type of map with polygonal obstacles that has concave pockets and a lot
     \caption{Distance Transform}
 \end{figure}
 
-Even after tuning of the parameters the potential field method cannot find a path from the start to the goal. The planner reaches local minima and is blocked by a long side of the obstacle. Roadmap finds a smoother and shorter path compared to distance transform as distace transform follows the grid.
+Even after tuning of the parameters the potential field method cannot find a path from the start to the goal. The planner reaches local minima and is blocked by a long side of the obstacle. Roadmap finds a smoother and shorter path compared to distance transform as distance transform follows the grid.
 
-For this type of map with long edges and simple polygonal obstacles, roadmap method would be a best fit as the long edges of the obstacles can be utilized.
+For this type of map with long edges and simple polygonal obstacles, roadmap method would be the best fit as the long edges of the obstacles can be utilized.
 
 \section{Map 4}
 
@@ -359,7 +359,7 @@ For this type of map with long edges and simple polygonal obstacles, roadmap met
     \caption{Distance Transform}
 \end{figure}
 
-All three of the methods follow a very similar path from a start to goal position. However, if the start and end positions were different, the map has a lot of pockets in which the robot can be trapped if the potential filed method were to be used.
+All three of the methods follow a very similar path from a start to goal position. However, if the start and end positions were different, the map has a lot of pockets in which the robot can be trapped if the potential field method were to be used.
 
 For this type of map with a lot of concave obstacles, distance transform method could be used as it is the planner that is the least affected by the complexity of the obstacles, ensuring the path to be found.
 
@@ -385,7 +385,7 @@ For this type of map with a lot of concave obstacles, distance transform method 
 
 The potential field method is observed to have failed to find a path from start to goal position. The robot does not escape from local minima even after adjusting the parameters. 
 
-Even though the roadmap method seems to give a smoother and more direct path, in the environment with a lot of scattered obstacles, it can get very computationally expensive due to a large number of vertices. Therefore, distance transform method would be a best method for environment with many scattered obstacles.
+Even though the roadmap method seems to give a smoother and more direct path, in the environment with a lot of scattered obstacles, it can get very computationally expensive due to a large number of vertices. Therefore, distance transform method would be the best method for environment with many scattered obstacles.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% BIBLIOGRAPHY AND OTHER LISTS
@@ -397,6 +397,282 @@ Even though the roadmap method seems to give a smoother and more direct path, in
 %% Appendix
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{appendix}
+
+\chapter{Roadmap Method Evidences}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/roadmap-1.1.png}
+    \caption{Roadmap Map 1 Simulation 1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/roadmap-1.2.png}
+    \caption{Roadmap Map 1 Simulation 2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/roadmap-1.3.png}
+    \caption{Roadmap Map 1 Simulation 3}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/roadmap-2.1.png}
+    \caption{Roadmap Map 2 Simulation 1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/roadmap-2.2.png}
+    \caption{Roadmap Map 2 Simulation 2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/roadmap-2.3.png}
+    \caption{Roadmap Map 2 Simulation 3}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/roadmap-3.1.png}
+    \caption{Roadmap Map 3 Simulation 1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/roadmap-3.2.png}
+    \caption{Roadmap Map 3 Simulation 2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/roadmap-3.3.png}
+    \caption{Roadmap Map 3 Simulation 3}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/roadmap-4.1.png}
+    \caption{Roadmap Map 4 Simulation 1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/roadmap-4.2.png}
+    \caption{Roadmap Map 4 Simulation 2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/roadmap-4.3.png}
+    \caption{Roadmap Map 4 Simulation 3}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/roadmap-5.1.png}
+    \caption{Roadmap Map 5 Simulation 1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/roadmap-5.2.png}
+    \caption{Roadmap Map 5 Simulation 2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/roadmap-5.3.png}
+    \caption{Roadmap Map 5 Simulation 3}
+\end{figure}
+
+\chapter{Potential Field Method Evidences}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/potential-1.1.png}
+    \caption{Potential Map 1 Simulation 1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/potential-1.2.png}
+    \caption{Potential Map 1 Simulation 2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/potential-1.3.png}
+    \caption{Potential Map 1 Simulation 3}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/potential-2.1.png}
+    \caption{Potential Map 2 Simulation 1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/potential-2.2.png}
+    \caption{Potential Map 2 Simulation 2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/potential-2.3.png}
+    \caption{Potential Map 2 Simulation 3}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/potential-3.1.png}
+    \caption{Potential Map 3 Simulation 1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/potential-3.2.png}
+    \caption{Potential Map 3 Simulation 2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/potential-3.3.png}
+    \caption{Potential Map 3 Simulation 3}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/potential-4.1.png}
+    \caption{Potential Map 4 Simulation 1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/potential-4.2.png}
+    \caption{Potential Map 4 Simulation 2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/potential-4.3.png}
+    \caption{Potential Map 4 Simulation 3}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/potential-5.1.png}
+    \caption{Potential Map 5 Simulation 1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/potential-5.2.png}
+    \caption{Potential Map 5 Simulation 2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/potential-5.3.png}
+    \caption{Potential Map 5 Simulation 3}
+\end{figure}
+
+\chapter{Distance Transform Method Evidences}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/dtransform-1.1.png}
+    \caption{Distance Transform Map 1 Simulation 1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/dtransform-1.2.png}
+    \caption{Distance Transform Map 1 Simulation 2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/dtransform-1.3.png}
+    \caption{Distance Transform Map 1 Simulation 3}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/dtransform-2.1.png}
+    \caption{Distance Transform Map 2 Simulation 1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/dtransform-2.2.png}
+    \caption{Distance Transform Map 2 Simulation 2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/dtransform-2.3.png}
+    \caption{Distance Transform Map 2 Simulation 3}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/dtransform-3.1.png}
+    \caption{Distance Transform Map 3 Simulation 1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/dtransform-3.2.png}
+    \caption{Distance Transform Map 3 Simulation 2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/dtransform-3.3.png}
+    \caption{Distance Transform Map 3 Simulation 3}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/dtransform-4.1.png}
+    \caption{Distance Transform Map 4 Simulation 1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/dtransform-4.2.png}
+    \caption{Distance Transform Map 4 Simulation 2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/dtransform-4.3.png}
+    \caption{Distance Transform Map 4 Simulation 3}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/dtransform-5.1.png}
+    \caption{Distance Transform Map 5 Simulation 1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/dtransform-5.2.png}
+    \caption{Distance Transform Map 5 Simulation 2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../screenshots/dtransform-5.3.png}
+    \caption{Distance Transform Map 5 Simulation 3}
+\end{figure}
 
 %\input{Appendix}
 

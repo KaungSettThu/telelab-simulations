@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.29)  8 FEB 2026 05:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.29)  14 FEB 2026 19:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1024,6 +1024,11 @@ chapter 1.
 
 ] [4]
 chapter 2.
+
+Overfull \hbox (1.82265pt too wide) in paragraph at lines 149--150
+[]\T1/lmr/m/n/12 When the at-tract-ing po-ten-tial gain is in-creased, the robot is at-tracted more strongly
+ []
+
 [5
 
 ]
@@ -1036,12 +1041,12 @@ chapter 3.
 
 ] [9]
 chapter 4.
-<../screenshots/map1-potential.png, id=145, 300.1614pt x 173.80936pt>
+<../screenshots/map1-potential.png, id=151, 300.1614pt x 173.80936pt>
 File: ../screenshots/map1-potential.png Graphic file (type png)
 <use ../screenshots/map1-potential.png>
 Package pdftex.def Info: ../screenshots/map1-potential.png  used on input line 274.
 (pdftex.def)             Requested size: 448.13095pt x 259.4934pt.
-<../screenshots/map1-roadmap.png, id=147, 300.1614pt x 173.80936pt>
+<../screenshots/map1-roadmap.png, id=153, 300.1614pt x 173.80936pt>
 File: ../screenshots/map1-roadmap.png Graphic file (type png)
 <use ../screenshots/map1-roadmap.png>
 Package pdftex.def Info: ../screenshots/map1-roadmap.png  used on input line 280.
@@ -1049,75 +1054,75 @@ Package pdftex.def Info: ../screenshots/map1-roadmap.png  used on input line 280
 [10
 
  <../screenshots/map1-potential.png>]
-<../screenshots/map1-dtransform.png, id=156, 300.1614pt x 173.80936pt>
+<../screenshots/map1-dtransform.png, id=162, 300.1614pt x 173.80936pt>
 File: ../screenshots/map1-dtransform.png Graphic file (type png)
 <use ../screenshots/map1-dtransform.png>
 Package pdftex.def Info: ../screenshots/map1-dtransform.png  used on input line 286.
 (pdftex.def)             Requested size: 448.13095pt x 259.4934pt.
  [11 <../screenshots/map1-roadmap.png> <../screenshots/map1-dtransform.png>]
-<../screenshots/map2-potential.png, id=167, 300.1614pt x 173.80936pt>
+<../screenshots/map2-potential.png, id=173, 300.1614pt x 173.80936pt>
 File: ../screenshots/map2-potential.png Graphic file (type png)
 <use ../screenshots/map2-potential.png>
 Package pdftex.def Info: ../screenshots/map2-potential.png  used on input line 298.
 (pdftex.def)             Requested size: 448.13095pt x 259.4934pt.
-<../screenshots/map2-roadmap.png, id=168, 300.1614pt x 173.80936pt>
+<../screenshots/map2-roadmap.png, id=174, 300.1614pt x 173.80936pt>
 File: ../screenshots/map2-roadmap.png Graphic file (type png)
 <use ../screenshots/map2-roadmap.png>
 Package pdftex.def Info: ../screenshots/map2-roadmap.png  used on input line 304.
 (pdftex.def)             Requested size: 448.13095pt x 259.4934pt.
  [12 <../screenshots/map2-potential.png>]
-<../screenshots/map2-dtransform.png, id=176, 300.1614pt x 173.80936pt>
+<../screenshots/map2-dtransform.png, id=182, 300.1614pt x 173.80936pt>
 File: ../screenshots/map2-dtransform.png Graphic file (type png)
 <use ../screenshots/map2-dtransform.png>
 Package pdftex.def Info: ../screenshots/map2-dtransform.png  used on input line 310.
 (pdftex.def)             Requested size: 448.13095pt x 259.4934pt.
  [13 <../screenshots/map2-roadmap.png> <../screenshots/map2-dtransform.png>]
-<../screenshots/map3-potential.png, id=188, 300.1614pt x 173.80936pt>
+<../screenshots/map3-potential.png, id=194, 300.1614pt x 173.80936pt>
 File: ../screenshots/map3-potential.png Graphic file (type png)
 <use ../screenshots/map3-potential.png>
 Package pdftex.def Info: ../screenshots/map3-potential.png  used on input line 322.
 (pdftex.def)             Requested size: 448.13095pt x 259.4934pt.
-<../screenshots/map3-roadmap.png, id=189, 300.1614pt x 173.80936pt>
+<../screenshots/map3-roadmap.png, id=195, 300.1614pt x 173.80936pt>
 File: ../screenshots/map3-roadmap.png Graphic file (type png)
 <use ../screenshots/map3-roadmap.png>
 Package pdftex.def Info: ../screenshots/map3-roadmap.png  used on input line 328.
 (pdftex.def)             Requested size: 448.13095pt x 259.4934pt.
  [14 <../screenshots/map3-potential.png>]
-<../screenshots/map3-dtransform.png, id=197, 300.1614pt x 173.80936pt>
+<../screenshots/map3-dtransform.png, id=203, 300.1614pt x 173.80936pt>
 File: ../screenshots/map3-dtransform.png Graphic file (type png)
 <use ../screenshots/map3-dtransform.png>
 Package pdftex.def Info: ../screenshots/map3-dtransform.png  used on input line 334.
 (pdftex.def)             Requested size: 448.13095pt x 259.4934pt.
  [15 <../screenshots/map3-roadmap.png> <../screenshots/map3-dtransform.png>]
-<../screenshots/map4-potential.png, id=208, 300.1614pt x 173.80936pt>
+<../screenshots/map4-potential.png, id=214, 300.1614pt x 173.80936pt>
 File: ../screenshots/map4-potential.png Graphic file (type png)
 <use ../screenshots/map4-potential.png>
 Package pdftex.def Info: ../screenshots/map4-potential.png  used on input line 346.
 (pdftex.def)             Requested size: 448.13095pt x 259.4934pt.
-<../screenshots/map4-roadmap.png, id=209, 300.1614pt x 173.80936pt>
+<../screenshots/map4-roadmap.png, id=215, 300.1614pt x 173.80936pt>
 File: ../screenshots/map4-roadmap.png Graphic file (type png)
 <use ../screenshots/map4-roadmap.png>
 Package pdftex.def Info: ../screenshots/map4-roadmap.png  used on input line 352.
 (pdftex.def)             Requested size: 448.13095pt x 259.4934pt.
  [16 <../screenshots/map4-potential.png>]
-<../screenshots/map4-dtransform.png, id=217, 300.1614pt x 173.80936pt>
+<../screenshots/map4-dtransform.png, id=223, 300.1614pt x 173.80936pt>
 File: ../screenshots/map4-dtransform.png Graphic file (type png)
 <use ../screenshots/map4-dtransform.png>
 Package pdftex.def Info: ../screenshots/map4-dtransform.png  used on input line 358.
 (pdftex.def)             Requested size: 448.13095pt x 259.4934pt.
  [17 <../screenshots/map4-roadmap.png> <../screenshots/map4-dtransform.png>]
-<../screenshots/map5-potential.png, id=228, 300.1614pt x 173.80936pt>
+<../screenshots/map5-potential.png, id=234, 300.1614pt x 173.80936pt>
 File: ../screenshots/map5-potential.png Graphic file (type png)
 <use ../screenshots/map5-potential.png>
 Package pdftex.def Info: ../screenshots/map5-potential.png  used on input line 370.
 (pdftex.def)             Requested size: 448.13095pt x 259.4934pt.
-<../screenshots/map5-roadmap.png, id=229, 300.1614pt x 173.80936pt>
+<../screenshots/map5-roadmap.png, id=235, 300.1614pt x 173.80936pt>
 File: ../screenshots/map5-roadmap.png Graphic file (type png)
 <use ../screenshots/map5-roadmap.png>
 Package pdftex.def Info: ../screenshots/map5-roadmap.png  used on input line 376.
 (pdftex.def)             Requested size: 448.13095pt x 259.4934pt.
  [18 <../screenshots/map5-potential.png>]
-<../screenshots/map5-dtransform.png, id=237, 300.1614pt x 173.80936pt>
+<../screenshots/map5-dtransform.png, id=243, 300.1614pt x 173.80936pt>
 File: ../screenshots/map5-dtransform.png Graphic file (type png)
 <use ../screenshots/map5-dtransform.png>
 Package pdftex.def Info: ../screenshots/map5-dtransform.png  used on input line 382.
@@ -1137,23 +1142,281 @@ Class scrreprt Warning: You are using `\begin{appendix}...\end{appendix}'.
 (scrreprt)              and replace `\begin{appendix}' by command
 (scrreprt)              `\appendix' on input line 399.
 
-[20] (./Report.aux)
+[20]
+chapter A.
+<../screenshots/roadmap-1.1.png, id=259, 298.83646pt x 172.12305pt>
+File: ../screenshots/roadmap-1.1.png Graphic file (type png)
+<use ../screenshots/roadmap-1.1.png>
+Package pdftex.def Info: ../screenshots/roadmap-1.1.png  used on input line 405.
+(pdftex.def)             Requested size: 448.13095pt x 258.13138pt.
+<../screenshots/roadmap-1.2.png, id=260, 298.83646pt x 172.12305pt>
+File: ../screenshots/roadmap-1.2.png Graphic file (type png)
+<use ../screenshots/roadmap-1.2.png>
+Package pdftex.def Info: ../screenshots/roadmap-1.2.png  used on input line 411.
+(pdftex.def)             Requested size: 448.13095pt x 258.13138pt.
+[21
+
+ <../screenshots/roadmap-1.1.png>]
+<../screenshots/roadmap-1.3.png, id=268, 298.83646pt x 172.12305pt>
+File: ../screenshots/roadmap-1.3.png Graphic file (type png)
+<use ../screenshots/roadmap-1.3.png>
+Package pdftex.def Info: ../screenshots/roadmap-1.3.png  used on input line 417.
+(pdftex.def)             Requested size: 448.13095pt x 258.13138pt.
+<../screenshots/roadmap-2.1.png, id=269, 298.83646pt x 172.12305pt>
+File: ../screenshots/roadmap-2.1.png Graphic file (type png)
+<use ../screenshots/roadmap-2.1.png>
+Package pdftex.def Info: ../screenshots/roadmap-2.1.png  used on input line 423.
+(pdftex.def)             Requested size: 448.13095pt x 258.13138pt.
+ [22 <../screenshots/roadmap-1.2.png> <../screenshots/roadmap-1.3.png>]
+<../screenshots/roadmap-2.2.png, id=280, 298.83646pt x 172.12305pt>
+File: ../screenshots/roadmap-2.2.png Graphic file (type png)
+<use ../screenshots/roadmap-2.2.png>
+Package pdftex.def Info: ../screenshots/roadmap-2.2.png  used on input line 429.
+(pdftex.def)             Requested size: 448.13095pt x 258.13138pt.
+<../screenshots/roadmap-2.3.png, id=281, 298.83646pt x 172.12305pt>
+File: ../screenshots/roadmap-2.3.png Graphic file (type png)
+<use ../screenshots/roadmap-2.3.png>
+Package pdftex.def Info: ../screenshots/roadmap-2.3.png  used on input line 435.
+(pdftex.def)             Requested size: 448.13095pt x 258.13138pt.
+ [23 <../screenshots/roadmap-2.1.png> <../screenshots/roadmap-2.2.png>]
+<../screenshots/roadmap-3.1.png, id=292, 298.83646pt x 172.12305pt>
+File: ../screenshots/roadmap-3.1.png Graphic file (type png)
+<use ../screenshots/roadmap-3.1.png>
+Package pdftex.def Info: ../screenshots/roadmap-3.1.png  used on input line 441.
+(pdftex.def)             Requested size: 448.13095pt x 258.13138pt.
+<../screenshots/roadmap-3.2.png, id=293, 298.83646pt x 172.12305pt>
+File: ../screenshots/roadmap-3.2.png Graphic file (type png)
+<use ../screenshots/roadmap-3.2.png>
+Package pdftex.def Info: ../screenshots/roadmap-3.2.png  used on input line 447.
+(pdftex.def)             Requested size: 448.13095pt x 258.13138pt.
+ [24 <../screenshots/roadmap-2.3.png> <../screenshots/roadmap-3.1.png>]
+<../screenshots/roadmap-3.3.png, id=304, 298.83646pt x 172.12305pt>
+File: ../screenshots/roadmap-3.3.png Graphic file (type png)
+<use ../screenshots/roadmap-3.3.png>
+Package pdftex.def Info: ../screenshots/roadmap-3.3.png  used on input line 453.
+(pdftex.def)             Requested size: 448.13095pt x 258.13138pt.
+<../screenshots/roadmap-4.1.png, id=305, 298.83646pt x 172.12305pt>
+File: ../screenshots/roadmap-4.1.png Graphic file (type png)
+<use ../screenshots/roadmap-4.1.png>
+Package pdftex.def Info: ../screenshots/roadmap-4.1.png  used on input line 459.
+(pdftex.def)             Requested size: 448.13095pt x 258.13138pt.
+ [25 <../screenshots/roadmap-3.2.png> <../screenshots/roadmap-3.3.png>]
+<../screenshots/roadmap-4.2.png, id=317, 298.83646pt x 172.12305pt>
+File: ../screenshots/roadmap-4.2.png Graphic file (type png)
+<use ../screenshots/roadmap-4.2.png>
+Package pdftex.def Info: ../screenshots/roadmap-4.2.png  used on input line 465.
+(pdftex.def)             Requested size: 448.13095pt x 258.13138pt.
+<../screenshots/roadmap-4.3.png, id=318, 298.83646pt x 172.12305pt>
+File: ../screenshots/roadmap-4.3.png Graphic file (type png)
+<use ../screenshots/roadmap-4.3.png>
+Package pdftex.def Info: ../screenshots/roadmap-4.3.png  used on input line 471.
+(pdftex.def)             Requested size: 448.13095pt x 258.13138pt.
+ [26 <../screenshots/roadmap-4.1.png> <../screenshots/roadmap-4.2.png>]
+<../screenshots/roadmap-5.1.png, id=330, 298.83646pt x 172.12305pt>
+File: ../screenshots/roadmap-5.1.png Graphic file (type png)
+<use ../screenshots/roadmap-5.1.png>
+Package pdftex.def Info: ../screenshots/roadmap-5.1.png  used on input line 477.
+(pdftex.def)             Requested size: 448.13095pt x 258.13138pt.
+<../screenshots/roadmap-5.2.png, id=331, 298.83646pt x 172.12305pt>
+File: ../screenshots/roadmap-5.2.png Graphic file (type png)
+<use ../screenshots/roadmap-5.2.png>
+Package pdftex.def Info: ../screenshots/roadmap-5.2.png  used on input line 483.
+(pdftex.def)             Requested size: 448.13095pt x 258.13138pt.
+ [27 <../screenshots/roadmap-4.3.png> <../screenshots/roadmap-5.1.png>]
+<../screenshots/roadmap-5.3.png, id=342, 298.83646pt x 172.12305pt>
+File: ../screenshots/roadmap-5.3.png Graphic file (type png)
+<use ../screenshots/roadmap-5.3.png>
+Package pdftex.def Info: ../screenshots/roadmap-5.3.png  used on input line 489.
+(pdftex.def)             Requested size: 448.13095pt x 258.13138pt.
+ [28 <../screenshots/roadmap-5.2.png> <../screenshots/roadmap-5.3.png>]
+chapter B.
+<../screenshots/potential-1.1.png, id=353, 300.52275pt x 174.8934pt>
+File: ../screenshots/potential-1.1.png Graphic file (type png)
+<use ../screenshots/potential-1.1.png>
+Package pdftex.def Info: ../screenshots/potential-1.1.png  used on input line 497.
+(pdftex.def)             Requested size: 448.13095pt x 260.81299pt.
+<../screenshots/potential-1.2.png, id=354, 300.52275pt x 174.8934pt>
+File: ../screenshots/potential-1.2.png Graphic file (type png)
+<use ../screenshots/potential-1.2.png>
+Package pdftex.def Info: ../screenshots/potential-1.2.png  used on input line 503.
+(pdftex.def)             Requested size: 448.13095pt x 260.81299pt.
+[29
+
+ <../screenshots/potential-1.1.png>]
+<../screenshots/potential-1.3.png, id=362, 300.52275pt x 174.8934pt>
+File: ../screenshots/potential-1.3.png Graphic file (type png)
+<use ../screenshots/potential-1.3.png>
+Package pdftex.def Info: ../screenshots/potential-1.3.png  used on input line 509.
+(pdftex.def)             Requested size: 448.13095pt x 260.81299pt.
+<../screenshots/potential-2.1.png, id=363, 300.52275pt x 174.8934pt>
+File: ../screenshots/potential-2.1.png Graphic file (type png)
+<use ../screenshots/potential-2.1.png>
+Package pdftex.def Info: ../screenshots/potential-2.1.png  used on input line 515.
+(pdftex.def)             Requested size: 448.13095pt x 260.81299pt.
+ [30 <../screenshots/potential-1.2.png> <../screenshots/potential-1.3.png>]
+<../screenshots/potential-2.2.png, id=374, 300.52275pt x 174.8934pt>
+File: ../screenshots/potential-2.2.png Graphic file (type png)
+<use ../screenshots/potential-2.2.png>
+Package pdftex.def Info: ../screenshots/potential-2.2.png  used on input line 521.
+(pdftex.def)             Requested size: 448.13095pt x 260.81299pt.
+<../screenshots/potential-2.3.png, id=375, 300.52275pt x 174.8934pt>
+File: ../screenshots/potential-2.3.png Graphic file (type png)
+<use ../screenshots/potential-2.3.png>
+Package pdftex.def Info: ../screenshots/potential-2.3.png  used on input line 527.
+(pdftex.def)             Requested size: 448.13095pt x 260.81299pt.
+ [31 <../screenshots/potential-2.1.png> <../screenshots/potential-2.2.png>]
+<../screenshots/potential-3.1.png, id=387, 300.52275pt x 174.8934pt>
+File: ../screenshots/potential-3.1.png Graphic file (type png)
+<use ../screenshots/potential-3.1.png>
+Package pdftex.def Info: ../screenshots/potential-3.1.png  used on input line 533.
+(pdftex.def)             Requested size: 448.13095pt x 260.81299pt.
+<../screenshots/potential-3.2.png, id=388, 300.52275pt x 174.8934pt>
+File: ../screenshots/potential-3.2.png Graphic file (type png)
+<use ../screenshots/potential-3.2.png>
+Package pdftex.def Info: ../screenshots/potential-3.2.png  used on input line 539.
+(pdftex.def)             Requested size: 448.13095pt x 260.81299pt.
+ [32 <../screenshots/potential-2.3.png> <../screenshots/potential-3.1.png>]
+<../screenshots/potential-3.3.png, id=399, 300.52275pt x 174.8934pt>
+File: ../screenshots/potential-3.3.png Graphic file (type png)
+<use ../screenshots/potential-3.3.png>
+Package pdftex.def Info: ../screenshots/potential-3.3.png  used on input line 545.
+(pdftex.def)             Requested size: 448.13095pt x 260.81299pt.
+<../screenshots/potential-4.1.png, id=400, 300.52275pt x 174.8934pt>
+File: ../screenshots/potential-4.1.png Graphic file (type png)
+<use ../screenshots/potential-4.1.png>
+Package pdftex.def Info: ../screenshots/potential-4.1.png  used on input line 551.
+(pdftex.def)             Requested size: 448.13095pt x 260.81299pt.
+ [33 <../screenshots/potential-3.2.png> <../screenshots/potential-3.3.png>]
+<../screenshots/potential-4.2.png, id=411, 300.52275pt x 174.8934pt>
+File: ../screenshots/potential-4.2.png Graphic file (type png)
+<use ../screenshots/potential-4.2.png>
+Package pdftex.def Info: ../screenshots/potential-4.2.png  used on input line 557.
+(pdftex.def)             Requested size: 448.13095pt x 260.81299pt.
+<../screenshots/potential-4.3.png, id=412, 300.52275pt x 174.8934pt>
+File: ../screenshots/potential-4.3.png Graphic file (type png)
+<use ../screenshots/potential-4.3.png>
+Package pdftex.def Info: ../screenshots/potential-4.3.png  used on input line 563.
+(pdftex.def)             Requested size: 448.13095pt x 260.81299pt.
+ [34 <../screenshots/potential-4.1.png> <../screenshots/potential-4.2.png>]
+<../screenshots/potential-5.1.png, id=423, 300.52275pt x 174.8934pt>
+File: ../screenshots/potential-5.1.png Graphic file (type png)
+<use ../screenshots/potential-5.1.png>
+Package pdftex.def Info: ../screenshots/potential-5.1.png  used on input line 569.
+(pdftex.def)             Requested size: 448.13095pt x 260.81299pt.
+<../screenshots/potential-5.2.png, id=424, 300.52275pt x 174.8934pt>
+File: ../screenshots/potential-5.2.png Graphic file (type png)
+<use ../screenshots/potential-5.2.png>
+Package pdftex.def Info: ../screenshots/potential-5.2.png  used on input line 575.
+(pdftex.def)             Requested size: 448.13095pt x 260.81299pt.
+ [35 <../screenshots/potential-4.3.png> <../screenshots/potential-5.1.png>]
+<../screenshots/potential-5.3.png, id=435, 300.52275pt x 174.8934pt>
+File: ../screenshots/potential-5.3.png Graphic file (type png)
+<use ../screenshots/potential-5.3.png>
+Package pdftex.def Info: ../screenshots/potential-5.3.png  used on input line 581.
+(pdftex.def)             Requested size: 448.13095pt x 260.81299pt.
+ [36 <../screenshots/potential-5.2.png> <../screenshots/potential-5.3.png>]
+chapter C.
+<../screenshots/dtransform-1.1.png, id=446, 300.52275pt x 174.8934pt>
+File: ../screenshots/dtransform-1.1.png Graphic file (type png)
+<use ../screenshots/dtransform-1.1.png>
+Package pdftex.def Info: ../screenshots/dtransform-1.1.png  used on input line 589.
+(pdftex.def)             Requested size: 448.13095pt x 260.81299pt.
+<../screenshots/dtransform-1.2.png, id=447, 300.52275pt x 174.8934pt>
+File: ../screenshots/dtransform-1.2.png Graphic file (type png)
+<use ../screenshots/dtransform-1.2.png>
+Package pdftex.def Info: ../screenshots/dtransform-1.2.png  used on input line 595.
+(pdftex.def)             Requested size: 448.13095pt x 260.81299pt.
+[37
+
+ <../screenshots/dtransform-1.1.png>]
+<../screenshots/dtransform-1.3.png, id=456, 300.52275pt x 174.8934pt>
+File: ../screenshots/dtransform-1.3.png Graphic file (type png)
+<use ../screenshots/dtransform-1.3.png>
+Package pdftex.def Info: ../screenshots/dtransform-1.3.png  used on input line 601.
+(pdftex.def)             Requested size: 448.13095pt x 260.81299pt.
+<../screenshots/dtransform-2.1.png, id=457, 300.52275pt x 174.8934pt>
+File: ../screenshots/dtransform-2.1.png Graphic file (type png)
+<use ../screenshots/dtransform-2.1.png>
+Package pdftex.def Info: ../screenshots/dtransform-2.1.png  used on input line 607.
+(pdftex.def)             Requested size: 448.13095pt x 260.81299pt.
+ [38 <../screenshots/dtransform-1.2.png> <../screenshots/dtransform-1.3.png>]
+<../screenshots/dtransform-2.2.png, id=468, 300.52275pt x 174.8934pt>
+File: ../screenshots/dtransform-2.2.png Graphic file (type png)
+<use ../screenshots/dtransform-2.2.png>
+Package pdftex.def Info: ../screenshots/dtransform-2.2.png  used on input line 613.
+(pdftex.def)             Requested size: 448.13095pt x 260.81299pt.
+<../screenshots/dtransform-2.3.png, id=469, 300.52275pt x 174.8934pt>
+File: ../screenshots/dtransform-2.3.png Graphic file (type png)
+<use ../screenshots/dtransform-2.3.png>
+Package pdftex.def Info: ../screenshots/dtransform-2.3.png  used on input line 619.
+(pdftex.def)             Requested size: 448.13095pt x 260.81299pt.
+ [39 <../screenshots/dtransform-2.1.png> <../screenshots/dtransform-2.2.png>]
+<../screenshots/dtransform-3.1.png, id=480, 300.52275pt x 174.8934pt>
+File: ../screenshots/dtransform-3.1.png Graphic file (type png)
+<use ../screenshots/dtransform-3.1.png>
+Package pdftex.def Info: ../screenshots/dtransform-3.1.png  used on input line 625.
+(pdftex.def)             Requested size: 448.13095pt x 260.81299pt.
+<../screenshots/dtransform-3.2.png, id=481, 300.52275pt x 174.8934pt>
+File: ../screenshots/dtransform-3.2.png Graphic file (type png)
+<use ../screenshots/dtransform-3.2.png>
+Package pdftex.def Info: ../screenshots/dtransform-3.2.png  used on input line 631.
+(pdftex.def)             Requested size: 448.13095pt x 260.81299pt.
+ [40 <../screenshots/dtransform-2.3.png> <../screenshots/dtransform-3.1.png>]
+<../screenshots/dtransform-3.3.png, id=493, 300.52275pt x 174.8934pt>
+File: ../screenshots/dtransform-3.3.png Graphic file (type png)
+<use ../screenshots/dtransform-3.3.png>
+Package pdftex.def Info: ../screenshots/dtransform-3.3.png  used on input line 637.
+(pdftex.def)             Requested size: 448.13095pt x 260.81299pt.
+<../screenshots/dtransform-4.1.png, id=494, 300.52275pt x 174.8934pt>
+File: ../screenshots/dtransform-4.1.png Graphic file (type png)
+<use ../screenshots/dtransform-4.1.png>
+Package pdftex.def Info: ../screenshots/dtransform-4.1.png  used on input line 643.
+(pdftex.def)             Requested size: 448.13095pt x 260.81299pt.
+ [41 <../screenshots/dtransform-3.2.png> <../screenshots/dtransform-3.3.png>]
+<../screenshots/dtransform-4.2.png, id=505, 300.52275pt x 174.8934pt>
+File: ../screenshots/dtransform-4.2.png Graphic file (type png)
+<use ../screenshots/dtransform-4.2.png>
+Package pdftex.def Info: ../screenshots/dtransform-4.2.png  used on input line 649.
+(pdftex.def)             Requested size: 448.13095pt x 260.81299pt.
+<../screenshots/dtransform-4.3.png, id=506, 300.52275pt x 174.8934pt>
+File: ../screenshots/dtransform-4.3.png Graphic file (type png)
+<use ../screenshots/dtransform-4.3.png>
+Package pdftex.def Info: ../screenshots/dtransform-4.3.png  used on input line 655.
+(pdftex.def)             Requested size: 448.13095pt x 260.81299pt.
+ [42 <../screenshots/dtransform-4.1.png> <../screenshots/dtransform-4.2.png>]
+<../screenshots/dtransform-5.1.png, id=517, 300.52275pt x 174.8934pt>
+File: ../screenshots/dtransform-5.1.png Graphic file (type png)
+<use ../screenshots/dtransform-5.1.png>
+Package pdftex.def Info: ../screenshots/dtransform-5.1.png  used on input line 661.
+(pdftex.def)             Requested size: 448.13095pt x 260.81299pt.
+<../screenshots/dtransform-5.2.png, id=518, 300.52275pt x 174.8934pt>
+File: ../screenshots/dtransform-5.2.png Graphic file (type png)
+<use ../screenshots/dtransform-5.2.png>
+Package pdftex.def Info: ../screenshots/dtransform-5.2.png  used on input line 667.
+(pdftex.def)             Requested size: 448.13095pt x 260.81299pt.
+ [43 <../screenshots/dtransform-4.3.png> <../screenshots/dtransform-5.1.png>]
+<../screenshots/dtransform-5.3.png, id=530, 300.52275pt x 174.8934pt>
+File: ../screenshots/dtransform-5.3.png Graphic file (type png)
+<use ../screenshots/dtransform-5.3.png>
+Package pdftex.def Info: ../screenshots/dtransform-5.3.png  used on input line 673.
+(pdftex.def)             Requested size: 448.13095pt x 260.81299pt.
+ [44 <../screenshots/dtransform-5.2.png> <../screenshots/dtransform-5.3.png>] (./Report.aux)
 Package rerunfilecheck Info: File `Report.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 34023 strings out of 480247
- 690976 string characters out of 5896151
- 1126821 words of memory out of 5000000
- 51237 multiletter control sequences out of 15000+600000
+ 34458 strings out of 480247
+ 702766 string characters out of 5896151
+ 1126822 words of memory out of 5000000
+ 51510 multiletter control sequences out of 15000+600000
  509272 words of font info for 58 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 108i,10n,106p,10665b,426s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 108i,10n,106p,10665b,448s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb>
-Output written on Report.pdf (20 pages, 3163170 bytes).
+Output written on Report.pdf (44 pages, 11813232 bytes).
 PDF statistics:
- 347 PDF objects out of 1000 (max. 8388607)
- 258 compressed objects within 3 object streams
- 93 named destinations out of 1000 (max. 500000)
- 365 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 668 PDF objects out of 1000 (max. 8388607)
+ 463 compressed objects within 5 object streams
+ 210 named destinations out of 1000 (max. 500000)
+ 614 words of extra memory for PDF output out of 10000 (max. 10000000)
 
