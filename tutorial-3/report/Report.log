@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.29)  12 FEB 2026 04:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.29)  13 FEB 2026 20:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1253,13 +1253,13 @@ Package rerunfilecheck Info: File `Report.out' has not changed.
 Here is how much of TeX's memory you used:
  35580 strings out of 480247
  710260 string characters out of 5896151
- 1530311 words of memory out of 5000000
+ 1530312 words of memory out of 5000000
  52752 multiletter control sequences out of 15000+600000
  535178 words of font info for 85 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  108i,18n,122p,10665b,3023s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi6.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb>
-Output written on Report.pdf (23 pages, 374241 bytes).
+Output written on Report.pdf (23 pages, 374332 bytes).
 PDF statistics:
  432 PDF objects out of 1000 (max. 8388607)
  352 compressed objects within 4 object streams
